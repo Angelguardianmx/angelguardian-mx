@@ -1,0 +1,19 @@
+h1 Categories
+
+
+= form_for @category, url: main_app.admin_categories_path(),  html: {class: 'form-inline'} do |f|
+  = f.text_field :name, :placeholder => 'Nombre', class: 'input-small'
+  = f.button 'Añadir', class: 'btn'
+
+table.table.table-striped
+  thead
+    tr
+      th
+      th Name
+      th
+  tbody
+    - @categories.each do |category|
+      tr
+        td= category.id
+        td= category.name
+        td= link_to 'Delete', '#'

@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'mercury-rails'
+gem 'redactor-rails'
+gem "carrierwave"
+gem "mini_magick"
+gem 'pry'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 ruby '1.9.3'
 
-gem 'crowdblog', '~> 0.3.0'
+gem 'crowdblog', '~> 0.3.0', path: '/Users/hecbuma/projects/crowdblog'
 #gem 'crowdblog', :path => '../crowdblog'
 gem 'crowdint_auth', '~> 0.0.3'
 gem 'dalli'

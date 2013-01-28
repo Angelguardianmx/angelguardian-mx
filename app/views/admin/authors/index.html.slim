@@ -1,6 +1,10 @@
 h1 Authors
 
-table.table.table-striped
+= form_for [:admin, @category], class: 'form-inline' do |f|
+  = f.text_field :name, :placeholder => 'Nombre', class: 'input-small'
+  = f.button :submit, class: 'btn'
+
+table.table.table-striped'
   thead
     tr
       th

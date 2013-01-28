@@ -11,11 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014031251) do
+ActiveRecord::Schema.define(:version => 20130128203654) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
     t.string   "attachment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "crowdblog_categories", :force => true do |t|
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "crowdblog_category", :force => true do |t|
+    t.text     "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -32,7 +44,26 @@ ActiveRecord::Schema.define(:version => 20121014031251) do
     t.integer  "publisher_id"
     t.boolean  "ready_for_review"
     t.datetime "marked_for_review_at"
+    t.text     "cintillo"
+    t.text     "resumen"
+    t.integer  "category_id"
   end
+
+  create_table "redactor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
 
   create_table "user_dropbox_sessions", :force => true do |t|
     t.integer  "user_id"

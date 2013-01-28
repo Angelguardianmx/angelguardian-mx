@@ -1,5 +1,6 @@
 Crowdblog::Application.routes.draw do
-  mount Mercury::Engine => '/'
+
+  mount RedactorRails::Engine => '/redactor_rails'
 
   devise_for :users, controllers: { omniauth_callbacks: 'crowdint_auth/omniauth_callbacks' }
 
@@ -12,6 +13,7 @@ Crowdblog::Application.routes.draw do
     resource :dropbox_sync
 
     resources :authors, :only => :index
+    resources :categories
   end
 
   match '/:year/:month/:day/:id(.:format)', to: 'crowdblog/posts#show', as: 'post',
