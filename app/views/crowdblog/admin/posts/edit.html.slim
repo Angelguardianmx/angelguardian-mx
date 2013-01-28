@@ -1,0 +1,38 @@
+.span12
+  h2 Edit Post
+
+  = form_for [:admin, @post] do |f|
+    = render 'form', :f => f
+
+    .form-actions.clear
+      .row
+        .span1
+          = f.submit "Update", :class => "btn btn-primary"
+        .span1
+          = link_to 'Cancel', crowdblog.admin_posts_path, :class => "btn"
+
+javascript:
+  $(document).load(function(){
+    jQuery(parent).trigger('initialize:frame');
+
+    var saveUrl = null;
+
+    // Instantiate the PageEditor
+    new Mercury.PageEditor(saveUrl, {
+      saveStyle:  form, // 'form', or 'json' (default json)
+      saveMethod: null, // 'PUT', or 'POST', (create, vs. update -- default PUT)
+      visible:    true  // boolean - if the interface should start visible or not
+    });
+    Mercury.on('ready', function() {
+      alert("Ready!");
+    });
+    $(window).bind('mercury:ready', function() {
+      var link = $('#mercury_iframe').contents().find('#edit_link');
+      Mercury.saveURL = link.data('save-url');
+      link.hide();
+    });
+
+    $(window).bind('mercury:saved', function() {
+      window.location = window.location.href.replace(/\/editor\//i, '/');
+    });
+  });

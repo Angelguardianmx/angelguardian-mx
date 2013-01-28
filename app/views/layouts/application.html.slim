@@ -20,12 +20,14 @@ html
     = yield :scripts
 
   body
-    = render 'nav_bar'
-    .container.bordered
-      .row
-        .span9
-          = yield
-        .span3
-          .right= render 'right_side_bar'
+    .wrapper
+      = render 'header'
+      .banners-right.pull-right
+        = render 'portada/right_banners'
+      .content.portada.pull-left
+        = render 'portada/section_a'
+        .clearfix
+        = link_to image_tag('banners/banner_e.gif'), '#'
+        = render 'portada/dato_del_dia'
 
-    = render 'footer'
+

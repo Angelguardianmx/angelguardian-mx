@@ -1,4 +1,6 @@
 Crowdblog::Application.routes.draw do
+  mount Mercury::Engine => '/'
+
   devise_for :users, controllers: { omniauth_callbacks: 'crowdint_auth/omniauth_callbacks' }
 
   devise_scope :user do

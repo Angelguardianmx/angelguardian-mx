@@ -1,0 +1,103 @@
+@import 'twitter/bootstrap/mixins';
+@main-gray: #4A4540;
+
+header {
+  padding: 10px 0;
+
+  .banner_a {
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .top {
+    margin-bottom: 10px;
+    background-color: @main-gray;
+    color: white;
+    text-align: center;
+    height: 73px;
+    h1 {
+      font-size: 27px;
+      text-transform: uppercase;
+      margin: 0;
+      font-weight: normal;
+      display: inline-block;
+      margin-top: 9px;
+      i {
+        font-weight: bold;
+        font-style: normal;
+      }
+
+    }
+    .search {
+      .search-label {
+        display: inline-block;
+        margin-right: 5px;
+        margin-top: -5px;
+      }
+      input {
+        height: 10px;
+        width: 170px;
+        .border-radius(5px);
+      }
+    }
+
+  }
+  ul li {
+    display: inline-block;
+    text-transform: capitalize;
+    width: 117px;
+    a {
+      display: block;
+      text-align: center;
+    }
+  }
+  ul.nav {
+    margin-bottom: 10px;
+    li {
+      font-size: 11px;
+      border: 1px solid #C3C1C0;
+      border-color-top: transparent;
+      border-color-bottom: transparent;
+      margin-right: 4px;
+      &.last {
+        margin: 0;
+      }
+      a {
+        background: @main-gray;
+        color: #E5E4E4;
+        &:hover {
+          background: #E5E4E4;
+          color:  @main-gray;
+          text-decoration: none;
+
+        }
+      }
+    }
+  }
+  ul.es-noticia {
+    margin: 0;
+    margin-bottom: 10px;
+    li {
+      border: 1px solid #F1F2F2;
+      color: black;
+      font-size: 10px;
+      margin-right: 4px;
+      &:first-child {
+        background: #FFE400;
+        border-color: #FEE02B;
+        text-align: center;
+      }
+      &.last {
+        margin:0;
+      }
+      a {
+        background: #FAFBFD;
+        color: black;
+        &:hover {
+          text-decoration: none;
+        }
+
+      }
+    }
+  }
+}
