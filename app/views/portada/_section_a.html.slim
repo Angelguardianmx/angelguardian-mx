@@ -1,7 +1,7 @@
 section.section_a
   .column
     .today
-      = Time.now
+      = Time.now.to_s :long
     article.noticia-a
       .header
         = image_tag('portada/section-a-noticia-a.jpg', class: 'size-a')

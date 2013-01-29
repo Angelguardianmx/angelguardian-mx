@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'redactor-rails'
 gem "carrierwave"
+gem "mini_magick"
 gem "rmagick"
 gem 'pry'
 gem 'acts-as-taggable-on'

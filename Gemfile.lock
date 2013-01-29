@@ -161,6 +161,8 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.19)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     multi_json (1.5.0)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -269,6 +271,7 @@ GEM
       actionpack (~> 3.0)
       activemodel (~> 3.0)
       railties (~> 3.0)
+    subexec (0.2.2)
     taps (0.3.24)
       rack (>= 1.0.1)
       rest-client (>= 1.4.0, < 1.7.0)
@@ -323,6 +326,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails-bootstrap (~> 2.1.1)
+  mini_magick
   newrelic_rpm
   pg
   pry
