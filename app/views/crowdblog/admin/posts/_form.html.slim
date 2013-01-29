@@ -23,6 +23,60 @@
       = f.label :tag_list, "Tags (separated by commas)"
       .controls
         = f.text_field :tag_list, class: 'input-xlarge span5'
+    .control-group.image
+      = f.label :filepicker_url, 'Imagen para vistas:'
+      .controls
+        .hidden
+          = f.filepicker_field :filepicker_url
+          = f.text_field :remote_image_url
+
+        = link_to 'Choose a file', '#', class: 'btn', id: 'filepicker_btn'
+        - if @post.image?
+          = image_tag @post.image, id: 'filepick'
+          = render 'image_set'
+        - else
+          img#filepick
+
+.row
+  /! Load Feather code
+  script src="//feather.aviary.com/js/feather.js" type="text/javascript"
+  javascript:
+     var featherEditor = new Aviary.Feather({
+         apiKey: 'rrr4HyzKZUGSAkOmBrG9ZA',
+         apiVersion: 2,
+         tools: 'enhance,effects,warmth,brightness,contrast,resize,crop,redeye,text',
+         appendTo: '',
+         onSave: function(imageID, newURL) {
+             var img = document.getElementById(imageID);
+             img.src = newURL;
+             $('#post_remote_image_url').attr('value',newURL);
+         },
+         onError: function(errorObj) {
+             alert(errorObj.message);
+         }
+     });
+     function launchEditor(id, src) {
+         featherEditor.launch({
+             image: id,
+             url: src
+         });
+        return false;
+     }
+     $('#filepicker_btn').live('click',function(e){
+        e.preventDefault();
+        filepicker.pick(function(FPFile){
+          console.log(FPFile.url);
+          preview = $('#filepick').attr('src', FPFile.url);
+
+          featherEditor.launch({
+            image: preview,
+            url: FPFile.url
+          });
+        });
+     });
+
+
+
 
 .row
   .control-group.body

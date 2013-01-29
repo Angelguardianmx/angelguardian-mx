@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128225443) do
+ActiveRecord::Schema.define(:version => 20130129070535) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20130128225443) do
     t.text     "cintillo"
     t.text     "resumen"
     t.integer  "category_id"
+    t.string   "filepicker_url"
+    t.string   "image"
   end
 
   create_table "redactor_assets", :force => true do |t|

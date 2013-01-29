@@ -1,0 +1,40 @@
+= link_to 'Mostrar/ocultar set de imagenes', '#', class: 'img_set'
+.image_set
+  .control
+    p thumb
+    = image_tag @post.image.url(:thumb)
+  .controls
+    p  size_a
+    = image_tag @post.image.url(:size_a)
+  .controls
+    p size_b
+    = image_tag @post.image.url(:size_b)
+  .controls
+    p size_especia
+    = image_tag @post.image.url(:size_especial)
+  .controls
+    p size_especial_b
+    = image_tag @post.image.url(:size_especial_b)
+  .controls
+    p size_d
+    = image_tag @post.image.url(:size_d)
+  .controls
+    p size_e
+    = image_tag @post.image.url(:size_e)
+  .controls
+    p size_f
+    = image_tag @post.image.url(:size_f)
+  .controls
+    p size_g
+    = image_tag @post.image.url(:size_g)
+  .controls
+    p size_h
+    = image_tag @post.image.url(:size_h)
+  .controls
+    p size_i
+    = image_tag @post.image.url(:size_i)
+javascript:
+  $('.img_set').live('click',function(e){
+    e.preventDefault();
+    $('.image_set').toggle();
+  })

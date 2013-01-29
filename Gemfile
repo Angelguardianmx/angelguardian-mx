@@ -3,9 +3,11 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'redactor-rails'
 gem "carrierwave"
-gem "mini_magick"
+gem "rmagick"
 gem 'pry'
 gem 'acts-as-taggable-on'
+gem 'filepicker-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 ruby '1.9.3'
@@ -20,7 +22,7 @@ gem 'fog'
 gem 'gravtastic'
 gem 'newrelic_rpm'
 gem 'quiet_assets'
-gem 'unicorn'
+gem 'thin'
 gem 'yui-compressor'
 
 # Gems used only for assets and not required

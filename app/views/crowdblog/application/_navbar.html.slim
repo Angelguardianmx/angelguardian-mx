@@ -1,6 +1,6 @@
 .navbar
   .navbar-inner
-    = link_to 'Crowdblog', crowdblog.admin_root_path, :class => 'brand'
+    = link_to 'News', crowdblog.admin_root_path, :class => 'brand'
     - if current_user
       ul.nav
         li.brand= current_user.email

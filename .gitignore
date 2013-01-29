@@ -20,5 +20,6 @@ public/assets
 tags
 public/uploads
 public/asset
+public/system
 
 *.sql
