@@ -5,6 +5,7 @@ gem 'redactor-rails'
 gem "carrierwave"
 gem "mini_magick"
 gem 'pry'
+gem 'acts-as-taggable-on'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 ruby '1.9.3'
