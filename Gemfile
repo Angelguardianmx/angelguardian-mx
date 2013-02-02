@@ -8,6 +8,7 @@ gem "rmagick"
 gem 'pry'
 gem 'acts-as-taggable-on'
 gem 'filepicker-rails'
+gem 'rails3-jquery-autocomplete'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

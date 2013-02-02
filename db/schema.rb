@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201225242) do
+ActiveRecord::Schema.define(:version => 20130202070815) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20130201225242) do
   create_table "crowdblog_home_sections", :force => true do |t|
     t.integer  "position"
     t.integer  "portada_id"
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "section_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "crowdblog_portadas", :force => true do |t|
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20130201225242) do
   create_table "crowdblog_section_posts", :force => true do |t|
     t.integer  "home_section_id"
     t.integer  "post_id"
-    t.string   "type"
+    t.string   "post_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

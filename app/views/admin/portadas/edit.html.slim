@@ -1,0 +1,45 @@
+h1 Portada nueva
+
+.box
+  p
+    |
+    Aqui puedes crear una portada nueva, empieza seleccionando la fecha en la que
+    deseas que la portada aparesca
+  p
+    |
+    Despues empieza a agregar contenido por secciones
+
+= form_for @portada, url: main_app.admin_portada_path(),  html: {class: 'form'} do |f|
+  .container
+    .well
+      .controls
+        = f.label :publication, 'Fecha de publicacion', class: 'label-control'
+        .input-append
+          = f.text_field :publication, class: 'datepicker'
+          span.add-on
+            i.icon-calendar
+    fieldset.fieldset
+      legend Seccion: Principal
+      = f.fields_for :home_sections, @principal do |principal|
+        = autocomplete_field_tag 'post_name', '', main_app.autocomplete_title_crowdblog_posts_path, id: 'principal_auto'
+        //= principal.text_field :posts
+        p principal
+    fieldset.fieldset
+      legend Section: Secundaria
+      = f.fields_for :home_sections, @secundaria do |secundaria|
+        p secundaria
+    .form-actions
+      = f.submit class: 'btn btn-primary'
+
+javascript:
+  $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy'
+  }).on('changeDate', function(ev){
+    $('.datepicker').attr('value',ev.date);
+  });
+
+  $('#principal_auto').bind('railsAutocomplete.select', function(event, data){
+    alert(data.item.id);
+  });
+
+

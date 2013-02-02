@@ -1,4 +1,7 @@
 class Crowdblog::PostsController < ApplicationController
+
+  autocomplete :title, :full => true
+
   caches_action :index
   caches_action :show, :cache_path => proc {
     main_app.post_url(params[:year], params[:month], params[:day], params[:id])

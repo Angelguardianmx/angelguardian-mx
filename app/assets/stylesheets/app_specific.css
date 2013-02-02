@@ -10,6 +10,7 @@
  *
  *= require_tree './app_specific'
  *= require redactor-rails
+ *= require datepicker
  *= require_self
 */
 

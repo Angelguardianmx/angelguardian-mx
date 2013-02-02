@@ -1,0 +1,16 @@
+h1 Portafa nueva
+
+.box
+  p
+    |
+    Aqui puedes crear una portada nueva, empieza seleccionando la fecha en la que
+    deseas que la portada aparesca
+  p
+    |
+    Despues empieza a agregar contenido por secciones
+
+= form_for @portada, url: main_app.admin_portadas_path(),  html: {class: 'form'} do |f|
+  .container
+    fieldset.fieldset
+      legend Section_A
+

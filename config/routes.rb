@@ -14,7 +14,15 @@ Crowdblog::Application.routes.draw do
 
     resources :authors, :only => :index
     resources :categories
+    resources :portadas
   end
+
+  namespace :crowdblog do
+    resources :posts do
+      get :autocomplete_title, :on => :collection
+    end
+  end
+  # match '/posts/autocomplete_title', to: 'crowdblog/posts#autocomplete_title', via: :get
 
   match '/:year/:month/:day/:id(.:format)', to: 'crowdblog/posts#show', as: 'post',
       constraints: { year: /\d+/ }
