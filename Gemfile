@@ -12,7 +12,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'newrelic_rpm'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-ruby '1.9.3'
+# ruby '1.9.3'
 
 gem 'crowdblog', '~> 0.3.0', git: 'git://github.com/hecbuma/crowdblog.git' # path: '/Users/hecbuma/projects/crowdblog'
 #gem 'crowdblog', :path => '../crowdblog'
@@ -24,7 +24,6 @@ gem 'fog'
 gem 'gravtastic'
 gem 'newrelic_rpm'
 gem 'quiet_assets'
-gem 'thin'
 gem 'yui-compressor'
 
 # Gems used only for assets and not required
