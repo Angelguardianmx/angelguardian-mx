@@ -21,9 +21,14 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     @secundaria = @portada.home_sections.where(section_type: 'secundaria').first
     @opinion = @portada.home_sections.where(section_type: 'opinion').first
     @policiacas = @portada.home_sections.where(section_type: 'policiacas').first
+    @posts = @posts = Crowdblog::Post.for_index
   end
 
   def update
+    portada = Crowdblog::Portada.find params[:id]
+    # portada.update_attributes params[:portada]
+    portada.update_attributes params[:portada]
+
 
   end
 

@@ -14,6 +14,9 @@
         font-size: 21px;
         line-height: 25px;
         margin: 5px 0 10px 0;
+        &.titulo-tag {
+          font-size: 14px;
+        }
       }
       img.size-a ~ h2 {
         font-size: 30px;
@@ -165,4 +168,48 @@
     float: left;
     margin-bottom: 10px;
   }
+}
+.banners{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.dato-del-dia {
+  a {
+    text-align: center;
+    background: url('/assets/resumen-more-icon.gif') no-repeat 750px center #eee;
+    width: 770px;
+    display: table-cell;
+    height: 70px;
+    vertical-align: middle;
+    color: #4B4B4B;
+    font-size: 16px;
+    font-style: oblique;
+    span {
+      color: #000;
+      font-size: 54px;
+      padding: 0 3px;
+      display: inline-block;
+      font-style: normal;
+      font-weight: bold;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.titulo-bloque, h2.titulo-tag {
+  color: #ECECEB;
+  background: #4A4540;
+  font-size: 14px;
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: normal;
+  line-height: 22px;
+}
+h2.titulo-tag {
+  color: #4B4205;
+  background: #FFE400;
 }

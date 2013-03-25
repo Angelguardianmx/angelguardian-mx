@@ -18,16 +18,58 @@ h1 Portada nueva
           = f.text_field :publication, class: 'datepicker'
           span.add-on
             i.icon-calendar
-    fieldset.fieldset
-      legend Seccion: Principal
-      = f.fields_for :home_sections, @principal do |principal|
-        = autocomplete_field_tag 'post_name', '', main_app.autocomplete_title_crowdblog_posts_path, id: 'principal_auto'
-        //= principal.text_field :posts
-        p principal
-    fieldset.fieldset
-      legend Section: Secundaria
-      = f.fields_for :home_sections, @secundaria do |secundaria|
-        p secundaria
+    .row
+      .span6
+        .search-news
+          table.table.table-striped.posts
+            thead
+              tr
+                th Categoria
+                th Titulo Noticia
+                th Fecha
+            tbody
+              - @posts.each do |post|
+                tr.draggable data-p_id==("#{post.id}")
+                  td= post.category.name
+                  td.title= post.title
+                  td= post.published_at.to_s :long
+      .span6
+        fieldset.fieldset
+          legend Seccion: Principal
+          = f.fields_for :home_sections, @principal do |principal|
+            ul.droppable.well
+              li.placeholder data-index==("0") data-position==("0") data-section==("0")
+                span Noticia A
+              li.placeholder data-index==("1") data-position==("1") data-section==("0")
+                span Noticia B
+              li.placeholder data-index==("2") data-position==("2") data-section==("0")
+                span Noticia C
+              li.placeholder data-index==("3") data-position==("3") data-section==("0")
+                span Noticia D
+              li.placeholder data-index==("4") data-position==("4") data-section==("0")
+                span Noticia E
+            .section-posts
+              = principal.fields_for :section_posts do |sp|
+                .hidden
+
+        fieldset.fieldset
+          legend Section: Secundaria
+          = f.fields_for :home_sections, @secundaria do |secundaria|
+            ul.droppable.well
+              li.placeholder data-index==("0") data-position==("0") data-section==("1")
+                span Noticia A
+              li.placeholder data-index==("1") data-position==("1") data-section==("1")
+                span Noticia B
+              li.placeholder data-index==("2") data-position==("2") data-section==("1")
+                span Noticia C
+              li.placeholder data-index==("3") data-position==("3") data-section==("1")
+                span Noticia D
+              li.placeholder data-index==("4") data-position==("4") data-section==("1")
+                span Noticia E
+            .section-posts
+              = secundaria.fields_for :section_posts do |sp_2|
+                .hidden
+
     .form-actions
       = f.submit class: 'btn btn-primary'
 
@@ -41,5 +83,5 @@ javascript:
   $('#principal_auto').bind('railsAutocomplete.select', function(event, data){
     alert(data.item.id);
   });
-
+  $('.search-news').affix();
 
