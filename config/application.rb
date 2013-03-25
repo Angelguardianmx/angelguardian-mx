@@ -65,7 +65,7 @@ module Crowdblog
     end
 
     config.assets.initialize_on_precompile = false
-
+    config.assets.precompile += %w(app_specific.css app_specific.js)
     config.filepicker_rails.api_key = "Au5KCTLPESI2eZsyY52NIz"
   end
 end
