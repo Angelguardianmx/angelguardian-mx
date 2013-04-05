@@ -37,6 +37,22 @@
         line-height: 20px;
         margin: 0 0 10px 0;
       }
+      img.size-f ~ h2 {
+        font-size: 15px;
+      }
+      img.size-f {
+        display: block;
+        float: none;
+      }
+      img.size-g ~ h2 {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 15px;
+      }
+      img.right {
+        float: right;
+      }
+
 
       p {
         margin: 0;
@@ -161,7 +177,72 @@
       margin-top: 0;
     }
   }
+
 }
+
+// section secundaria
+.portada .section_b{
+  article.noticia-secundaria-b, article.noticia-secundaria-c {
+    float: left;
+    width: 180px;
+
+  }
+  article.noticia-secundaria-c {
+    margin-left: 15px;
+  }
+
+  article.el-tiempo {
+    h2 {
+      padding: 13px 10px;
+      background: #FAFBFD;
+      border: 1px solid #F4F4F5;
+      font-size: 16px;
+    }
+  }
+  article.mas-recientes {
+    ul.related {
+      margin-top: 0;
+      background: none;
+      li  {
+        border: none;
+        background-image: url('/assets/related-bullet-white.gif'); 
+      }
+    }
+  }
+}
+
+// section policiacas
+.portada section.policiacas {
+  .banner-m {
+    float: left;
+    margin-right: 20px;
+  }
+  #content {
+    float: left;
+    width: 578px;
+    h2 {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+    ul.related {
+      float: left;
+      width: 64%;
+      margin-top: 0;
+    }
+    article {
+      padding-bottom: 0px;
+    }
+    .policiaca-a .header {
+      margin-top: 14px;
+    }
+    .titulo-bloque {
+      margin: 0;
+    }
+  }
+
+
+}
+
 .banners-right {
   width: 180px;
   img {

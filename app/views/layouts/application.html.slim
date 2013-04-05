@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Crowd Interactive Tech Blog #{yield :page_title}
+    title AngelGuardian.mx #{yield :page_title}
     = yield :meta
     - ENV['FB_ADMINS'].split(',').each do |admin|
       meta property="fb:admins" content=admin
@@ -30,5 +30,8 @@ html
         = link_to image_tag('banners/banner_e.gif'), '#', class: 'banners'
         = render 'portada/dato_del_dia'
         = render 'portada/section_b'
+        = link_to image_tag('banners/banner_i.gif'), '#', class: 'banners'
+        = render 'portada/sociales'
+        = render 'portada/policiacas'
 
 

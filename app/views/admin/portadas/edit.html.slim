@@ -70,6 +70,8 @@ h1 Portada nueva
               = secundaria.fields_for :section_posts do |sp_2|
                 .hidden
 
+    .row
+      .span12#socials style='height: 500px;'
     .form-actions
       = f.submit class: 'btn btn-primary'
 
@@ -83,5 +85,4 @@ javascript:
   $('#principal_auto').bind('railsAutocomplete.select', function(event, data){
     alert(data.item.id);
   });
-  $('.search-news').affix();
-
+  $('.search-news').scrollToFixed({ marginTop: 10, limit: $('#socials').offset().top - $('.search-news table').height()});

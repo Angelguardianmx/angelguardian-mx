@@ -2,9 +2,10 @@
 //= require bootstrap-datepicker
 //= require jquery-ui
 //= require autocomplete-rails
-//
+//= require jquery-scrolltofixed
 //
 $(document).ready(function(){
+
   $( ".draggable" ).draggable({
     connectToSortable: ".droppable",
     helper: "clone",
