@@ -22,16 +22,6 @@ html
   body
     .wrapper
       = render 'header'
-      .banners-right.pull-right
-        = render 'portada/right_banners'
-      .content.portada.pull-left
-        = render 'portada/section_a'
-        .clearfix
-        = link_to image_tag('banners/banner_e.gif'), '#', class: 'banners'
-        = render 'portada/dato_del_dia'
-        = render 'portada/section_b'
-        = link_to image_tag('banners/banner_i.gif'), '#', class: 'banners'
-        = render 'portada/sociales'
-        = render 'portada/policiacas'
+      = yield
 
 

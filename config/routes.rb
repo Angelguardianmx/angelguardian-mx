@@ -38,12 +38,12 @@ Crowdblog::Application.routes.draw do
 
   match '/atom.(:format)', to: 'feeds/atom_feeds#show', as: 'atom_feed'
 
+  root to: "portadas#show"
   mount Crowdblog::Engine => '/'
 
 
   match 'sitemap.(:format)', to: 'sitemap#show'
   match '/author/:id', to: 'posts_by_author#index', as: 'posts_by_author'
 
-  root to: "posts#index"
 
 end

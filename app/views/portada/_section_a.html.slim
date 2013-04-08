@@ -4,30 +4,20 @@ section.section_a
       = Time.now.to_s :long
     article.noticia-a
       .header
-        = image_tag('portada/section-a-noticia-a.jpg', class: 'size-a')
-        p.cintillo Ocurrio este viernes por la noche
-        h2
-          Comfirma PC-Mzp que el derrame en la bahia fue accidental
-        p.date.pull-left 10 de noviembre | 10:54 am
+        = image_tag(@principal.posts[0].image.size_a, class: 'size-a')
+        p.cintillo= @principal.posts[0].cintillo
+        h2= @principal.posts[0].title
+        p.date.pull-left= @principal.posts[0].published_at
         = link_to 'lectura rapida', '#', class: 'lectura-rapida pull-right'
         .clearfix
-      .resumen
-        |
-          Miguel anfel gutierrez director de la unidad municiapl de proteccion civil
-          de manzanillo, confirmo  que el derrame  de combustible no tuvo como origen
-          niguna de las tuberias.
+      .resumen= @principal.posts[0].resumen
     article.noticia-b
       .header
-        p.cintillo Informe realizado por la pricewaterhousecooper
-        = image_tag('portada/section-a-noticia-b.jpg', class: 'size-b')
-        h2
-          libra colima por una posicion el antepenultimo lugar en transparencia
-        p.date 10 de noviembre | 10:54 am
-      .resumen
-        |
-          PriceWaterHouseCooper es considerada la firma de servicios profesionales
-          mas importante del mundo- refleja que colima libra por una posicion el
-          antepenultimo lugar  en lo que el acceso a la informacion publica.
+        p.cintillo= @principal.posts[1].cintillo
+        = image_tag(@principal.posts[1].image.size_a, class: 'size-b')
+        h2=@principal.posts[1].title
+        p.date= @principal.posts[1].published_at
+      .resumen=@principal.posts[1].resumen
       ul.related
         li
           = link_to 'Repite Colima como entidad con mayor trasnparencia presupuestal', '#'
@@ -36,14 +26,12 @@ section.section_a
 
     article.noticia-c
       .header
-        p.cintillo informo arturo valencia director del ifecol
-        h2 Ampliaran al jueves feria de todos los santos.
-        p.date @felipeochaagmx | 10 de noviembre | 9:46 am
-      .resumen
-        |
-          derivado de la lluvia que se genero el fin de semana pasado, los comerciantes
-          instalados en la feria de todos los santons colima 2013 soliciation se amplie
-          dos dias mas el maximo festejo de los colimenses.
+        p.cintillo== @principal.posts[2].cintillo
+        h2= @principal.posts[2].title
+        p.date 
+          = @principal.posts[2].author.email
+          |  | #{@principal.posts[2].published_at}
+      .resumen= @principal.posts[2].resumen
 
 
 
@@ -73,7 +61,7 @@ section.section_a
 
     article.noticia-d
       .header
-        p.cintillo informo jose oscar vega
+        p.cintillo= @principal.posts[3].cintillo
         = image_tag('portada/section-a-noticia-d.jpg', class: 'size-d')
         h2 quedan solo colima y df sin implementar jucios orales
         p.date 10 noviembre | 10:45am
