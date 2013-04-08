@@ -11,4 +11,21 @@ class Post < Crowdblog::Post
   def dropbox_name
     "#{id}-#{permalink}.md"
   end
+
+  searchable do
+    text :title, :body
+    string :state
+    string :category_name do
+      category.name
+    end
+  end
+
+  def self.query(query, category)
+    Post.search do
+      fulltext query
+      with :state, 'published'
+      with :category_name, category if category
+    end
+  end
+
 end

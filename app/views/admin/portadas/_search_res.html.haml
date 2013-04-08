@@ -1,0 +1,4 @@
+%tr.draggable{'data-p_id' => "#{post.id}"}
+  %td= post.category.name
+  %td.title= post.title
+  %td= post.published_at.to_s :long

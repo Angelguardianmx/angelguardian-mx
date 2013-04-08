@@ -1,0 +1,8 @@
+<%- if @id %>
+  console.log('done!')
+  var div = $("[data-id=<%= @id %>]")
+  $('#portada_home_sections_attributes_'+div.data("section")+'_section_posts_attributes_'+div.data("position")+'_id').remove()
+  div.html("<span>lugar disponible</span>").removeClass('ready').addClass('placeholder')
+  $(input).remove
+
+<% end %>

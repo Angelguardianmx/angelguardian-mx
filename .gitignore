@@ -23,3 +23,5 @@ public/asset
 public/system
 
 *.sql
+log/sunspot-solr-development.log.lck
+/solr

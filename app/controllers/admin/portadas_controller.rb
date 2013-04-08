@@ -21,7 +21,8 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     @secundaria = @portada.home_sections.where(section_type: 'secundaria').first
     @opinion = @portada.home_sections.where(section_type: 'opinion').first
     @policiacas = @portada.home_sections.where(section_type: 'policiacas').first
-    @posts = @posts = Crowdblog::Post.for_index
+    @posts = Post.query('',false ).results
+    @policiacas_list = Post.query('', 'Policiacas').results
   end
 
   def update
@@ -30,6 +31,23 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     portada.update_attributes params[:portada]
 
 
+  end
+
+  def delete_post
+    portada = Crowdblog::Portada.find params[:id]
+    section = portada.home_sections.find params[:section_id]
+    section_post = section.section_posts.where post_id: params[:post_id]
+    unless section_post.empty?
+      @id = section_post.first.post.id
+      section_post.first.destroy
+    end
+  end
+
+  def search_post
+    @query =  params[:search]
+    category = params[:type] || false
+    @posts = Post.query(@query, category).results
+    @type = params[:type]
   end
 
 

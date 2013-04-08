@@ -3,6 +3,7 @@
 //= require jquery-ui
 //= require autocomplete-rails
 //= require jquery-scrolltofixed
+//= require admin_portada
 //
 $(document).ready(function(){
 

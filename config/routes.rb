@@ -14,7 +14,12 @@ Crowdblog::Application.routes.draw do
 
     resources :authors, :only => :index
     resources :categories
-    resources :portadas
+    resources :portadas do
+      member do
+        delete '/:section_id/:post_id/', to: 'portadas#delete_post', as: 'delete_post'
+        get '/:type/:search', to: 'portadas#search_post', as: 'search_post'
+      end
+    end
   end
 
   namespace :crowdblog do

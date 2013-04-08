@@ -40,6 +40,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'sunspot_rails'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'autotest-rails'
@@ -54,6 +56,7 @@ group :development, :test do
   gem 'spork'
   gem 'sqlite3'
   gem 'taps'
+  gem 'sunspot_solr'
 end
 
 group :production do
