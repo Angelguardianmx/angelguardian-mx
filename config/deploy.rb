@@ -22,11 +22,11 @@ set :default_stage, 'angelguardian'
 
 # Git
 set :repository,    'git@github.com:hecbuma/blog.crowdint.com-1.git'
-set :branch,        'master'
+set :branch,        'angelguardian'
 set :scm,           'git'
 set :scm_username,  'rails-app'
 set :deploy_via,    'remote_cache'
-set :deploy_to,     "/home/#{user}/#{application}"
+set :deploy_to,     "/home/www/#{application}"
 
 # Parameters, like `bundle exec cap hrbb release -s branch=master`
 _cset :branch, 'master'
