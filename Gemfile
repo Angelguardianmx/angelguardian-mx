@@ -57,6 +57,10 @@ group :development, :test do
   gem 'sqlite3'
   gem 'taps'
   gem 'sunspot_solr'
+
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano'
 end
 
 group :production do
