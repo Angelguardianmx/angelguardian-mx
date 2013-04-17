@@ -19,6 +19,10 @@ test:
   timeout: 5000
 
 production:
+  encoding: utf8
+  template: template0
+  collate: en_US.UTF8 
+  ctype: en_US.UTF8 
   adapter: postgresql
   database: angelguardian
   pool: 5

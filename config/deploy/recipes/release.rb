@@ -40,7 +40,7 @@ namespace :release do
 
   desc "Setup the Database"
   task :db_setup do
-    run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} db:setup"
+    run "cd #{deploy_to} && PGPASSWORD='postgres' #{rake} RAILS_ENV=#{env} db:setup"
 
     puts "#{green} ✓ Run db setup #{black}"
   end
@@ -55,7 +55,7 @@ namespace :release do
 
   desc "Unicorn: Start"
   task :start do
-    cmd = "bundle exec unicorn_rails --config-file #{deploy_to}/config/unicorn_qa.rb --env #{env} --daemonize"
+    cmd = "bundle exec unicorn_rails --config-file #{deploy_to}/config/unicorn.rb --env #{env} --daemonize"
     run "source ~/.profile && cd #{deploy_to} && #{cmd}"
   end
 
