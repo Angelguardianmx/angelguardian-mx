@@ -13,7 +13,7 @@ namespace :release do
 
   desc "Update Bundler gems"
   task :update do
-    run "cd #{deploy_to} && bundle check || bundle install --local --without development test osx heroku"
+    run "cd #{deploy_to} && bundle check || bundle install --without development test osx heroku"
 
     puts "#{green} ✓ Verify gems #{black}"
   end
@@ -36,6 +36,13 @@ namespace :release do
     run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} db:migrate"
 
     puts "#{green} ✓ Run migrations #{black}"
+  end
+
+  desc "Setup the Database"
+  task :db_setup do
+    run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} db:setup"
+
+    puts "#{green} ✓ Run db setup #{black}"
   end
 
   #TODO(chalofa): Only precompile assets when needed (not every time)

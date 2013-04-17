@@ -26,12 +26,12 @@ set :branch,        'angelguardian'
 set :scm,           'git'
 set :scm_username,  'rails-app'
 set :deploy_via,    'remote_cache'
-set :deploy_to,     "/home/www/#{application}"
+set :deploy_to,     "/home/rails-app/#{application}"
 
 # Parameters, like `bundle exec cap hrbb release -s branch=master`
 _cset :branch, 'master'
-_cset :env, :qa
+_cset :env, :production
 
 # Ruby
-set :rvm_ruby_string,   '1.9.3-p194@angelguardian'
+set :rvm_ruby_string,   '1.9.3'
 set :rvm_type,          :user
