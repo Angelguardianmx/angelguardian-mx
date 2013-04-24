@@ -21,8 +21,8 @@ set :stages,        %w{angelguardian}
 set :default_stage, 'angelguardian'
 
 # Git
-set :repository,    'git@github.com:hecbuma/blog.crowdint.com-1.git'
-set :branch,        'angelguardian'
+set :repository,    'git@github.com:Angelguardianmx/angelguardian-mx.git'
+set :branch,        'master'
 set :scm,           'git'
 set :scm_username,  'rails-app'
 set :deploy_via,    'remote_cache'

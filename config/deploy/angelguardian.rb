@@ -1,4 +1,4 @@
 # Servers
-role :web,  '192.168.50.4'
-role :app,  '192.168.50.4'
-role :db,   '192.168.50.4', :primary => true
+role :web,  '50.28.24.47'
+role :app,  '50.28.24.47'
+role :db,   '50.28.24.47', :primary => true
