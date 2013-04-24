@@ -41,6 +41,8 @@ end
 
 gem 'jquery-rails'
 gem 'sunspot_rails'
+#remove once solr server ready
+gem 'sunspot_solr'
 gem 'haml-rails'
 
 group :development, :test do
@@ -56,7 +58,6 @@ group :development, :test do
   gem 'spork'
   gem 'sqlite3'
   gem 'taps'
-  gem 'sunspot_solr'
 
   gem 'capistrano'
   gem 'capistrano-ext'
