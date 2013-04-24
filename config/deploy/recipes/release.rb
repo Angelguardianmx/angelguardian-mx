@@ -55,7 +55,7 @@ namespace :release do
 
   desc "Unicorn: Start"
   task :start do
-    cmd = "bundle exec unicorn_rails --config-file #{deploy_to}/config/unicorn.rb --env #{env} --daemonize"
+    cmd = "PGPASSWORD='postgres' GOOGLE_APPS_AUTH_DOMAIN='radiolevy.com' bundle exec unicorn_rails --config-file #{deploy_to}/config/unicorn.rb --env #{env} --daemonize"
     run "source ~/.profile && cd #{deploy_to} && #{cmd}"
   end
 
@@ -64,7 +64,7 @@ namespace :release do
   task :stop do
     printf "Stop Unicorn ......................................................"
 
-    run "if [ -e /var/run/#{application}.unicorn.pid ] ; then kill -s TERM `cat /var/run/#{application}.unicorn.pid` ; fi"
+    run "if [ -e /home/rails-app/run/#{application}.unicorn.pid ] ; then kill -s TERM `cat /home/rails-app/run/#{application}.unicorn.pid` ; fi"
 
     puts "#{green} ✓ #{black}"
   end
