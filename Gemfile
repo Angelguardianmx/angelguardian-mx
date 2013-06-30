@@ -10,9 +10,7 @@ gem 'acts-as-taggable-on'
 gem 'filepicker-rails'
 gem 'rails3-jquery-autocomplete'
 gem 'newrelic_rpm'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-# ruby '1.9.3'
+
 
 gem 'crowdblog', '~> 0.3.0', git: 'git://github.com/hecbuma/crowdblog.git' # path: '/Users/hecbuma/projects/crowdblog'
 #gem 'crowdblog', :path => '../crowdblog'
