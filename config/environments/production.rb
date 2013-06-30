@@ -36,7 +36,7 @@ Crowdblog::Application.configure do
 
   # See everything in the log (default is :info)
   config.log_level = :debug
-  config.logger = ActiveSupport::BufferedLogger.new "/var/log/rails/rails-app/#{Rails.env}.log", 0
+  #config.logger = ActiveSupport::BufferedLogger.new "/var/log/rails/rails-app/#{Rails.env}.log", 0
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
