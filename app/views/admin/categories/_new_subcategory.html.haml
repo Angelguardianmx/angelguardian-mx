@@ -1,0 +1,8 @@
+%tr.sub_category
+  %td
+  %td
+    = form_for Crowdblog::Category.new , url: main_app.admin_categories_path(),  html: {class: 'form-inline'} do |f|
+      = f.text_field :name, :placeholder => 'Nombre', class: 'input-small'
+      = hidden_field_tag 'category[paren_id]', @parent_categegory.id
+      = f.button 'Añadir', class: 'btn'
+  %td
