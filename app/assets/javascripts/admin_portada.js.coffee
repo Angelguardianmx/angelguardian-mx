@@ -5,3 +5,6 @@ $ ->
     search = $(@).siblings('input#search-term').first().val()
 
     $.get "/admin/portadas/1/#{type}/#{search}.js"
+
+  $.fn.editable.defaults.ajaxOptions = {type: "PUT"};
+  $('.editable').editable();
