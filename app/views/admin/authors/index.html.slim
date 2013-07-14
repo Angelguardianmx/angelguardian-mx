@@ -9,6 +9,7 @@ table.table.table-striped
       th Email
       th Posts
       th Last Post
+      th Es Editor?
   tbody
     - @authors.each do |author|
       tr
@@ -17,3 +18,10 @@ table.table.table-striped
         td= author.email
         td= author.published_posts.size
         td= author.last_published_at
+        td
+          - unless author.is_publisher?
+            = button_to "Editor!", main_app.admin_author_url(author, :author => { :is_publisher => true  }), :method => :put, class: 'btn'
+          - else
+            = button_to "Quitar Permisos", main_app.admin_author_url(author, :author => { :is_publisher => false  }), :method => :put, class: 'btn btn-danger'
+
+

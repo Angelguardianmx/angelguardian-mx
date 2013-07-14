@@ -6,7 +6,7 @@ class User < Crowdblog::User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :is_publisher
 
   gravtastic :gravatar_email
 

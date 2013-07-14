@@ -12,7 +12,7 @@ Crowdblog::Application.routes.draw do
     resource :dropbox_authorization
     resource :dropbox_sync
 
-    resources :authors, :only => :index
+    resources :authors, :only => [:index, :update]
     resources :categories
     resources :portadas do
       member do
