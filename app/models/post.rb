@@ -16,7 +16,7 @@ class Post < Crowdblog::Post
     text :title, :body
     string :state
     string :category_name do
-      category.name
+      category.name if category
     end
   end
 

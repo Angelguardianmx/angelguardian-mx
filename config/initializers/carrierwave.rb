@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  if Rails.env.production?
+  #if Rails.env.production? || Rails.env.development?
     config.storage = :fog
 
     config.fog_credentials = {
@@ -11,7 +11,7 @@ CarrierWave.configure do |config|
     config.fog_directory  = ENV['AWS_BUCKET']
     config.fog_public     = true
     config.fog_attributes = {'Cache-Control' => 'max-age=315576000'}
-  else
-    config.storage = :file
-  end
+  #else
+  #  config.storage = :file
+  #end
 end
