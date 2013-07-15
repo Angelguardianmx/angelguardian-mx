@@ -56,7 +56,8 @@ section.section_a
           .header
             h2= @portada.special_note.title
             = image_tag(@portada.special_note.image.size_especial, class: 'size-special')
-          .resumen= @portada.special_note.resumen
+          .resumen
+            = link_to @portada.special_note.resumen, main_app.post_path(*@portada.special_note.url_params)
         .linked
           = image_tag('portada/section-a-noticia-especia-b.jpg')
           p

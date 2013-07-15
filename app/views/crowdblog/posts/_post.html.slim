@@ -2,7 +2,7 @@
   .header
     .row
       .span1.author-info
-        = image_tag post.gravatar_url
+        = image_tag post.gravatar_url, class: 'img-circle'
       .span3.author-info
         .author #{link_to post.author_name, main_app.posts_by_author_path(post.author.to_param)}
         .email #{post.author_email}
