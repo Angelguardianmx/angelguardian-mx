@@ -6,28 +6,34 @@ section.section_a
       .header
         = image_tag(@principal.posts[0].image.size_a, class: 'size-a')
         p.cintillo= @principal.posts[0].cintillo
-        h2= @principal.posts[0].title
+        h2
+          = link_to @principal.posts[0].title, main_app.post_path(*@principal.posts[0].url_params)
         p.date.pull-left= @principal.posts[0].published_at
-        = link_to 'lectura rapida', '#', class: 'lectura-rapida pull-right'
+        = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: @principal.posts[0].id), class: 'lectura-rapida pull-right', remote: true
         .clearfix
       .resumen= @principal.posts[0].resumen
+
     article.noticia-b
       .header
         p.cintillo= @principal.posts[1].cintillo
         = image_tag(@principal.posts[1].image.size_b, class: 'size-b')
-        h2=@principal.posts[1].title
+        h2
+          = link_to @principal.posts[1].title, main_app.post_path(*@principal.posts[1].url_params)
         p.date= @principal.posts[1].published_at
       .resumen=@principal.posts[1].resumen
-      ul.related
-        li
-          = link_to 'Repite Colima como entidad con mayor trasnparencia presupuestal', '#'
-        li
-          = link_to 'Es colima un municipio lider a nivel nacional', '#'
+      - if @principal.posts[1].related
+        ul.related
+          - @principal.posts[1].related.each do |related|
+            li
+              = link_to related.title, '#'
+
 
     article.noticia-c
       .header
         p.cintillo== @principal.posts[2].cintillo
-        h2= @principal.posts[2].title
+        h2
+          = link_to @principal.posts[2].title, main_app.post_path(*@principal.posts[2].url_params)
+
         p.date 
           = @principal.posts[2].author.email
           |  | #{@principal.posts[2].published_at}
@@ -44,32 +50,31 @@ section.section_a
         h2.titulo-bloque Resumen
         = raw @portada.soundcloud_frame
 
-    article.special
-      .top
-        .header
-          h2 Aumentaran las tarifas, ¿mejora el servicio?
-          = image_tag('/assets/portada/section-a-noticia-especial.gif', class: 'size-special')
-        .resumen
-          |
-            la aprovacion del incremnto es un reto para el gobierno y los transportistas, en
-            la mejor de la oferta  del transporte publico ya que los usuarios reclaman un
-            servicio de calidad
-      .linked
-        = image_tag('portada/section-a-noticia-especia-b.jpg')
-        p
-          |
-            taxistas deben mostrar mapa con nuevas tarifas: transporte
-      ul.related
-        li
-          = link_to 'Suspenden el aument a la taria de taxis en manzanillo', '#'
+    - if @portada.special_note
+      article.special
+        .top
+          .header
+            h2= @portada.special_note.title
+            = image_tag(@portada.special_note.image.size_especial, class: 'size-special')
+          .resumen= @portada.special_note.resumen
+        .linked
+          = image_tag('portada/section-a-noticia-especia-b.jpg')
+          p
+            |
+              taxistas deben mostrar mapa con nuevas tarifas: transporte
+        ul.related
+          li
+            = link_to 'Suspenden el aument a la taria de taxis en manzanillo', '#'
 
-      = link_to image_tag('/assets/banners/banner_b.gif'), '#'
+        = link_to image_tag('/assets/banners/banner_b.gif'), '#'
 
     article.noticia-d
       .header
         p.cintillo= @principal.posts[3].cintillo
         = image_tag(@principal.posts[3].image.size_d, class: 'size-d')
-        h2= @principal.posts[3].title
+        h2
+          = link_to @principal.posts[3].title, main_app.post_path(*@principal.posts[3].url_params)
+
         p.date= @principal.posts[3].published_at
         p.resumen= @principal.posts[3].resumen
 
@@ -78,6 +83,9 @@ section.section_a
         .header
           = image_tag(@principal.posts[4].image.size_e, class: 'size-e')
           p.cintillo= @principal.posts[4].cintillo
-          h2= @principal.posts[4].title
+          h2
+            = link_to @principal.posts[4].title, main_app.post_path(*@principal.posts[4].url_params)
+
+
           p.date= @principal.posts[4].published_at
 

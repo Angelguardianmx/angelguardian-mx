@@ -22,4 +22,8 @@ class Crowdblog::PostsController < ApplicationController
     @history = Crowdblog::Post.for_history - [@post]
   end
 
+  def quick_view
+    @post =  Crowdblog::Post.find(params[:id])
+  end
+
 end

@@ -1,5 +1,6 @@
 class Admin::PortadasController < Crowdblog::Admin::BaseController
   respond_to :html, :js
+  layout "application", only: :show
 
   def index
     @portadas = Crowdblog::Portada.all
@@ -23,10 +24,21 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     @policiacas = @portada.home_sections.where(section_type: 'policiacas').first
     @posts = Post.query('',false ).results
     @policiacas_list = Post.query('', 'Policiacas').results
+    @weather_note = @portada.weather_notes.any? ? @portada.weather_notes.last : @portada.weather_notes.new
+  end
+
+  def show
+    @portada = Crowdblog::Portada.find params[:id]
+    @principal = @portada.home_sections.where(section_type: 'principal').first
+    @secundaria = @portada.home_sections.where(section_type: 'secundaria').first
+    @opinion = @portada.home_sections.where(section_type: 'opinion').first
+    @policiacas = @portada.home_sections.where(section_type: 'policiacas').first
+    @posts = Post.query('',false ).results
+    @policiacas_list = Post.query('', 'Policiacas').results
+    @weather_note = @portada.weather_notes.any? ? @portada.weather_notes.last : @portada.weather_notes.new
   end
 
   def update
-    binding.pry
     portada = Crowdblog::Portada.find params[:id]
     # portada.update_attributes params[:portada]
     portada.update_attributes params[:portada]
@@ -50,8 +62,11 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
   end
 
   def search_post
+    @portada = Crowdblog::Portada.find params[:id]
     @query =  params[:search] == "*" ? '' : params[:search]
-    category = params[:type] || false
+    category = params[:type]  || false
+    @related = category == "related" ? true : false
+    category = (category == "related" || category == "especial" || category == "todas") ? false : category
     @posts = Post.query(@query, category).results
     @type = params[:type]
     respond_to do |format|

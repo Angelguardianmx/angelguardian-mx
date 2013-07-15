@@ -1,5 +1,5 @@
 header
-  = link_to image_tag('banners/banner_a.gif'), root_path, class: 'banner_a'
+  = link_to image_tag('banners/banner_a.gif'), main_app.root_path, class: 'banner_a'
   .top
     h1
       |
@@ -12,37 +12,37 @@ header
       = text_field_tag 'search'
   ul.nav
     li
-       = link_to 'inicio'
+      = link_to 'inicio', '/'
     li
-       = link_to 'estado'
+      = link_to 'estado', '/'
     li
-       = link_to 'Ciudades'
+      = link_to 'Ciudades', '/'
     li
-       = link_to 'Municipios'
+      = link_to 'Municipios', '/'
     li
-       = link_to 'justicia'
+      = link_to 'justicia', '/'
     li
-       = link_to 'Negocions'
+      = link_to 'Negocions', '/'
     li
-       = link_to 'opinion'
+      = link_to 'opinion', '/'
     li.last
-       = link_to 'soft news'
+      = link_to 'soft news', '/'
   ul.es-noticia
     li Es noticia
     li
-      = link_to 'derrame en manzanillo'
+      = link_to 'derrame en manzanillo', '/'
     li
-      = link_to 'Aumento de tarifas'
+      = link_to 'Aumento de tarifas', '/'
     li
-      = link_to 'Gasolinazo'
+      = link_to 'Gasolinazo', '/'
     li
-      = link_to 'juciios orales'
+      = link_to 'juciios orales', '/'
     li
-      = link_to 'Mario Anguiano'
+      = link_to 'Mario Anguiano', '/'
     li
-      = link_to 'transporte urbano'
+      = link_to 'transporte urbano', '/'
     li.last
-      = link_to 'Sucesion presidencial'
+      = link_to 'Sucesion presidencial', '/'
 
 
 

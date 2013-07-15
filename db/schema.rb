@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202070815) do
+ActiveRecord::Schema.define(:version => 20130715065203) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130202070815) do
     t.text     "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "parent_id"
   end
 
   create_table "crowdblog_category", :force => true do |t|
@@ -43,8 +44,13 @@ ActiveRecord::Schema.define(:version => 20130202070815) do
   create_table "crowdblog_portadas", :force => true do |t|
     t.integer  "breaking_news"
     t.date     "publication"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "datodeldia"
+    t.string   "datopolicia"
+    t.string   "soundcloud_frame"
+    t.boolean  "resumen_on_top"
+    t.integer  "special_note_id"
   end
 
   create_table "crowdblog_posts", :force => true do |t|
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130202070815) do
     t.integer  "category_id"
     t.string   "filepicker_url"
     t.string   "image"
+    t.integer  "related_id"
   end
 
   create_table "crowdblog_section_posts", :force => true do |t|
@@ -72,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20130202070815) do
     t.string   "post_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "crowdblog_weather_notes", :force => true do |t|
+    t.string   "title"
+    t.string   "balazo"
+    t.integer  "portada_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "redactor_assets", :force => true do |t|

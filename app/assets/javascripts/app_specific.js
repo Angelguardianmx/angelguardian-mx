@@ -1,7 +1,6 @@
 //= require redactor-rails
 //= require bootstrap-datepicker
 //= require jquery-ui
-//= require autocomplete-rails
 //= require jquery-scrolltofixed
 //= require admin_portada
 //

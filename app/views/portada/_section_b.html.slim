@@ -5,9 +5,12 @@ section.section_b
         h2.titulo-tag Aumento de tarifas
         p.cintillo= @secundaria.posts[0].cintillo
         = image_tag(@secundaria.posts[0].image.size_d, class: 'size-d')
-        h2= @secundaria.posts[0].title
+        h2
+          = link_to @secundaria.posts[0].title, main_app.post_path(*@secundaria.posts[0].url_params)
+
         p.date=  @secundaria.posts[0].published_at
-        = link_to 'lectura rapida', '#', class: 'lectura-rapida'
+        = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: @secundaria.posts[0].id), class: 'lectura-rapida', remote: true
+
       ul.related
         li
           = link_to 'Aumentara 1 peso el transporte publico en autobuses', "#"
@@ -17,33 +20,37 @@ section.section_b
       .header
         p.cintillo= @secundaria.posts[1].cintillo
         = image_tag(@secundaria.posts[1].image.size_f, class: 'size-f')
-        h2= @secundaria.posts[1].title
+        h2
+          = link_to @secundaria.posts[1].title, main_app.post_path(*@secundaria.posts[1].url_params)
         p.date= @secundaria.posts[1].published_at
     article.noticia-secundaria-c
       .header
         p.cintillo= @secundaria.posts[2].cintillo
         = image_tag(@secundaria.posts[2].image.size_f, class: 'size-f')
-        h2= @secundaria.posts[2].title
+        h2
+          = link_to @secundaria.posts[2].title, main_app.post_path(*@secundaria.posts[2].url_params)
         p.date= @secundaria.posts[2].published_at
     article.noticia-secundaria-d
       .header
         p.cintillo= @secundaria.posts[3].cintillo
-        h2= @secundaria.posts[3].title
+        h2
+          = link_to @secundaria.posts[3].title, main_app.post_path(*@secundaria.posts[3].url_params)
         p.date= @secundaria.posts[3].published_at
     article.noticia-secundaria-f
       .header
         h2.titulo-tag Sucecion presindecial
         p.cintillo= @secundaria.posts[4].cintillo
         = image_tag(@secundaria.posts[2].image.size_d, class: 'size-d')
-        h2= @secundaria.posts[4].title
+        h2
+          = link_to @secundaria.posts[4].title, main_app.post_path(*@secundaria.posts[4].url_params)
         p.date= @secundaria.posts[4].published_at
 
 
   .column
     article.el-tiempo
       .header
-        p.cintillo habra humedad 69%
-        h2 Mantiene colima cielo despejado este sabado
+        p.cintillo= @weather_note.balazo
+        h2= @weather_note.title
     article.mas-recientes
       h2.titulo-bloque Mas recientes
       ul.related

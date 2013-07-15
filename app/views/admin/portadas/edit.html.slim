@@ -1,4 +1,6 @@
-h1 Portada nueva
+h1
+  Portada nueva
+= link_to 'Preview', main_app.admin_portada_path(@portada.id), class: 'btn btn-info pull-right'
 
 .box
   p
@@ -8,7 +10,6 @@ h1 Portada nueva
   p
     |
     Despues empieza a agregar contenido por secciones
-
 = form_for @portada, url: main_app.admin_portada_path(),  html: {class: 'form form-horizontal' } do |f|
   .container
     .well
@@ -26,6 +27,8 @@ h1 Portada nueva
             = label_tag 'Busca mas noticias', nil,class: 'control-label'
             .controls
               input.input-medium type="text" id="search-term"
+              = hidden_field_tag 'type','todas'
+              = hidden_field_tag 'portada_id', @portada.id, id: "portada_id"
               = link_to 'Buscar', "#", class: 'btn search'
           table.table.table-striped.posts
             thead
@@ -34,7 +37,7 @@ h1 Portada nueva
                 th Titulo Noticia
                 th Fecha
             tbody
-              = render partial: 'admin/portadas/search_res', collection: @posts, as: :post
+              = render partial: 'admin/portadas/search_res', collection: @posts, as: :post, locals: { radio: false }
 
       .span6
         fieldset.fieldset
@@ -103,7 +106,7 @@ h1 Portada nueva
                 th Titulo Noticia
                 th Fecha
             tbody
-              = render partial: 'admin/portadas/search_res', collection: @policiacas_list, as: :post
+              = render partial: 'admin/portadas/search_res', collection: @policiacas_list, as: :post, locals: { radio: false }
       .span6
         fieldset.fieldset
           legend Section: Policiacas
@@ -124,6 +127,50 @@ h1 Portada nueva
             .section-posts
               = policiacas.fields_for :section_posts do |sp_2|
                 .hidden
+
+    .row
+      .span12#especial-block
+        fieldset.fieldset
+          legend Section: Noticia Special
+        .search-news#especial
+          .control-group
+            = label_tag 'Busca mas noticias', nil,class: 'control-label'
+            .controls
+              input.input-medium type="text" id="search-term"
+              = hidden_field_tag 'type','especial'
+              = link_to 'Buscar', "#", class: 'btn search'
+          table.table.table-striped.posts
+            thead
+              tr
+                th
+                th Categoria
+                th Titulo Noticia
+                th Fecha
+            tbody
+              = render partial: 'admin/portadas/search_res', collection: [@portada.special_note], as: :post, locals: { radio: true }
+          = f.fields_for :special_note, @portada.special_note do |sp|
+            div
+          - unless @portada.special_note
+            = hidden_field_tag 'portada_special_note_id', '', name: "portada[special_note_id]"
+
+
+
+
+
+
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend Nota del tiempo
+          = f.fields_for :weather_notes, @weather_note do |weather_note|
+            .control-group
+              .control
+                = weather_note.label :balazo
+                = weather_note.text_field :balazo
+              .control
+                = weather_note.label :title
+                = weather_note.text_field :title
+
     .row
       .span12#dato-del-dia
         fieldset.fieldset
@@ -153,4 +200,4 @@ javascript:
     $('.datepicker').attr('value',ev.date);
   });
 
-  /$('.search-news#todas').scrollToFixed({ marginTop: 10, limit: $('#socials').offset().top - $('.search-news#todas table').height()});
+  //$('.search-news#todas').scrollToFixed({ marginTop: 10, limit: $('#socials').offset().top - $('.search-news#todas table').height()});

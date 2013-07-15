@@ -1,4 +1,4 @@
-console.log("#{@posts}")
 - unless @posts.empty?
-  $(".search-news##{@type} table tbody").html("#{escape_javascript(render partial: 'admin/portadas/search_res', collection: @posts, as: 'post')}")
+  - radio = @type == "especial" ? true : false
+  $(".search-news##{@type} table tbody").html("#{escape_javascript(render partial: 'admin/portadas/search_res', collection: @posts, as: 'post', locals: { radio: radio })}")
   $( ".draggable" ).draggable({ connectToSortable: ".droppable", helper: "clone", revert: "invalid" });

@@ -21,14 +21,14 @@ class Post < Crowdblog::Post
     end
   end
 
-  def self.query(query, category=false)
+  def self.query(query, category=false, per_page=20)
     Post.search do
       fulltext query
       with :state, 'published'
       with :category_name, category if category
       with(:published_at).less_than Time.now
       order_by :published_at, :desc
-      paginate page: 1, per_page: 20
+      paginate page: 1, per_page: per_page
     end
   end
 

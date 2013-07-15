@@ -1,6 +1,13 @@
 %tr.draggable{'data-p_id' => "#{post.id}"}
+  -if @related
+    %td= check_box_tag :related, post.id
+  - if radio
+    - selected_id = false
+    - if @portada.special_note
+      - selected_id = post.id == @portada.special_note.id ? true : false
+    %td= radio_button_tag :special_note, post.id, selected_id
   %td
     - if post.category
       = post.category.name
-  %td.title= post.title
+  %td.title{ id: "post_n_#{post.id}"}= post.title
   %td= post.published_at.to_s :long

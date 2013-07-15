@@ -1,9 +1,9 @@
 .post
   .header
     .row
-      .span1
+      .span1.author-info
         = image_tag post.gravatar_url
-      .span3
+      .span3.author-info
         .author #{link_to post.author_name, main_app.posts_by_author_path(post.author.to_param)}
         .email #{post.author_email}
         .date #{post.formatted_published_date}
@@ -11,7 +11,10 @@
         h1
           = link_to post.title, main_app.post_path(*post.url_params)
 
-  .body #{post.html_body}
+  .body
+    .inner
+      = image_tag(post.image.size_a, class: 'size-a pull-left')
+      = post.html_body
   - if index_view
     .links
       = link_to 'Comments', main_app.post_path(*post.url_params) + '#disqus_thread'
