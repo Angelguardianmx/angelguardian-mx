@@ -26,11 +26,17 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
   end
 
   def update
+    binding.pry
     portada = Crowdblog::Portada.find params[:id]
     # portada.update_attributes params[:portada]
     portada.update_attributes params[:portada]
+    redirect_to :back
+  end
 
-
+  def destroy
+    portada = Crowdblog::Portada.find params[:id]
+    portada.destroy
+    redirect_to :back
   end
 
   def delete_post
@@ -44,10 +50,13 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
   end
 
   def search_post
-    @query =  params[:search]
+    @query =  params[:search] == "*" ? '' : params[:search]
     category = params[:type] || false
     @posts = Post.query(@query, category).results
     @type = params[:type]
+    respond_to do |format|
+      format.js {render :content_type => 'text/javascript'}
+    end
   end
 
 

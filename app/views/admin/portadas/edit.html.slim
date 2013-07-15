@@ -26,7 +26,6 @@ h1 Portada nueva
             = label_tag 'Busca mas noticias', nil,class: 'control-label'
             .controls
               input.input-medium type="text" id="search-term"
-              = hidden_field_tag 'type','todas'
               = link_to 'Buscar', "#", class: 'btn search'
           table.table.table-striped.posts
             thead
@@ -78,8 +77,16 @@ h1 Portada nueva
               = secundaria.fields_for :section_posts do |sp_2|
                 .hidden
 
+
     .row
       .span12#socials
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend El data del dia
+          = f.text_field :datodeldia, :class => "span12", id: 'post_bodys'
+
+
     .row
       .span6
         .search-news#Policiacas
@@ -109,14 +116,31 @@ h1 Portada nueva
                   = link_to main_app.delete_post_admin_portada_path(@portada.id, @policiacas.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
                     i.icon-trash
                 - count -= 1
-
               - count.times do |index|
+                - index = index + 1
                 - pos_index = index + 1
                 li.placeholder data-index=("#{pos_index}") data-position=("#{pos_index }") data-section=("2")
                   span Noticia #{pos_index }
             .section-posts
               = policiacas.fields_for :section_posts do |sp_2|
                 .hidden
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend El data del dia Policiacas
+          = f.text_field :datopolicia, :class => "span12"
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend Resumen, las alas del angel
+          .contro-group
+            = f.label :resumen_on_top, class: 'checkbox' do
+              = f.check_box :resumen_on_top
+              |
+                Resumen al inicio?
+
+          = f.text_area :soundcloud_frame, :class => "span12", rows: '3'
+
 
 
     .form-actions
@@ -129,4 +153,4 @@ javascript:
     $('.datepicker').attr('value',ev.date);
   });
 
-  $('.search-news#todas').scrollToFixed({ marginTop: 10, limit: $('#socials').offset().top - $('.search-news#todas table').height()});
+  /$('.search-news#todas').scrollToFixed({ marginTop: 10, limit: $('#socials').offset().top - $('.search-news#todas table').height()});

@@ -3,10 +3,10 @@ section.section_b
     article.noticia-secundaria-a
       .header
         h2.titulo-tag Aumento de tarifas
-        p.cintillo Rafael mendoza presento propuesta de congreso
-        = image_tag('portada/section-a-noticia-d.jpg', class: 'size-d')
-        h2 Piden aplicar descuento en transporte con cualquier credencial excolar
-        p.date 10 de noviembre | 10:45am
+        p.cintillo= @secundaria.posts[0].cintillo
+        = image_tag(@secundaria.posts[0].image.size_d, class: 'size-d')
+        h2= @secundaria.posts[0].title
+        p.date=  @secundaria.posts[0].published_at
         = link_to 'lectura rapida', '#', class: 'lectura-rapida'
       ul.related
         li
@@ -15,28 +15,28 @@ section.section_b
           = link_to 'En julio tarjeta de descuento FEC', '#'
     article.noticia-secundaria-b
       .header
-        p.cintillo Informo rene rodriguez
-        = image_tag('portada/section-b-noticia-f.jpg', class: 'size-f')
-        h2Eliminaran Rezago del TCA en menos de meses
-        p.date 9 de noviembre | 6:43 pm
+        p.cintillo= @secundaria.posts[1].cintillo
+        = image_tag(@secundaria.posts[1].image.size_f, class: 'size-f')
+        h2= @secundaria.posts[1].title
+        p.date= @secundaria.posts[1].published_at
     article.noticia-secundaria-c
       .header
-        p.cintillo Informo rene rodriguez
-        = image_tag('portada/section-b-noticia-f.jpg', class: 'size-f')
-        h2 Eliminaran Rezago del TCA en menos de meses
-        p.date 9 de noviembre | 6:43 pm
+        p.cintillo= @secundaria.posts[2].cintillo
+        = image_tag(@secundaria.posts[2].image.size_f, class: 'size-f')
+        h2= @secundaria.posts[2].title
+        p.date= @secundaria.posts[2].published_at
     article.noticia-secundaria-d
       .header
-        p.cintillo señalo que corresponde a todos vigilar
-        h2 pide alcaldeza de cuahtemoc apurar mejoras al transporte publico
-        p.date 9 de marzo | 4:32pm
+        p.cintillo= @secundaria.posts[3].cintillo
+        h2= @secundaria.posts[3].title
+        p.date= @secundaria.posts[3].published_at
     article.noticia-secundaria-f
       .header
         h2.titulo-tag Sucecion presindecial
-        p.cintillo por unanimidad de los magistrados
-        = image_tag('portada/section-a-noticia-b.jpg', class: 'size-d')
-        h2 Aprueba TEPJF destruccion de boletas 2012
-        p.dare 9 de noviembre | 2:30pm
+        p.cintillo= @secundaria.posts[4].cintillo
+        = image_tag(@secundaria.posts[2].image.size_d, class: 'size-d')
+        h2= @secundaria.posts[4].title
+        p.date= @secundaria.posts[4].published_at
 
 
   .column
@@ -59,9 +59,10 @@ section.section_b
           = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
         li
           = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-    article.resumen
-      h2.titulo-bloque Resumen
-      <iframe width="100%" height="68" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F86445413&amp;color=000000&amp;auto_play=false&amp;show_artwork=false"></iframe>
+    - unless @portada.resumen_on_top
+      article.resumen
+        h2.titulo-bloque Resumen
+        = raw @portada.soundcloud_frame
     article.foto-nota
       .header
         = image_tag('portada/foto-nota-g.jpg', class: 'size-g')

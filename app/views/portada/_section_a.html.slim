@@ -14,7 +14,7 @@ section.section_a
     article.noticia-b
       .header
         p.cintillo= @principal.posts[1].cintillo
-        = image_tag(@principal.posts[1].image.size_a, class: 'size-b')
+        = image_tag(@principal.posts[1].image.size_b, class: 'size-b')
         h2=@principal.posts[1].title
         p.date= @principal.posts[1].published_at
       .resumen=@principal.posts[1].resumen
@@ -38,6 +38,12 @@ section.section_a
 
 
   .column
+
+    - if @portada.resumen_on_top
+      article.resumen
+        h2.titulo-bloque Resumen
+        = raw @portada.soundcloud_frame
+
     article.special
       .top
         .header
@@ -62,19 +68,16 @@ section.section_a
     article.noticia-d
       .header
         p.cintillo= @principal.posts[3].cintillo
-        = image_tag('portada/section-a-noticia-d.jpg', class: 'size-d')
-        h2 quedan solo colima y df sin implementar jucios orales
-        p.date 10 noviembre | 10:45am
-        p.resumen
-          |
-            A unos dias de que conluya el sexenio del presidente Felipe Calderon,
-            Colima y el Distrito Federal aun no han implementado  los jucios orales
-            en sus sitemas judiciales.
+        = image_tag(@principal.posts[3].image.size_d, class: 'size-d')
+        h2= @principal.posts[3].title
+        p.date= @principal.posts[3].published_at
+        p.resumen= @principal.posts[3].resumen
 
-    article.noticie-e
-      .header
-        = image_tag('portada/section-a-noticia-e.jpg', class: 'size-e')
-        p.cintillo al tercer trimestre del 2012
-        h2 Encabeza Colima la rasa de participacion economica
-        p.date 10 de noviembre | 11:43am
+    - if @principal.posts[4]
+      article.noticie-e
+        .header
+          = image_tag(@principal.posts[4].image.size_e, class: 'size-e')
+          p.cintillo= @principal.posts[4].cintillo
+          h2= @principal.posts[4].title
+          p.date= @principal.posts[4].published_at
 
