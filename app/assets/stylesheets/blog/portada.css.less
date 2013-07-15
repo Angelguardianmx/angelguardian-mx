@@ -1,6 +1,7 @@
 @import 'twitter/bootstrap/mixins';
 .content {
   section article {
+    border-bottom: 2px solid rgb(234, 236, 255);
     padding-bottom: 10px;
     margin-bottom: 10px;
     .header {
@@ -120,12 +121,19 @@
 }
 .content.portada {
   section {
-    margin-bottom: 2opx;
+    margin-bottom: 20px;
     .column {
       display: inline-block;
       float: left;
       width: 380px;
-      margin-right: 20px;
+      padding-right: 10px;
+      margin-right: 10px;
+      border-right: 2px solid rgb(234, 236, 255);
+      &:last-child {
+        padding-right: 0;
+        border-right: none;
+        margin-right: 8px;
+      }
       }
     .today {
       float: left;
@@ -136,7 +144,7 @@
 
 .portada .section_a {
   article.noticia-a {
-    border-bottom: 2px solid rgb(234, 236, 255);
+
 
     header {
       .lectura-rapida {
@@ -230,8 +238,13 @@
       margin-top: 0;
     }
     article {
-      padding-bottom: 0px;
+      padding-bottom: 0;
+      margin-bottom: 0;
       clear: both;
+      .header {
+       margin-top: 0;
+       margin-bottom: 0;
+      }
     }
     .policiaca-a .header {
       margin-top: 14px;
@@ -246,6 +259,8 @@
 
 .banners-right {
   width: 180px;
+  border-left: 2px solid rgb(234, 236, 255);
+  padding-left: 5px;
   img {
     float: left;
     margin-bottom: 10px;

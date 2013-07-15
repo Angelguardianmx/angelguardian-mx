@@ -1,4 +1,29 @@
-#footer {
-  margin: 10px;
-  text-align: center;
+@main-gray: #4A4540;
+footer {
+  padding: 10px 5px;
+  background: @main-gray;
+
+  .footer-links {
+    margin: 0;
+    text-align: center;
+    li {
+      display: inline;
+      a {color: white;}
+      .bigger {
+        font-size: 1.2em;
+      }
+    }
+    li + li:before{
+      content: " | ";
+      padding: 0 5px !important;
+      color: white;
+    }
+
+  }
+  .radio-levy {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+
+  }
 }

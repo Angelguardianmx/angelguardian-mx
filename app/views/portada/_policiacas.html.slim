@@ -15,16 +15,19 @@ section.policiacas
             = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
           li
             = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
+        .clearfix
     article.policiaca-b
       .header
         = image_tag(@policiacas.posts[1].image.size_i, class: 'size-i right')
         h2= @policiacas.posts[1].title
         p.date= @policiacas.posts[1].published_at?
+        .clearfix
     article.policiaca-c
       .header
         = image_tag(@policiacas.posts[2].image.size_i, class: 'size-i')
         h2= @policiacas.posts[2].title
         p.date= @policiacas.posts[2].published_at
+        .clearfix
   
   .dato-del-dia.policiaca
     h2.titulo-bloque Dato del día

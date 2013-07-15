@@ -19,12 +19,15 @@ Crowdblog::Application.routes.draw do
         delete '/:section_id/:post_id/', to: 'portadas#delete_post', as: 'delete_post'
         get '/:type/:search', to: 'portadas#search_post', as: 'search_post'
       end
+      get :clone_portada, :on => :collection
+      get :transition, :on => :collection
     end
   end
 
   namespace :crowdblog do
     resources :posts do
       get :autocomplete_title, :on => :collection
+      get :quick_view, :on => :collection
     end
   end
   # match '/posts/autocomplete_title', to: 'crowdblog/posts#autocomplete_title', via: :get

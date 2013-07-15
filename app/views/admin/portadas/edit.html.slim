@@ -17,7 +17,7 @@ h1
         = f.label :publication, 'Fecha de publicacion', class: 'control-label'
         .controls
           .input-append
-            = f.text_field :publication, class: 'datepicker'
+            = f.text_field :publication, class: 'datepicker', value: @portada.publication.strftime('%m/%d/%Y')
             span.add-on
               i.icon-calendar
     .row
@@ -73,8 +73,9 @@ h1
                 - count -= 1
 
               - count.times do |index|
+                - index = index + 1
                 - pos_index = index + 1
-                li.placeholder data-index=("#{pos_index}") data-position=("#{pos_index }") data-section=("1")
+                li.placeholder data-index=("#{5 - pos_index}") data-position=("#{pos_index}") data-section=("1")
                   span Noticia #{pos_index + 1}
             .section-posts
               = secundaria.fields_for :section_posts do |sp_2|
@@ -147,7 +148,8 @@ h1
                 th Titulo Noticia
                 th Fecha
             tbody
-              = render partial: 'admin/portadas/search_res', collection: [@portada.special_note], as: :post, locals: { radio: true }
+              - special = @portada.special_note ? [@portada.special_note] : []
+              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true }
           = f.fields_for :special_note, @portada.special_note do |sp|
             div
           - unless @portada.special_note

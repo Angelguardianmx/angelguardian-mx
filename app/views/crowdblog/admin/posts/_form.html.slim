@@ -15,6 +15,11 @@
       .controls
         = f.text_field :resumen, class: 'input-xlarge span5'
         span.help-inline.title
+    .control-group.picture_only
+      = f.label :picture_only, class: 'checkbox' do
+        = f.check_box :picture_only
+        |
+          Foto Nota?
     .control-group.categories
       = f.label :category, class: 'control-label'
       .controls

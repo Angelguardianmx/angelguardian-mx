@@ -39,6 +39,7 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
   end
 
   def update
+    params[:portada][:publication] = Date.strptime(params[:portada][:publication], '%m/%d/%Y') if params[:portada][:publication]
     portada = Crowdblog::Portada.find params[:id]
     # portada.update_attributes params[:portada]
     portada.update_attributes params[:portada]
@@ -72,6 +73,19 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
     end
+  end
+
+  def clone_portada
+    @portada = Crowdblog::Portada.find params[:id]
+    @portada.clone
+    redirect_to :back
+  end
+
+
+  def transition
+    portada = Crowdblog::Portada.find params[:id]
+    portada.send "#{params[:transition]}!"
+    redirect_to :back
   end
 
 
