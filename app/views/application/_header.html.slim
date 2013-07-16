@@ -1,32 +1,24 @@
 header
   = link_to image_tag('banners/banner_a.gif'), main_app.root_path, class: 'banner_a'
-  .top
+  .top class="#{@category ? 'inner-pages' : '' }"
     h1
       |
        Ángel
       i
         |
           guardián.mx
-    .search
+    - if @category
+      h3= @category
+    .search class="#{@category ? 'inner-pages' : '' }"
       = image_tag('header/search-icon.gif', class: 'search-label')
       = text_field_tag 'search'
+      .today
+        = "Colima | #{l Time.now, format: :cover}"
   ul.nav
-    li
+    li.elements
       = link_to 'inicio', '/'
-    li
-      = link_to 'estado', '/'
-    li
-      = link_to 'Ciudades', '/'
-    li
-      = link_to 'Municipios', '/'
-    li
-      = link_to 'justicia', '/'
-    li
-      = link_to 'Negocions', '/'
-    li
-      = link_to 'opinion', '/'
-    li.last
-      = link_to 'soft news', '/'
+    - Crowdblog::Category.top_level.each do |category|
+      li.elements= link_to category.name, main_app.seccion_path(category.name)
   ul.es-noticia
     li Es noticia
     li

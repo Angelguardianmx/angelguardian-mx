@@ -8,7 +8,7 @@ section.section_b
         h2
           = link_to @secundaria.posts[0].title, main_app.post_path(*@secundaria.posts[0].url_params)
 
-        p.date=  @secundaria.posts[0].published_at
+        p.date=  @secundaria.posts[0].date_and_hour
         = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: @secundaria.posts[0].id), class: 'lectura-rapida', remote: true
 
       ul.related
@@ -22,20 +22,20 @@ section.section_b
         = image_tag(@secundaria.posts[1].image.size_f, class: 'size-f')
         h2
           = link_to @secundaria.posts[1].title, main_app.post_path(*@secundaria.posts[1].url_params)
-        p.date= @secundaria.posts[1].published_at
+        p.date= @secundaria.posts[1].date_and_hour
     article.noticia-secundaria-c
       .header
         p.cintillo= @secundaria.posts[2].cintillo
         = image_tag(@secundaria.posts[2].image.size_f, class: 'size-f')
         h2
           = link_to @secundaria.posts[2].title, main_app.post_path(*@secundaria.posts[2].url_params)
-        p.date= @secundaria.posts[2].published_at
+        p.date= @secundaria.posts[2].date_and_hour
     article.noticia-secundaria-d
       .header
         p.cintillo= @secundaria.posts[3].cintillo
         h2
           = link_to @secundaria.posts[3].title, main_app.post_path(*@secundaria.posts[3].url_params)
-        p.date= @secundaria.posts[3].published_at
+        p.date= @secundaria.posts[3].date_and_hour
     article.noticia-secundaria-f
       .header
         h2.titulo-tag Sucecion presindecial
@@ -43,7 +43,7 @@ section.section_b
         = image_tag(@secundaria.posts[2].image.size_d, class: 'size-d')
         h2
           = link_to @secundaria.posts[4].title, main_app.post_path(*@secundaria.posts[4].url_params)
-        p.date= @secundaria.posts[4].published_at
+        p.date= @secundaria.posts[4].date_and_hour
 
 
   .column
@@ -54,27 +54,28 @@ section.section_b
     article.mas-recientes
       h2.titulo-bloque Mas recientes
       ul.related
-        li
-          = link_to '12:31 pm | Aumentara 1 peso el transporte publico en autobuses', "#"
-        li
-          = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-        li
-          = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-        li
-          = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-        li
-          = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-        li
-          = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
+        - @latest_news.each do |post|
+          li
+            = link_to "#{post.hour} | #{post.title}", main_app.post_path(*post.url_params)
+
     - unless @portada.resumen_on_top
       article.resumen
         h2.titulo-bloque Resumen
         = raw @portada.soundcloud_frame
     article.foto-nota
-      .header
-        = image_tag('portada/foto-nota-g.jpg', class: 'size-g')
-        p.date @juankamaney
-        h2 Nnueces con cascara, sin cascara, garapiñadas, una Tradicion en las fiestas de todos los santos
+      #myCarousel.carousel.slide
+        /! Carousel items
+        .carousel-inner
+          - @picture_only.each_with_index do |post, i|
+            .item class="#{i == 0 ? 'active': ''}"
+              .header
+                img.size-g alt="Size_g_d6d620e3742447fa857d09d174a687b0" src="#{post.image.url(:size_g)}"
+                p.date= post.author.email
+                h2= post.title
+        /! Carousel nav
+        /a.carousel-control.left data-slide="prev" href="#myCarousel"
+        /a.carousel-control.right data-slide="next" href="#myCarousel"
+
 
 
 

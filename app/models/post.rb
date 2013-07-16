@@ -12,19 +12,13 @@ class Post < Crowdblog::Post
     "#{id}-#{permalink}.md"
   end
 
-  searchable do
-    text :title, :body
-    string :state
-    time :published_at
-    string :category_name do
-      category.name if category
-    end
-  end
 
-  def self.query(query, category=false, per_page=20)
-    Post.search do
+
+  def self.query(query, category=false, per_page=20, picture_only=false)
+    Crowdblog::Post.search do
       fulltext query
       with :state, 'published'
+      with :picture_only, true if picture_only
       with :category_name, category if category
       with(:published_at).less_than Time.now
       order_by :published_at, :desc

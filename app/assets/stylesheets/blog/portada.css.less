@@ -18,6 +18,13 @@
         &.titulo-tag {
           font-size: 14px;
         }
+        a {
+          color: #000000;
+          font-weight: 700;
+          &:hover {
+            color: #000000;
+          }
+        }
       }
       img.size-a ~ h2 {
         font-size: 30px;
@@ -136,7 +143,8 @@
       }
       }
     .today {
-      float: left;
+
+      font-size: 1.2em;
     }
   }
 
@@ -197,10 +205,14 @@
   article.noticia-secundaria-b, article.noticia-secundaria-c {
     float: left;
     width: 180px;
+    border-bottom: none;
+
 
   }
   article.noticia-secundaria-c {
-    margin-left: 15px;
+    margin-left: 4px;
+    border-left: 2px solid #eaecff;
+    padding-left: 14px;
   }
 
   article.el-tiempo {
@@ -313,4 +325,11 @@
 h2.titulo-tag {
   color: #4B4205;
   background: #FFE400;
+}
+.categories{
+  .es-noticia{
+    background-color: #F1FBE6;
+    min-height: 350px;
+    margin-bottom: 20px;
+  }
 }

@@ -37,6 +37,8 @@ Crowdblog::Application.routes.draw do
 
   match '/preview/:id', to: 'previews#show', constraints: { id: /\d+/ }, as: 'preview'
 
+  match '/seccion/:name', to: 'crowdblog/categories#show', as: 'seccion'
+
   match '/archive', to: 'archive#show', as: 'archive'
 
   match '/atom.(:format)', to: 'feeds/atom_feeds#show', as: 'atom_feed'

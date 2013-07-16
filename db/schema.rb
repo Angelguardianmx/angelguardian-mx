@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715182241) do
+ActiveRecord::Schema.define(:version => 20130716032713) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20130715182241) do
     t.string   "title"
     t.text     "body"
     t.string   "permalink"
-    t.date     "published_at"
+    t.datetime "published_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.integer  "author_id"
