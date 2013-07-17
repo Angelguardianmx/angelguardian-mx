@@ -10,12 +10,10 @@ gem 'acts-as-taggable-on'
 gem 'filepicker-rails'
 gem 'rails3-jquery-autocomplete'
 gem 'newrelic_rpm'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-# ruby '1.9.3'
+
 
 gem 'crowdblog', '~> 0.3.0', git: 'git://github.com/hecbuma/crowdblog.git' # path: '/Users/hecbuma/projects/crowdblog'
-#gem 'crowdblog', :path => '../crowdblog'
+                                                                           #gem 'crowdblog', :path => '../crowdblog'
 gem 'crowdint_auth', '~> 0.0.3'
 gem 'dalli'
 gem 'devise'
@@ -41,6 +39,8 @@ end
 
 gem 'jquery-rails'
 gem 'sunspot_rails'
+#remove once solr server ready
+gem 'sunspot_solr'
 gem 'haml-rails'
 
 group :development, :test do
@@ -56,11 +56,16 @@ group :development, :test do
   gem 'spork'
   gem 'sqlite3'
   gem 'taps'
-  gem 'sunspot_solr'
+
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano'
 end
 
+gem 'pg'
+gem 'progress_bar'
+
 group :production do
-  gem 'pg'
   gem 'therubyracer'
   gem 'unicorn'
 end
