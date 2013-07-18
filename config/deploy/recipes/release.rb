@@ -33,7 +33,7 @@ namespace :release do
 
   desc "See current migrate status"
   task :migrate do
-    run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} db:migrate"
+    run "cd #{deploy_to} && PGPASSWORD='postgres' #{rake} RAILS_ENV=#{env} db:migrate"
 
     puts "#{green} ✓ Run migrations #{black}"
   end

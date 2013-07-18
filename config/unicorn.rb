@@ -1,5 +1,4 @@
-# Sample verbose configuration file for Unicorn (not Rack)
-#
+# Sample verbose configuration file for Unicorn (not Rack)#
 # This configuration file documents many features of Unicorn
 # that may not be needed for some applications. See
 # http://unicorn.bogomips.org/examples/unicorn.conf.minimal.rb
@@ -10,7 +9,7 @@
 
 # Use at least one worker per core if you're on a dedicated server,
 # more will usually help for _short_ waits on databases/caches.
-worker_processes 2
+worker_processes 4
 
 # Since Unicorn is never exposed to outside clients, it does not need to
 # run on the standard HTTP port (80), there is no reason to start Unicorn
@@ -21,12 +20,12 @@ worker_processes 2
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-working_directory '/home/rails-app/angelguardian' # available in 0.94.0+
+working_directory "/home/rails-app/angelguardian" # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
 listen "/tmp/angelguardian_app.sock", :backlog => 64
-listen 9001, :tcp_nopush => true
+listen 8080, :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
@@ -46,6 +45,13 @@ preload_app true
 GC.respond_to?(:copy_on_write_friendly=) and
     GC.copy_on_write_friendly = true
 
+# Enable this flag to have unicorn test client connections by writing the
+# beginning of the HTTP headers before calling the application.  This
+# prevents calling the application for connections that have disconnected
+# while queued.  This is only guaranteed to detect clients on the same
+# host unicorn runs on, and unlikely to detect disconnects even on a
+# fast LAN.
+check_client_connection false
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
@@ -61,14 +67,14 @@ before_fork do |server, worker|
   # # thundering herd (especially in the "preload_app false" case)
   # # when doing a transparent upgrade.  The last worker spawned
   # # will then kill off the old master process with a SIGQUIT.
-  # old_pid = "#{server.config[:pid]}.oldbin"
-  # if old_pid != server.pid
-  #   begin
-  #     sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-  #     Process.kill(sig, File.read(old_pid).to_i)
-  #   rescue Errno::ENOENT, Errno::ESRCH
-  #   end
-  # end
+  old_pid = "#{server.config[:pid]}.oldbin"
+  if old_pid != server.pid
+    begin
+      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+      Process.kill(sig, File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+    end
+  end
   #
   # Throttle the master from forking too quickly by sleeping.  Due
   # to the implementation of standard Unix signal handlers, this
@@ -78,12 +84,6 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-
-  # Take a look at `sidekiq.rb` initializer
-  # Sidekiq.configure_client do |config|
-  #   config.redis = { :url => 'redis://localhost:6379' }
-  # end
-
   # per-process listener ports for debugging/admin/migrations
   # addr = "127.0.0.1:#{9293 + worker.nr}"
   # server.listen(addr, :tries => -1, :delay => 5, :tcp_nopush => true)
