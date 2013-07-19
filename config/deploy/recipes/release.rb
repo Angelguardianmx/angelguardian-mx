@@ -45,7 +45,6 @@ namespace :release do
     puts "#{green} ✓ Run db setup #{black}"
   end
 
-  #TODO(chalofa): Only precompile assets when needed (not every time)
   desc "Assets precompile"
   task :precompile do
     run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} assets:precompile"
@@ -55,11 +54,11 @@ namespace :release do
 
   desc "Unicorn: Start"
   task :start do
-    cmd = "PGPASSWORD='postgres' GOOGLE_APPS_AUTH_DOMAIN='radiolevy.com' bundle exec unicorn_rails --config-file #{deploy_to}/config/unicorn.rb --env #{env} --daemonize"
+    cmd = "bundle exec unicorn_rails --config-file #{deploy_to}/config/unicorn.rb --env #{env} --daemonize"
     run "source ~/.profile && cd #{deploy_to} && #{cmd}"
   end
 
-  #TODO(chalofa): do not break if PID file is missing
+  #TODO: do not break if PID file is missing
   desc "Unicorn: Stop"
   task :stop do
     printf "Stop Unicorn ......................................................"
