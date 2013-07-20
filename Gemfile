@@ -13,7 +13,7 @@ gem 'newrelic_rpm'
 
 
 gem 'crowdblog', '~> 0.3.0', git: 'git://github.com/hecbuma/crowdblog.git' # path: '/Users/hecbuma/projects/crowdblog'
-                                                                           #gem 'crowdblog', :path => '../crowdblog'
+#gem 'crowdblog', :path => '../crowdblog'
 gem 'crowdint_auth', "~> 0.1.1"
 gem 'dalli'
 gem 'devise'

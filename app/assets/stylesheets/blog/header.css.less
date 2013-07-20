@@ -101,22 +101,26 @@ header {
   ul.es-noticia {
     margin: 0;
     margin-bottom: 11px;
-    li {
+    li.es-noticia-links {
       border: 1px solid #F1F2F2;
       color: black;
       font-size: 11px;
       margin-right: 4px;
+
       &:first-child {
         background: #FFE400;
         border-color: #FEE02B;
         text-align: center;
       }
-      &.last {
+      &:last-child {
         margin:0;
       }
       a {
         background: #FAFBFD;
         color: black;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         &:hover {
           text-decoration: none;
         }

@@ -20,21 +20,9 @@ header
     - Crowdblog::Category.top_level.each do |category|
       li.elements= link_to category.name, main_app.seccion_path(category.name)
   ul.es-noticia
-    li Es noticia
-    li
-      = link_to 'derrame en manzanillo', '/'
-    li
-      = link_to 'Aumento de tarifas', '/'
-    li
-      = link_to 'Gasolinazo', '/'
-    li
-      = link_to 'juciios orales', '/'
-    li
-      = link_to 'Mario Anguiano', '/'
-    li
-      = link_to 'transporte urbano', '/'
-    li.last
-      = link_to 'Sucesion presidencial', '/'
+    li.es-noticia-links Es noticia
+    - @esnoticia.each do |noticia|
+      li.es-noticia-links= link_to noticia.tag.name, main_app.esnoticia_path(noticia.tag.name)
 
 
 

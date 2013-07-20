@@ -14,6 +14,7 @@ Crowdblog::Application.routes.draw do
 
     resources :authors, :only => [:index, :update]
     resources :categories
+    resources :esnoticia
     resources :portadas do
       member do
         delete '/:section_id/:post_id/', to: 'portadas#delete_post', as: 'delete_post'
@@ -38,6 +39,7 @@ Crowdblog::Application.routes.draw do
   match '/preview/:id', to: 'previews#show', constraints: { id: /\d+/ }, as: 'preview'
 
   match '/seccion/:name', to: 'crowdblog/categories#show', as: 'seccion'
+  match '/esnoticia/:name', to: 'crowdblog/esnoticia#show', as: 'esnoticia'
 
   match '/archive', to: 'archive#show', as: 'archive'
 

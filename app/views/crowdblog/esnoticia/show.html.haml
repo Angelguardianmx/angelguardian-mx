@@ -1,0 +1,99 @@
+.banners-right.pull-right
+  = render 'portada/right_banners_categories'
+
+.content.portada.esnoticia.pull-left
+  %h1= @tag
+  %section.section_a
+    .column
+      - if @posts[0]
+        - post = @posts[0]
+        %article.noticia-b
+          .header
+            %p.cintillo= post.cintillo
+            = image_tag(post.image.size_b, class: 'size-b')
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date= post.date_and_hour
+
+      - if @posts[1]
+        - post = @posts[1]
+        %article.noticia-c
+          .header
+            %p.cintillo= post.cintillo
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date
+              = post.author.email
+              |  | #{post.date_and_hour}
+
+      - if @posts[2]
+        - post = @posts[2]
+        %article.noticia-b
+          .header
+            %p.cintillo= post.cintillo
+            = image_tag(post.image.size_b, class: 'size-b')
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date= post.date_and_hour
+
+      - if @posts[3]
+        - post = @posts[3]
+        %article.noticia-b
+          .header
+            %p.cintillo= post.cintillo
+            = image_tag( post.image.size_b, class: 'size-b')
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date= post.date_and_hour
+      - if @posts[4]
+        - post = @posts[4]
+        %article.noticia-b
+          .header
+            %p.cintillo= post.cintillo
+            = image_tag(post.image.size_b, class: 'size-b')
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date= post.date_and_hour
+      - if @posts[5]
+        - post = @posts[5]
+        %article.noticia-c
+          .header
+            %p.cintillo= post.cintillo
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date
+              = post.author.email
+              |  | #{post.date_and_hour}
+
+
+
+    .column
+      .es-noticia
+        = link_to image_tag('/assets/banners/banner_b_tags.png'), '#'
+      -#.section_b
+      -#  - if @posts[5]
+      -#    %article.noticia-secundaria-a
+      -#      .header
+      -#        %p.cintillo= @posts[5].cintillo
+      -#        = image_tag(@posts[5].image.size_d, class: 'size-d')
+      -#        %h2
+      -#          = link_to @posts[5].title, main_app.post_path(*@posts[5].url_params)
+      -#
+      -#        .clearfix
+      -#  - if @posts[6]
+      -#    %article.noticia-secundaria-b
+      -#      .header
+      -#        %p.cintillo= @posts[6].cintillo
+      -#        = image_tag(@posts[6].image.size_f, class: 'size-f')
+      -#        %h2
+      -#          = link_to @posts[6].title, main_app.post_path(*@posts[7].url_params)
+      -#  - if @posts[7]
+      -#    %article.noticia-secundaria-c
+      -#      .header
+      -#        %p.cintillo= @posts[7].cintillo
+      -#        = image_tag(@posts[7].image.size_f, class: 'size-f')
+      -#        %h2
+      -#          = link_to @posts[7].title, main_app.post_path(*@posts[7].url_params)
+      -#        %p.date= @posts[7].date_and_hour
+
+

@@ -1,0 +1,28 @@
+%h1 Es noticia
+
+%table#noticias.table.table-striped
+  %thead
+    %tr
+      %th
+      %th Tag
+      %th
+  %tbody
+    - @noticias.each do |noticia|
+      = render partial: 'admin/esnoticia/noticia', object: noticia
+
+%hr
+%h2 Tags disponibles:
+%table.table.table-bordered
+  %thead
+    %tr
+      %th
+      %th Tag
+      %th
+  %tbody
+  - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+    %tr
+      %td
+      %td= tag.name
+      %td= link_to 'Agregar', main_app.admin_esnoticia_path(tag_id: tag.id), {remote: true, method: :post}
+
+

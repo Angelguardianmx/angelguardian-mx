@@ -1,0 +1,6 @@
+%tr{ id: "noticia_#{noticia.id}"}
+  %td= noticia.id
+  %td
+    - if noticia.tag
+      = noticia.tag.name
+  %td= link_to 'Delete', "/admin/esnoticia/#{noticia.id}", method: :delete, remote: true, confirm: "Estas seguro?"
