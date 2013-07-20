@@ -70,6 +70,9 @@
     .column
       .es-noticia
         = link_to image_tag('/assets/banners/banner_b_tags.png'), '#'
+      %article.resumen
+        %h2.titulo-bloque Resumen
+        = raw @portada.soundcloud_frame
       -#.section_b
       -#  - if @posts[5]
       -#    %article.noticia-secundaria-a

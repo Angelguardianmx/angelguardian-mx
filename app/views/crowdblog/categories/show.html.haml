@@ -78,7 +78,7 @@
               %p.cintillo= @posts[6].cintillo
               = image_tag(@posts[6].image.size_f, class: 'size-f')
               %h2
-                = link_to @posts[6].title, main_app.post_path(*@posts[7].url_params)
+                = link_to @posts[6].title, main_app.post_path(*@posts[6].url_params)
         - if @posts[7]
           %article.noticia-secundaria-c
             .header

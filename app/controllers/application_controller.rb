@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_tag_header
 
   def load_tag_header
+    @portada = Crowdblog::Portada.todays_cover
     @esnoticia = Crowdblog::Esnoticia.all
   end
 
