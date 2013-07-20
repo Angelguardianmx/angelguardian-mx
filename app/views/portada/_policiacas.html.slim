@@ -1,33 +1,39 @@
 section.policiacas
   .banner-m= image_tag('banners/banner_m.gif')
   #content
-    h2.titulo-bloque Policiacas
-    article.policiaca-a
-      .header
-        = image_tag(@policiacas.posts[0].image.size_h, class: 'size-h')
-
-        h2= @policiacas.posts[0].title
-        p.date= @policiacas.posts[0].date_and_hour
-        ul.related
-          li
-            = link_to '12:31 pm | Aumentara 1 peso el transporte publico en autobuses', "#"
-          li
-            = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-          li
-            = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-        .clearfix
-    article.policiaca-b
-      .header
-        = image_tag(@policiacas.posts[1].image.size_i, class: 'size-i right')
-        h2= @policiacas.posts[1].title
-        p.date= @policiacas.posts[1].date_and_hour
-        .clearfix
-    article.policiaca-c
-      .header
-        = image_tag(@policiacas.posts[2].image.size_i, class: 'size-i')
-        h2= @policiacas.posts[2].title
-        p.date= @policiacas.posts[2].date_and_hour
-        .clearfix
+    h2.titulo-bloque Policiacas 
+    - if @policiacas.posts[0]
+      - post = @policiacas.posts[0]
+      article.policiaca-a
+        .header
+          = image_tag(post.image.size_h, class: 'size-h')
+  
+          h2= post.title
+          p.date= post.date_and_hour
+          ul.related
+            li
+              = link_to '12:31 pm | Aumentara 1 peso el transporte publico en autobuses', "#"
+            li
+              = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
+            li
+              = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
+          .clearfix
+    - if @policiacas.posts[1]
+      - post = @policiacas.posts[1]
+      article.policiaca-b
+        .header
+          = image_tag(post.image.size_i, class: 'size-i right')
+          h2= post.title
+          p.date= post.date_and_hour
+          .clearfix
+    - if @policiacas.posts[2]
+      - post = @policiacas.posts[2]
+      article.policiaca-c
+        .header
+          = image_tag(post.image.size_i, class: 'size-i')
+          h2= post.title
+          p.date= post.date_and_hour
+          .clearfix
   
   .dato-del-dia.policiaca
     a href="#"

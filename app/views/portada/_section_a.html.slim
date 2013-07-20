@@ -2,39 +2,45 @@ section.section_a
   .column
     .today
       = "Colima | #{l Time.now, format: :cover}"
-    article.noticia-a
-      .header
-        = image_tag(@principal.posts[0].image.size_a, class: 'size-a')
-        p.cintillo= @principal.posts[0].cintillo
-        h2
-          = link_to @principal.posts[0].title, main_app.post_path(*@principal.posts[0].url_params)
-        p.date.pull-left= @principal.posts[0].date_and_hour
-        = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: @principal.posts[0].id), class: 'lectura-rapida pull-right', remote: true
-        .clearfix
-      .resumen= @principal.posts[0].resumen
-
-    article.noticia-b
-      .header
-        p.cintillo= @principal.posts[1].cintillo
-        = image_tag(@principal.posts[1].image.size_b, class: 'size-b')
-        h2
-          = link_to @principal.posts[1].title, main_app.post_path(*@principal.posts[1].url_params)
-        p.date= @principal.posts[1].date_and_hour
-      .resumen=@principal.posts[1].resumen
-      - if @principal.posts[1].related
-        ul.related
-          - @principal.posts[1].related.each do |related|
-            li
-              = link_to related.title, '#'
-    article.noticia-c
-      .header
-        p.cintillo== @principal.posts[2].cintillo
-        h2
-          = link_to @principal.posts[2].title, main_app.post_path(*@principal.posts[2].url_params)
-        p.date 
-          = @principal.posts[2].author.email
-          |  | #{@principal.posts[2].date_and_hour}
-      .resumen= @principal.posts[2].resumen
+    - if @principal.posts[0]
+      - post = @principal.posts[0] 
+      article.noticia-a
+        .header
+          = image_tag(post.image.size_a, class: 'size-a')
+          p.cintillo= post.cintillo
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date.pull-left= post.date_and_hour
+          = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: post.id), class: 'lectura-rapida pull-right', remote: true
+          .clearfix
+        .resumen= post.resumen
+  
+    - if @principal.posts[1]
+      - post = @principal.posts[1]
+      article.noticia-b
+        .header
+          p.cintillo= post.cintillo
+          = image_tag(post.image.size_b, class: 'size-b')
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date= post.date_and_hour
+        .resumen=post.resumen
+        - if post.related
+          ul.related
+            - post.related.each do |related|
+              li
+                = link_to related.title, '#'
+    - if @principal.posts[2]
+      - post = @principal.posts[2]
+      article.noticia-c
+        .header
+          p.cintillo== post.cintillo
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date 
+            = post.author.email
+            |  | #{post.date_and_hour}
+        .resumen= post.resumen
 
 
   .column
@@ -63,24 +69,27 @@ section.section_a
 
         = link_to image_tag('/assets/banners/banner_b.gif'), '#'
 
-    article.noticia-d
-      .header
-        p.cintillo= @principal.posts[3].cintillo
-        = image_tag(@principal.posts[3].image.size_d, class: 'size-d')
-        h2
-          = link_to @principal.posts[3].title, main_app.post_path(*@principal.posts[3].url_params)
-
-        p.date= @principal.posts[3].date_and_hour
-        p.resumen= @principal.posts[3].resumen
+    - if @principal.posts[3]
+      - post = @principal.posts[3]
+      article.noticia-d
+        .header
+          p.cintillo= post.cintillo
+          = image_tag(post.image.size_d, class: 'size-d')
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+  
+          p.date= post.date_and_hour
+          p.resumen= post.resumen
 
     - if @principal.posts[4]
+      - post = @principal.posts[4]
       article.noticie-e
         .header
-          = image_tag(@principal.posts[4].image.size_e, class: 'size-e')
-          p.cintillo= @principal.posts[4].cintillo
+          = image_tag(post.image.size_e, class: 'size-e')
+          p.cintillo= post.cintillo
           h2
-            = link_to @principal.posts[4].title, main_app.post_path(*@principal.posts[4].url_params)
+            = link_to post.title, main_app.post_path(*post.url_params)
 
 
-          p.date= @principal.posts[4].date_and_hour
+          p.date= post.date_and_hour
 

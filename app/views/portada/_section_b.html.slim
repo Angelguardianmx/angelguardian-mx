@@ -1,49 +1,59 @@
 section.section_b
   .column
-    article.noticia-secundaria-a
-      .header
-        h2.titulo-tag Aumento de tarifas
-        p.cintillo= @secundaria.posts[0].cintillo
-        = image_tag(@secundaria.posts[0].image.size_d, class: 'size-d')
-        h2
-          = link_to @secundaria.posts[0].title, main_app.post_path(*@secundaria.posts[0].url_params)
-
-        p.date=  @secundaria.posts[0].date_and_hour
-        = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: @secundaria.posts[0].id), class: 'lectura-rapida', remote: true
+    - if  @secundaria.posts[0]
+      - post =  @secundaria.posts[0] 
+      article.noticia-secundaria-a
+        .header
+          h2.titulo-tag Aumento de tarifas
+          p.cintillo= post.cintillo
+          = image_tag(post.image.size_d, class: 'size-d')
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+  
+          p.date=  post.date_and_hour
+          = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: post.id), class: 'lectura-rapida', remote: true
 
       ul.related
         li
           = link_to 'Aumentara 1 peso el transporte publico en autobuses', "#"
         li
           = link_to 'En julio tarjeta de descuento FEC', '#'
-    article.noticia-secundaria-b
-      .header
-        p.cintillo= @secundaria.posts[1].cintillo
-        = image_tag(@secundaria.posts[1].image.size_f, class: 'size-f')
-        h2
-          = link_to @secundaria.posts[1].title, main_app.post_path(*@secundaria.posts[1].url_params)
-        p.date= @secundaria.posts[1].date_and_hour
-    article.noticia-secundaria-c
-      .header
-        p.cintillo= @secundaria.posts[2].cintillo
-        = image_tag(@secundaria.posts[2].image.size_f, class: 'size-f')
-        h2
-          = link_to @secundaria.posts[2].title, main_app.post_path(*@secundaria.posts[2].url_params)
-        p.date= @secundaria.posts[2].date_and_hour
-    article.noticia-secundaria-d
-      .header
-        p.cintillo= @secundaria.posts[3].cintillo
-        h2
-          = link_to @secundaria.posts[3].title, main_app.post_path(*@secundaria.posts[3].url_params)
-        p.date= @secundaria.posts[3].date_and_hour
-    article.noticia-secundaria-f
-      .header
-        h2.titulo-tag Sucecion presindecial
-        p.cintillo= @secundaria.posts[4].cintillo
-        = image_tag(@secundaria.posts[2].image.size_d, class: 'size-d')
-        h2
-          = link_to @secundaria.posts[4].title, main_app.post_path(*@secundaria.posts[4].url_params)
-        p.date= @secundaria.posts[4].date_and_hour
+    - if  @secundaria.posts[1]
+      - post =  @secundaria.posts[1]
+      article.noticia-secundaria-b
+        .header
+          p.cintillo= post.cintillo
+          = image_tag(post.image.size_f, class: 'size-f')
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date= post.date_and_hour  
+    - if  @secundaria.posts[2]
+      - post = @secundaria.posts[2]      
+      article.noticia-secundaria-c
+        .header
+          p.cintillo= post.cintillo
+          = image_tag(post.image.size_f, class: 'size-f')
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date= post.date_and_hour
+    - if @secundaria.posts[3]
+      - post =  @secundaria.posts[3]     
+      article.noticia-secundaria-d
+        .header
+          p.cintillo= post.cintillo
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date= post.date_and_hour
+    - if @secundaria.posts[4]
+      - post =  @secundaria.posts[4]
+      article.noticia-secundaria-f
+        .header
+          h2.titulo-tag Sucecion presindecial
+          p.cintillo= post.cintillo
+          = image_tag(@secundaria.posts[2].image.size_d, class: 'size-d')
+          h2
+            = link_to post.title, main_app.post_path(*post.url_params)
+          p.date= post.date_and_hour
 
 
   .column
