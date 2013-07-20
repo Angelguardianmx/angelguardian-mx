@@ -1,4 +1,6 @@
 class CrowdintAuth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_filter :verify_authenticity_token
+
   def user_class
     ::User
   end
