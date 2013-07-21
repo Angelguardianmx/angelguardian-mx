@@ -11,9 +11,9 @@ $ ->
   $.fn.editable.defaults.ajaxOptions = {type: "PUT"};
   $('.editable').editable();
 
-  $('input[name="special_note"]').live 'click', (e) ->
+  $('.radio-post-select').live 'click', (e) ->
     if $(@).is(':checked')
-      $("#portada_special_note_id").val($(@).val())
+      $("##{$(@).data('id')}").val($(@).val())
 
   $('input[name="related"]').live 'click', (e) ->
     if $(@).is(':checked')

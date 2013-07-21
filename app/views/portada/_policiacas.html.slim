@@ -35,7 +35,10 @@ section.policiacas
           p.date= post.date_and_hour
           .clearfix
   
-  .dato-del-dia.policiaca
-    a href="#"
-      = raw @portada.datopolicia
+  - if @portada.police_notes.any?
+    - if @portada.police_notes.last.post
+      .dato-del-dia.policiaca
+        = link_to main_app.post_path(*@portada.police_notes.last.post.url_params)
+        a href="#"
+          = raw @portada.police_notes.last.title
 

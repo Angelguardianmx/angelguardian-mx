@@ -25,6 +25,9 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     @posts = Post.query('',false ).results
     @policiacas_list = Post.query('', 'Policiacas').results
     @weather_note = @portada.weather_notes.any? ? @portada.weather_notes.last : @portada.weather_notes.new
+    @dod_note = @portada.dod_notes.any? ? @portada.dod_notes.last : @portada.dod_notes.new
+    @police_note = @portada.police_notes.any? ? @portada.police_notes.last : @portada.police_notes.new
+
   end
 
   def show
@@ -67,7 +70,7 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     @query =  params[:search] == "*" ? '' : params[:search]
     category = params[:type]  || false
     @related = category == "related" ? true : false
-    category = (category == "related" || category == "especial" || category == "todas") ? false : category
+    category = (["related","especial","todas","weather", "dod", "police-dod"].include? category) ? false : category
     @posts = Post.query(@query, category).results
     @type = params[:type]
     respond_to do |format|

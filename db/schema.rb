@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720043860) do
+ActiveRecord::Schema.define(:version => 20130721013665) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(:version => 20130720043860) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "crowdblog_dod_notes", :force => true do |t|
+    t.string   "title"
+    t.string   "balazo"
+    t.integer  "portada_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "post_id"
+  end
+
   create_table "crowdblog_esnoticia", :force => true do |t|
     t.integer  "tag_id"
     t.datetime "created_at", :null => false
@@ -47,13 +56,20 @@ ActiveRecord::Schema.define(:version => 20130720043860) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "crowdblog_police_notes", :force => true do |t|
+    t.string   "title"
+    t.string   "balazo"
+    t.integer  "portada_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "post_id"
+  end
+
   create_table "crowdblog_portadas", :force => true do |t|
     t.integer  "breaking_news"
     t.date     "publication"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.string   "datodeldia"
-    t.string   "datopolicia"
     t.string   "soundcloud_frame"
     t.boolean  "resumen_on_top"
     t.integer  "special_note_id"
@@ -95,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20130720043860) do
     t.integer  "portada_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "post_id"
   end
 
   create_table "redactor_assets", :force => true do |t|

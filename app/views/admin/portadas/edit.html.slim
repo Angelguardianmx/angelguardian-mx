@@ -37,7 +37,7 @@ h1
                 th Titulo Noticia
                 th Fecha
             tbody
-              = render partial: 'admin/portadas/search_res', collection: @posts, as: :post, locals: { radio: false }
+              = render partial: 'admin/portadas/search_res', collection: @posts, as: :post, locals: { radio: false, type: 'none' }
 
       .span6
         fieldset.fieldset
@@ -84,12 +84,6 @@ h1
 
     .row
       .span12#socials
-    .row
-      .span12#dato-del-dia
-        fieldset.fieldset
-          legend El data del dia
-          = f.text_field :datodeldia, :class => "span12", id: 'post_bodys'
-
 
     .row
       .span6
@@ -107,7 +101,7 @@ h1
                 th Titulo Noticia
                 th Fecha
             tbody
-              = render partial: 'admin/portadas/search_res', collection: @policiacas_list, as: :post, locals: { radio: false }
+              = render partial: 'admin/portadas/search_res', collection: @policiacas_list, as: :post, locals: { radio: false, type: 'none' }
       .span6
         fieldset.fieldset
           legend Section: Policiacas
@@ -149,16 +143,11 @@ h1
                 th Fecha
             tbody
               - special = @portada.special_note ? [@portada.special_note] : []
-              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true }
+              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true, type: 'especial' }
           = f.fields_for :special_note, @portada.special_note do |sp|
             div
           - unless @portada.special_note
             = hidden_field_tag 'portada_special_note_id', '', name: "portada[special_note_id]"
-
-
-
-
-
 
     .row
       .span12#dato-del-dia
@@ -167,17 +156,85 @@ h1
           = f.fields_for :weather_notes, @weather_note do |weather_note|
             .control-group
               .control
-                = weather_note.label :balazo
-                = weather_note.text_field :balazo
-              .control
                 = weather_note.label :title
                 = weather_note.text_field :title
+                = hidden_field_tag 'portada_weather_note_post_id', @weather_note.new_record? ? '': @weather_note.post_id , name: "portada[weather_notes_attributes][0][post_id]"
+        br
+        .search-news#weather
+          .control-group
+            = label_tag 'Busca mas noticias', nil,class: 'control-label'
+            .controls
+              input.input-medium type="text" id="search-term"
+              = hidden_field_tag 'type','weather'
+              = link_to 'Buscar', "#", class: 'btn search'
+          table.table.table-striped.posts
+            thead
+              tr
+                th
+                th Categoria
+                th Titulo Noticia
+                th Fecha
+            tbody
+              - special = @weather_note.post ? [@weather_note.post] : []
+              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true, type: 'weather' }
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend Dato del dia
+          = f.fields_for :dod_notes, @dod_note do |dod_note|
+            .control-group
+              .control
+                = dod_note.label :title
+                = dod_note.text_field :title
+                = hidden_field_tag 'portada_dod_note_post_id', @dod_note.new_record? ? '': @dod_note.post_id, name: "portada[dod_notes_attributes][0][post_id]"
+        br
+        .search-news#dod
+          .control-group
+            = label_tag 'Busca mas noticias', nil,class: 'control-label'
+            .controls
+              input.input-medium type="text" id="search-term"
+              = hidden_field_tag 'type','dod'
+              = link_to 'Buscar', "#", class: 'btn search'
+          table.table.table-striped.posts
+            thead
+              tr
+                th
+                th Categoria
+                th Titulo Noticia
+                th Fecha
+            tbody
+              - special = @dod_note.post ? [@dod_note.post] : []
+              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true, type: 'dod' }
 
     .row
       .span12#dato-del-dia
         fieldset.fieldset
-          legend El data del dia Policiacas
-          = f.text_field :datopolicia, :class => "span12"
+          legend Nota del dia Policiaca
+          = f.fields_for :police_notes, @police_note do |police_note|
+            .control-group
+              .control
+                = police_note.label :title
+                = police_note.text_field :title
+                = hidden_field_tag 'portada_police_note_post_id', @police_note.new_record? ? '': @police_note.post_id, name: "portada[police_notes_attributes][0][title]"
+        br
+        .search-news#police-dod
+          .control-group
+            = label_tag 'Busca mas noticias', nil,class: 'control-label'
+            .controls
+              input.input-medium type="text" id="search-term"
+              = hidden_field_tag 'type','police-dod'
+              = link_to 'Buscar', "#", class: 'btn search'
+          table.table.table-striped.posts
+            thead
+              tr
+                th
+                th Categoria
+                th Titulo Noticia
+                th Fecha
+            tbody
+              - special = @police_note.post ? [@police_note.post] : []
+              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true, type: 'police-dod' }
+
     .row
       .span12#dato-del-dia
         fieldset.fieldset

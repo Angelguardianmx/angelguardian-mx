@@ -57,10 +57,13 @@ section.section_b
 
 
   .column
-    article.el-tiempo
-      .header
-        p.cintillo= @weather_note.balazo
-        h2= @weather_note.title
+    - if @weather_note
+      - if @weather_note.post
+        article.el-tiempo
+          .header
+            p.cintillo= @weather_note.balazo
+            = link_to main_app.post_path(*@weather_note.post.url_params) do
+              h2= @weather_note.title
     article.mas-recientes
       h2.titulo-bloque Mas recientes
       ul.related
