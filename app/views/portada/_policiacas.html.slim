@@ -6,7 +6,7 @@ section.policiacas
       - post = @policiacas.posts[0]
       article.policiaca-a
         .header
-          = image_tag(post.image.size_h, class: 'size-h')
+          = image_tag('transparent.png', class: 'size-h lazy', "data-original" => post.image.size_h)
   
           h2= post.title
           p.date= post.date_and_hour
@@ -22,7 +22,7 @@ section.policiacas
       - post = @policiacas.posts[1]
       article.policiaca-b
         .header
-          = image_tag(post.image.size_i, class: 'size-i right')
+          = image_tag('transparent.png', class: 'size-i right lazy', "data-original" => post.image.size_i)
           h2= post.title
           p.date= post.date_and_hour
           .clearfix
@@ -30,7 +30,7 @@ section.policiacas
       - post = @policiacas.posts[2]
       article.policiaca-c
         .header
-          = image_tag(post.image.size_i, class: 'size-i')
+          = image_tag('transparent.png', class: 'size-i lazy', "data-original" => post.image.size_i)
           h2= post.title
           p.date= post.date_and_hour
           .clearfix

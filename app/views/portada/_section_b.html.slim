@@ -6,7 +6,7 @@ section.section_b
         .header
           h2.titulo-tag Aumento de tarifas
           p.cintillo= post.cintillo
-          = image_tag(post.image.size_d, class: 'size-d')
+          = image_tag('transparent.png', class: 'size-d lazy', "data-original" => post.image.size_d)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
   
@@ -23,16 +23,16 @@ section.section_b
       article.noticia-secundaria-b
         .header
           p.cintillo= post.cintillo
-          = image_tag(post.image.size_f, class: 'size-f')
+          = image_tag('transparent.png', class: 'size-f lazy', "data-original" => post.image.size_f)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour  
     - if  @secundaria.posts[2]
-      - post = @secundaria.posts[2]      
+      - post = @secundaria.posts[2]
       article.noticia-secundaria-c
         .header
           p.cintillo= post.cintillo
-          = image_tag(post.image.size_f, class: 'size-f')
+          = image_tag('transparent.png', class: 'size-f lazy', "data-original" => post.image.size_f)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
@@ -50,7 +50,7 @@ section.section_b
         .header
           h2.titulo-tag Sucecion presindecial
           p.cintillo= post.cintillo
-          = image_tag(@secundaria.posts[2].image.size_d, class: 'size-d')
+          = image_tag('transparent.png', class: 'size-d lazy', "data-original" => @secundaria.posts[2].image.size_d)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
@@ -82,7 +82,7 @@ section.section_b
           - @picture_only.each_with_index do |post, i|
             .item class="#{i == 0 ? 'active': ''}"
               .header
-                img.size-g alt="Size_g_d6d620e3742447fa857d09d174a687b0" src="#{post.image.url(:size_g)}"
+                = image_tag('transparent.png', class: 'size-g lazy', "data-original" => post.image.url(:size_g) )
                 p.date= post.author.email
                 h2= post.title
         /! Carousel nav

@@ -7,7 +7,8 @@
       - if @posts[0]
         %article.noticia-a
           .header
-            = image_tag(@posts[0].image.size_a, class: 'size-a')
+            - binding.pry
+            = image_tag('transparent.png', class: 'size-a lazy', 'data-original' => @posts[0].image.size_a)
             %p.cintillo= @posts[0].cintillo
             %h2
               = link_to @posts[0].title, main_app.post_path(*@posts[0].url_params)
@@ -29,7 +30,7 @@
         %article.noticia-b
           .header
             %p.cintillo= @posts[2].cintillo
-            = image_tag(@posts[2].image.size_b, class: 'size-b')
+            = image_tag('transparent.png', class: 'size-b lazy', 'data-original' => @posts[2].image.size_b)
             %h2
               = link_to @posts[2].title, main_app.post_path(*@posts[2].url_params)
             %p.date= @posts[2].date_and_hour
@@ -38,7 +39,7 @@
         %article.noticia-d
           .header
             %p.cintillo= @posts[3].cintillo
-            = image_tag(@posts[3].image.size_d, class: 'size-d')
+            = image_tag('transparent.png', class: 'size-d lazy', "data-original" => @posts[3].image.size_d)
             %h2
               = link_to @posts[3].title, main_app.post_path(*@posts[3].url_params)
             .clearfix
@@ -61,13 +62,13 @@
       .header
         %h2.titulo-tag Es Noticia - #{@category}
       .es-noticia
-      = link_to image_tag('/assets/banners/banner_b.gif'), '#'
+      = link_to image_tag('transparent.png', class: 'lazy', 'data-original' => '/assets/banners/banner_b.gif'), '#'
       .section_b
         - if @posts[5]
           %article.noticia-secundaria-a
             .header
               %p.cintillo= @posts[5].cintillo
-              = image_tag(@posts[5].image.size_d, class: 'size-d')
+              = image_tag('transparent.png', class: 'size-d lazy', "data-original" => @posts[5].image.size_d)
               %h2
                 = link_to @posts[5].title, main_app.post_path(*@posts[5].url_params)
 
@@ -76,17 +77,17 @@
           %article.noticia-secundaria-b
             .header
               %p.cintillo= @posts[6].cintillo
-              = image_tag(@posts[6].image.size_f, class: 'size-f')
+              = image_tag('transparent.png', class: 'size-f lazy', "data-original" => @posts[6].image.size_f)
               %h2
                 = link_to @posts[6].title, main_app.post_path(*@posts[6].url_params)
         - if @posts[7]
           %article.noticia-secundaria-c
             .header
               %p.cintillo= @posts[7].cintillo
-              = image_tag(@posts[7].image.size_f, class: 'size-f')
+              = image_tag('transparent.png', class: 'size-f lazy', "data-original" => @posts[7].image.size_f)
               %h2
                 = link_to @posts[7].title, main_app.post_path(*@posts[7].url_params)
               %p.date= @posts[7].date_and_hour
 
-= link_to image_tag('/assets/banners/banner_a.gif'), '#'
+= link_to image_tag('transparent.png', class: 'lazy', 'data-original' => '/assets/banners/banner_a.gif'), '#'
 

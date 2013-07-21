@@ -6,7 +6,7 @@ section.section_a
       - post = @principal.posts[0] 
       article.noticia-a
         .header
-          = image_tag(post.image.size_a, class: 'size-a')
+          = image_tag('transparent.png', class: 'size-a lazy', "data-original" => post.image.size_a)
           p.cintillo= post.cintillo
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
@@ -20,7 +20,7 @@ section.section_a
       article.noticia-b
         .header
           p.cintillo= post.cintillo
-          = image_tag(post.image.size_b, class: 'size-b')
+          = image_tag('transparent.png', class: 'size-b lazy', "data-original" => post.image.size_b)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
@@ -55,11 +55,11 @@ section.section_a
         .top
           .header
             h2= @portada.special_note.title
-            = image_tag(@portada.special_note.image.size_especial, class: 'size-special')
+            = image_tag('transparent.png', class: 'size-special lazy', "data-original" => @portada.special_note.image.size_especial)
           .resumen
             = link_to @portada.special_note.resumen, main_app.post_path(*@portada.special_note.url_params)
         .linked
-          = image_tag('portada/section-a-noticia-especia-b.jpg')
+          = image_tag('transparent.png', class: 'lazy', "data-original" => '/assets/portada/section-a-noticia-especia-b.jpg')
           p
             |
               taxistas deben mostrar mapa con nuevas tarifas: transporte
@@ -67,14 +67,14 @@ section.section_a
           li
             = link_to 'Suspenden el aument a la taria de taxis en manzanillo', '#'
 
-        = link_to image_tag('/assets/banners/banner_b.gif'), '#'
+        = link_to image_tag("transparent.png", class: 'lazy', "data-original" => '/assets/banners/banner_b.gif'), '#'
 
     - if @principal.posts[3]
       - post = @principal.posts[3]
       article.noticia-d
         .header
           p.cintillo= post.cintillo
-          = image_tag(post.image.size_d, class: 'size-d')
+          = image_tag('transparent.png', class: 'size-d lazy', "data-original" => post.image.size_d)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
   
@@ -85,7 +85,7 @@ section.section_a
       - post = @principal.posts[4]
       article.noticie-e
         .header
-          = image_tag(post.image.size_e, class: 'size-e')
+          = image_tag('transparent.png', class: 'size-e lazy', "data-original" => post.image.size_e)
           p.cintillo= post.cintillo
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
