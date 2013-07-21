@@ -7,7 +7,6 @@
       - if @posts[0]
         %article.noticia-a
           .header
-            - binding.pry
             = image_tag('transparent.png', class: 'size-a lazy', 'data-original' => @posts[0].image.size_a)
             %p.cintillo= @posts[0].cintillo
             %h2

@@ -1,1 +1,18 @@
-#footer Copyright 2013, RadioLevy. All rights reserved
+.clearfix
+footer
+  .span4
+    ul.footer-links
+      li= link_to 'Quíenes somos','#'
+      li= link_to 'Ventas','#', class: 'bigger'
+      li= link_to 'Contáctanos','#'
+    = link_to '#', class: 'radio-levy' do
+      = image_tag('transparent.png', width: '100', class: 'lazy', "data-original" => '/assets/radiolevy.jpg')
+  .span5
+    = image_tag("transparent.png", class: 'lazy',"data-original" => '/assets/estaciones.png')
+  .span3
+    .fb-like data-font="trebuchet ms" data-href="https://www.facebook.com/angelguardianmx" data-layout="button_count" data-send="false" data-show-faces="false" data-width="450"
+    br
+    a.twitter-follow-button data-dnt="true" data-lang="es" data-show-count="false" href="https://twitter.com/angelguardianmx"
+    javascript:
+     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  .clearfix

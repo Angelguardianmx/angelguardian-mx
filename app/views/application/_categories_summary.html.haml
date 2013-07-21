@@ -1,0 +1,14 @@
+.clearfix
+%section.categories_summary
+  %hr
+  = link_to '', class: 'go-top' do
+    %span.lectura-rapida ir al inicio
+  - Crowdblog::Category.all.each do |category|
+    .box
+      %h4= category.name
+      %ul
+        - category.posts.last_published(3).each do |post|
+          %li.element= link_to post.title, main_app.post_path(*post.url_params)
+
+
+

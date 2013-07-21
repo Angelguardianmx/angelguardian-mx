@@ -17,7 +17,7 @@ header
   ul.nav
     li.elements
       = link_to 'inicio', '/'
-    - Crowdblog::Category.top_level.each do |category|
+    - @top_level_categories.each do |category|
       li.elements= link_to category.name, main_app.seccion_path(category.name)
   ul.es-noticia
     li.es-noticia-links Es noticia
