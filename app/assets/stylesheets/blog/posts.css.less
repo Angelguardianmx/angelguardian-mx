@@ -31,6 +31,7 @@
       .post-info {
         text-align: right;
         margin-right: 20px;
+        width: 368px;
       }
       .author {
         font-weight: bold;
@@ -59,7 +60,7 @@
         color: #175057;
       }
     }
-
+    .lectura-rapida { display: none ;}
     .body {
       border-right: 1px solid #B3B3B3;
       width: 440px;
@@ -167,7 +168,24 @@
   left: 38%;
   .modal-body {
     max-height: 500px;
-    .author-info {
+    .body {
+      width: 650px;
+      border: none;
+      height: 160px;
+      text-align: justify;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lectura-rapida {
+      display: block;
+      width: 104px;
+      margin: 0 auto;
+      margin-top: 10px;
+      text-align: center;
+      clear: both;
+
+    }
+    .related {
       display: none;
     }
     .title {

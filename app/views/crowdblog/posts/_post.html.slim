@@ -1,7 +1,7 @@
 .post
   .header
     .row
-      .post-info.pull-left.span6
+      .post-info.pull-left
         .title
           h1
             = link_to post.title, main_app.post_path(*post.url_params)
@@ -9,7 +9,7 @@
           .author #{link_to post.author_name, main_app.posts_by_author_path(post.author.to_param)}
           .email #{post.author_email}
           .date #{post.formatted_published_date}
-      = image_tag('transparent.png', class: 'size-a lazy pull-right', "data-original" => post.image.size_a)
+      = image_tag(post.image.size_a, class: 'size-a  pull-right')
 
 
   .social
@@ -19,6 +19,7 @@
   .body
     .inner
       = post.html_body
+  = link_to 'Seguir Leyendo', main_app.post_path(*post.url_params), class: 'lectura-rapida big'
   - if post.related.any?
     .related.pull-right
       h3 Relacionadas
