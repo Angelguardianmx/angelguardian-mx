@@ -59,8 +59,16 @@
 
     .column
       .header
-        %h2.titulo-tag Es Noticia - #{@category}
+        %h2.titulo-tag Es Noticia - #{@category.name}
       .es-noticia
+        - @category.subcategories.each do |sub_category|
+          .box
+            %h4= sub_category.name
+            %ul
+              - sub_category.posts.last_published(3).each do |post|
+                %li= link_to raw("&gt #{post.title}"), main_app.post_path(*post.url_params)
+
+
       = link_to image_tag('transparent.png', class: 'lazy', 'data-original' => '/assets/banners/banner_b.gif'), '#'
       .section_b
         - if @posts[5]
