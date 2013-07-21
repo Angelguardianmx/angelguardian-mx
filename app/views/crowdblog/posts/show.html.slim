@@ -1,21 +1,12 @@
-.posts
+.banners-right.pull-right
+  = render 'crowdblog/posts/right_banners'
+.content.portada.pull-left.posts
   = render :partial => 'crowdblog/posts/post', :object => @post, :locals => { index_view: false }
-  #disqus_thread
+  .fb-comments data-href="#{main_app.post_url(*@post.url_params).html_safe}" data-num-posts="10" data-width="750"
 
-  - unless Rails.env.production?
-    coffee:
-      disqus_shortname = 'angelguardian'
-
-      dsq = document.createElement('script')
-      dsq.type = 'text/javascript'
-      dsq.async = true
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js'
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-
-
-    a href="http://disqus.com" class="dsq-brlink"
-      | blog comments powered by
-      span class="logo-disqus" Disqus
+.clearfix
+.post-dod
+  = render 'portada/dato_del_dia'
 
 
 - content_for :page_title do

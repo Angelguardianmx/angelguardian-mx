@@ -11,8 +11,10 @@
   .border-radius(10px);
 
   .post {
+    width: 750px;
     margin-bottom: 50px;
     .header {
+      margin-bottom: 10px;
       h1 {
         font-size: 24px;
         line-height: 24px;
@@ -25,6 +27,10 @@
         a:hover {
           text-decoration: underline;
         }
+      }
+      .post-info {
+        text-align: right;
+        margin-right: 20px;
       }
       .author {
         font-weight: bold;
@@ -55,9 +61,10 @@
     }
 
     .body {
-      background-color: #ebebeb;
-      padding: 20px;
-
+      border-right: 1px solid #B3B3B3;
+      width: 440px;
+      float: left;
+      margin-left: 20px;
       .inner {
         background: white;
         padding: 10px;
@@ -119,6 +126,39 @@
 
     .social {
       padding-top: 20px;
+      width: 80px;
+      float: left;
+    }
+  }
+  .related {
+    width: 185px;
+    h3 {
+      color: #B3B3B3;
+      text-transform: uppercase;
+      text-align: left;
+      font-size: .9em;
+      margin: 0;
+      font-weight: lighter;
+    }
+    .related-post {
+
+      padding: 10px;
+      height: 100%;
+      box-sizing: border-box;
+      border-bottom: 1px dotted #B3B3B3;
+      a, a:hover {
+        text-decoration: none;
+        color: #000000;
+        font-size: 12px;
+        text-align: left;
+      }
+      .img-container {
+        text-align: center;
+        img {
+          width: 130px;
+          height: 130px;
+        }
+      }
     }
   }
 }
@@ -133,5 +173,17 @@
     .title {
       margin-left: 25px;
     }
+  }
+}
+
+.fb-comments {
+  margin-top: 20px;
+}
+
+.post-dod {
+  text-align: center;
+  .dato-del-dia a {
+    left: 114px;
+    position: relative;
   }
 }

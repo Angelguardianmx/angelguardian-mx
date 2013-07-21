@@ -1,5 +1,5 @@
 - if @portada.dod_notes.any?
-  - if @portada.police_notes.last.post
+  - if @portada.dod_notes.last.post
     .dato-del-dia.banners
       h2.titulo-bloque Dato del día
       = link_to main_app.post_path(*@portada.dod_notes.last.post.url_params) do
