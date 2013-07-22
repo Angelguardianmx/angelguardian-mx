@@ -1,8 +1,11 @@
 .span12
-  h2 Edit Post
+  h2 Editar Nota
 
   = form_for [:admin, @post] do |f|
-    = render 'form', :f => f
+    - if @post.vlog
+      = render 'form_vlog', :f => f
+    - else
+      = render 'form', :f => f
 
     .form-actions.clear
       .row

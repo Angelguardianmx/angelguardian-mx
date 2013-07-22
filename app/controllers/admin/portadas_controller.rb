@@ -22,7 +22,7 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     @secundaria = @portada.home_sections.where(section_type: 'secundaria').first
     @opinion = @portada.home_sections.where(section_type: 'opinion').first
     @policiacas = @portada.home_sections.where(section_type: 'policiacas').first
-    @posts = Post.query('',false ).results
+    @posts = Post.query('',false).results
     @policiacas_list = Post.query('', 'Policiacas').results
     @weather_note = @portada.weather_notes.any? ? @portada.weather_notes.last : @portada.weather_notes.new
     @dod_note = @portada.dod_notes.any? ? @portada.dod_notes.last : @portada.dod_notes.new
@@ -31,14 +31,14 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
   end
 
   def show
-    @portada = Crowdblog::Portada.todays_cover
     @principal = @portada.home_sections.where(section_type: 'principal').first
     @secundaria = @portada.home_sections.where(section_type: 'secundaria').first
     # @opinion = @portada.home_sections.where(section_type: 'opinion').first
     @policiacas = @portada.home_sections.where(section_type: 'policiacas').first
     @weather_note = @portada.weather_notes.last
     @latest_news = Post.query('', false, 7).results
-    @picture_only = Post.query('', false, 10, true).results
+    @picture_only = ::Post.query('', false, 10, true).results
+    @vlogs = ::Post.query('', false, 5, false, true).results
   end
 
   def update
