@@ -1,17 +1,18 @@
 section.opinion
   .column
     h2.titulo-bloque Vlog
-    article.vlog-last
-      .header
-        h4= @vlogs.first.title
-        .resumen= @vlogs.first.cintillo
-        .video= raw @vlogs.first.resumen
-    article.latest-vlogs
-      - (1..4).each do |i|
-        .vlog
-          .author= @vlogs[i].title
-          .resuemn= @vlogs[i].cintillo
-      .clearfix
+    - if @vlogs
+      article.vlog-last
+        .header
+          h4= @vlogs.first.title
+          .resumen= @vlogs.first.cintillo
+          .video= raw @vlogs.first.resumen
+      article.latest-vlogs
+        - (1..4).each do |i|
+          .vlog
+            .author= @vlogs[i].title
+            .resuemn= @vlogs[i].cintillo
+        .clearfix
   .column
     h2.titulo-bloque Así lo dijo
     - if @portada.quote_notes.any?
