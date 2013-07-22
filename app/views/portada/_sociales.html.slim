@@ -1,7 +1,7 @@
 section.opinion
   .column
     h2.titulo-bloque Vlog
-    - if @vlogs
+    - if @vlogs.any?
       article.vlog-last
         .header
           h4= @vlogs.first.title
