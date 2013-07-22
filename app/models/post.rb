@@ -14,13 +14,15 @@ class Post < Crowdblog::Post
 
 
 
-  def self.query(query, category=false, per_page=20, picture_only=false, vlog=false)
+  def self.query(query, category=false, per_page=20, picture_only=false, vlog=false, opinion=false)
     vlog = vlog || nil
+    opinion = opinion || nil
     Crowdblog::Post.search do
       fulltext query
       with :state, 'published'
       with :picture_only, true if picture_only
       with :vlog, vlog
+      with :opinion, opinion
       with :category_name, category if category
       with(:published_at).less_than Time.now
       order_by :published_at, :desc

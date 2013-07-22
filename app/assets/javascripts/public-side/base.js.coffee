@@ -1,5 +1,6 @@
 $ ->
-  $('.carousel').carousel()
+  $('#foto-nota').carousel()
+  $('#opinion').carousel interval: 15000
 
   $("img.lazy").lazyload effect: "fadeIn"
 

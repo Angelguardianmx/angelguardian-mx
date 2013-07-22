@@ -8,5 +8,6 @@ class PortadasController < ApplicationController
     @latest_news = Post.query('', false, 7).results
     @picture_only = ::Post.query('', false, 10, true).results
     @vlogs = ::Post.query('', false, 5, false, true).results
+    @opiniones = ::Post.query('', false, 5, false, false, true).results
   end
 end

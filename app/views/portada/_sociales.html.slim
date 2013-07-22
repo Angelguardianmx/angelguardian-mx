@@ -22,3 +22,20 @@ section.opinion
             footer
               p.author= @portada.quote_notes.last.author
               p.charge= @portada.quote_notes.last.charge
+    - if @opiniones
+      article.opiniones
+        h2.titulo-bloque Opinion
+        #opinion.carousel.slide
+          /! Carousel items
+          .carousel-inner
+            - @opiniones.each_with_index do |post, i|
+              .item class="#{i == 0 ? 'active': ''}"
+                = link_to main_app.post_path(*post.url_params) do
+                  = image_tag(post.image.url(:size_d), class: 'size-d img-circle' )
+                  h4= post.title
+                  p.balazo= post.cintillo
+                  p.resumen= post.resumen
+
+
+
+
