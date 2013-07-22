@@ -215,7 +215,7 @@ h1
               .control
                 = police_note.label :title
                 = police_note.text_field :title
-                = hidden_field_tag 'portada_police_note_post_id', @police_note.new_record? ? '': @police_note.post_id, name: "portada[police_notes_attributes][0][title]"
+                = hidden_field_tag 'portada_police_note_post_id', @police_note.new_record? ? '': @police_note.post_id, name: "portada[police_notes_attributes][0][post_id]"
         br
         .search-news#police-dod
           .control-group
@@ -235,6 +235,40 @@ h1
               - special = @police_note.post ? [@police_note.post] : []
               = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true, type: 'police-dod' }
 
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend Asi lo dijo
+          = f.fields_for :quote_notes, @quote_note do |quote_note|
+            .control-group
+              .control
+                = quote_note.label :author, 'Quien lo dijo?'
+                = quote_note.text_field :author
+              .control
+                = quote_note.label :charge, 'Cargo'
+                = quote_note.text_field :charge
+              .control
+                = quote_note.label :quote, 'Cita'
+                = quote_note.text_field :quote
+                = hidden_field_tag 'portada_quote_note_post_id', @quote_note.new_record? ? '': @quote_note.post_id, name: "portada[quote_notes_attributes][0][post_id]"
+        br
+        .search-news#quote
+          .control-group
+            = label_tag 'Busca mas noticias', nil,class: 'control-label'
+            .controls
+              input.input-medium type="text" id="search-term"
+              = hidden_field_tag 'type','quote'
+              = link_to 'Buscar', "#", class: 'btn search'
+          table.table.table-striped.posts
+            thead
+              tr
+                th
+                th Categoria
+                th Titulo Noticia
+                th Fecha
+            tbody
+              - special = @quote_note.post ? [@quote_note.post] : []
+              = render partial: 'admin/portadas/search_res', collection: special, as: :post, locals: { radio: true, type: 'quote' }
     .row
       .span12#dato-del-dia
         fieldset.fieldset

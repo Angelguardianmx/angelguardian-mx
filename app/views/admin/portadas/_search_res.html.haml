@@ -19,6 +19,10 @@
       - if @portada.police_notes.last && !@portada.police_notes.last.new_record?
         - selected_id = post.id == @portada.police_notes.last.post_id ? true : false
       %td= radio_button_tag 'police_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_police_note_post_id"
+    - if type == "quote"
+      - if @portada.quote_notes.last && !@portada.quote_notes.last.new_record?
+        - selected_id = post.id == @portada.quote_notes.last.post_id ? true : false
+      %td= radio_button_tag 'quote_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_quote_note_post_id"
   %td
     - if post.category
       = post.category.name
