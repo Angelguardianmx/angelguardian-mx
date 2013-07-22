@@ -16,13 +16,14 @@ section.opinion
   .column
     h2.titulo-bloque Así lo dijo
     - if @portada.quote_notes.any?
-      article.quote
-        = link_to main_app.post_path(*@portada.quote_notes.last.post.url_params) do
-          blockquote
-            p= @portada.quote_notes.last.quote
-            footer
-              p.author= @portada.quote_notes.last.author
-              p.charge= @portada.quote_notes.last.charge
+      - if @portada.quote_notes.last.post
+        article.quote
+          = link_to main_app.post_path(*@portada.quote_notes.last.post.url_params) do
+            blockquote
+              p= @portada.quote_notes.last.quote
+              footer
+                p.author= @portada.quote_notes.last.author
+                p.charge= @portada.quote_notes.last.charge
     - if @opiniones
       article.opiniones
         h2.titulo-bloque Opinion

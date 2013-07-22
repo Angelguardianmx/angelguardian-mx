@@ -32,6 +32,7 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
   end
 
   def show
+    @portada = Crowdblog::Portada.find params[:id]
     @principal = @portada.home_sections.where(section_type: 'principal').first
     @secundaria = @portada.home_sections.where(section_type: 'secundaria').first
     # @opinion = @portada.home_sections.where(section_type: 'opinion').first
