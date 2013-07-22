@@ -9,9 +9,10 @@ section.opinion
           .video= raw @vlogs.first.resumen
       article.latest-vlogs
         - (1..4).each do |i|
-          .vlog
-            .author= @vlogs[i].title
-            .resuemn= @vlogs[i].cintillo
+          - if @vlogs[i]
+            .vlog
+              .author= @vlogs[i].title
+              .resuemn= @vlogs[i].cintillo
         .clearfix
   .column
     h2.titulo-bloque Así lo dijo
