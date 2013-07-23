@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/hecbuma/crowdblog.git
-  revision: 4d29fb1fd55dedbf7b01a0f91a3209408b0a57b1
+  revision: f2e81f12965e6e37e6d8017c93806ac78d436a72
   specs:
     crowdblog (0.3.0)
       acts-as-taggable-on (~> 2.1.0)
