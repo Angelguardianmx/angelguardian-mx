@@ -68,8 +68,9 @@ section.section_b
       h2.titulo-bloque Mas recientes
       ul.related
         - @latest_news.each do |post|
-          li
-            = link_to "#{post.hour} | #{post.title}", main_app.post_path(*post.url_params)
+          - if post.id
+            li
+              = link_to "#{post.hour} | #{post.title}", main_app.post_path(*post.url_params)
 
     - unless @portada.resumen_on_top
       article.resumen
