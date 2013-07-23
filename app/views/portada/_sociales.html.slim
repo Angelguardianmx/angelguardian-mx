@@ -34,7 +34,8 @@ section.opinion
             - @opiniones.each_with_index do |post, i|
               .item class="#{i == 0 ? 'active': ''}"
                 = link_to main_app.post_path(*post.url_params) do
-                  = image_tag(post.image.url(:size_d), class: 'size-d img-circle' )
+                  - if post.image
+                    = image_tag(post.image.url(:size_d), class: 'size-d img-circle' )
                   h4= post.title
                   p.balazo= post.cintillo
                   p.resumen= post.resumen
