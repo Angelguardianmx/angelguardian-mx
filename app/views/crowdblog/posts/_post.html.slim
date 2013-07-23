@@ -9,7 +9,7 @@
           .author #{link_to post.author_name, main_app.posts_by_author_path(post.author.to_param)}
           .email #{post.author_email}
           .date #{post.formatted_published_date}
-      - if post.image
+      - if post.blank?
         = image_tag(post.image.size_a, class: 'size-a  pull-right')
 
 
