@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722054047) do
+ActiveRecord::Schema.define(:version => 20130724060606) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20130722054047) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "parent_id"
+    t.boolean  "header"
+    t.boolean  "footer"
   end
 
   create_table "crowdblog_category", :force => true do |t|
@@ -70,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20130722054047) do
     t.date     "publication"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.string   "soundcloud_frame"
+    t.text     "soundcloud_frame"
     t.boolean  "resumen_on_top"
     t.integer  "special_note_id"
     t.string   "state"
