@@ -25,3 +25,21 @@ $ ->
       $('ul.droppable').append(element)
       $('ul.droppable').append(hidden)
 
+  $('.delete-note').live 'click', (e) ->
+    e.preventDefault()
+    selector = $(@).data('type')
+    $("input[id^='#{selector}']").each (i, item) ->
+      if i == 0
+        if selector == 'portada_special_note'
+          console.log $(item).parents('.search-news').find('tr').last().remove()
+        else
+          console.log $(item).parents('.fieldset').siblings('.search-news').find('tr').last().remove()
+      item.value = ''
+
+    $("input[type^='radio' id^='#{selector}']").each (i, item) ->
+      console.log item
+
+
+
+
+

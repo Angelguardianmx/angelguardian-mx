@@ -126,7 +126,11 @@ h1
     .row
       .span12#especial-block
         fieldset.fieldset
-          legend Section: Noticia Special
+          legend
+            |
+              Section: Noticia Special
+            /- if @portada.special_note
+            /  = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_special_note'
         .search-news#especial
           .control-group
             = label_tag 'Busca mas noticias', nil,class: 'control-label'
@@ -152,7 +156,11 @@ h1
     .row
       .span12#dato-del-dia
         fieldset.fieldset
-          legend Nota del tiempo
+          legend
+            |
+              Nota del tiempo
+            - unless @weather_note.new_record? || @weather_note.title.blank?
+              = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_weather_note'
           = f.fields_for :weather_notes, @weather_note do |weather_note|
             .control-group
               .control
@@ -180,7 +188,11 @@ h1
     .row
       .span12#dato-del-dia
         fieldset.fieldset
-          legend Dato del dia
+          legend
+            |
+              Dato del dia
+            - unless @dod_note.new_record? || @dod_note.title.blank?
+              = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_dod_note'
           = f.fields_for :dod_notes, @dod_note do |dod_note|
             .control-group
               .control
@@ -209,7 +221,11 @@ h1
     .row
       .span12#dato-del-dia
         fieldset.fieldset
-          legend Nota del dia Policiaca
+          legend
+            |
+              Nota del dia Policiaca
+            - unless @police_note.new_record? || @police_note.title.blank?
+              = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_police_note'
           = f.fields_for :police_notes, @police_note do |police_note|
             .control-group
               .control
@@ -238,7 +254,11 @@ h1
     .row
       .span12#dato-del-dia
         fieldset.fieldset
-          legend Asi lo dijo
+          legend
+            |
+              Asi lo dijo
+            - unless @quote_note.new_record? || @quote_note.author.blank?
+              = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_quote_note'
           = f.fields_for :quote_notes, @quote_note do |quote_note|
             .control-group
               .control

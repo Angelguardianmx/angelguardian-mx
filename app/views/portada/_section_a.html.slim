@@ -51,23 +51,24 @@ section.section_a
         = raw @portada.soundcloud_frame
 
     - if @portada.special_note
-      article.special
-        .top
-          .header
-            h2= @portada.special_note.title
-            = image_tag('transparent.png', class: 'size-special lazy', "data-original" => @portada.special_note.image.size_especial)
-          .resumen
-            = link_to @portada.special_note.resumen, main_app.post_path(*@portada.special_note.url_params)
-        .linked
-          = image_tag('transparent.png', class: 'lazy', "data-original" => '/assets/portada/section-a-noticia-especia-b.jpg')
-          p
-            |
-              taxistas deben mostrar mapa con nuevas tarifas: transporte
-        ul.related
-          li
-            = link_to 'Suspenden el aument a la taria de taxis en manzanillo', '#'
+      - unless @portada.special_note.title.blank?
+        article.special
+          .top
+            .header
+              h2= @portada.special_note.title
+              = image_tag('transparent.png', class: 'size-special lazy', "data-original" => @portada.special_note.image.size_especial)
+            .resumen
+              = link_to @portada.special_note.resumen, main_app.post_path(*@portada.special_note.url_params)
+          .linked
+            = image_tag('transparent.png', class: 'lazy', "data-original" => '/assets/portada/section-a-noticia-especia-b.jpg')
+            p
+              |
+                taxistas deben mostrar mapa con nuevas tarifas: transporte
+          ul.related
+            li
+              = link_to 'Suspenden el aument a la taria de taxis en manzanillo', '#'
 
-        = link_to image_tag("transparent.png", class: 'lazy', "data-original" => '/assets/banners/banner_b.gif'), '#'
+          = link_to image_tag("transparent.png", class: 'lazy', "data-original" => '/assets/banners/banner_b.gif'), '#'
 
     - if @principal.posts[3]
       - post = @principal.posts[3]

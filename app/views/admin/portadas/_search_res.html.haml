@@ -1,30 +1,31 @@
-%tr.draggable{'data-p_id' => "#{post.id}"}
-  -if @related
-    %td= check_box_tag :related, post.id
-  - if radio
-    - selected_id = false
-    - if type == "especial"
-      - if @portada.special_note && !@portada.special_note.new_record?
-        - selected_id = post.id == @portada.special_note.id ? true : false
-      %td= radio_button_tag :special_note, post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_special_note_id"
-    - if type == "weather"
-      - if @portada.weather_notes.last && !@portada.weather_notes.last.new_record?
-        - selected_id = post.id == @portada.weather_notes.last.post_id ? true : false
-      %td= radio_button_tag 'weather_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_weather_note_post_id"
-    - if type == "dod"
-      - if @portada.dod_notes.last && !@portada.dod_notes.last.new_record?
-        - selected_id = post.id == @portada.dod_notes.last.post_id ? true : false
-      %td= radio_button_tag 'dod_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_dod_note_post_id"
-    - if type == "police-dod"
-      - if @portada.police_notes.last && !@portada.police_notes.last.new_record?
-        - selected_id = post.id == @portada.police_notes.last.post_id ? true : false
-      %td= radio_button_tag 'police_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_police_note_post_id"
-    - if type == "quote"
-      - if @portada.quote_notes.last && !@portada.quote_notes.last.new_record?
-        - selected_id = post.id == @portada.quote_notes.last.post_id ? true : false
-      %td= radio_button_tag 'quote_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_quote_note_post_id"
-  %td
-    - if post.category
-      = post.category.name
-  %td.title{ id: "post_n_#{post.id}"}= post.title
-  %td= post.published_at.to_s :long
+- unless post.published_at.nil?
+  %tr.draggable{'data-p_id' => "#{post.id}"}
+    -if @related
+      %td= check_box_tag :related, post.id
+    - if radio
+      - selected_id = false
+      - if type == "especial"
+        - if @portada.special_note && !@portada.special_note.new_record?
+          - selected_id = post.id == @portada.special_note.id ? true : false
+        %td= radio_button_tag :special_note, post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_special_note_id"
+      - if type == "weather"
+        - if @portada.weather_notes.last && !@portada.weather_notes.last.new_record?
+          - selected_id = post.id == @portada.weather_notes.last.post_id ? true : false
+        %td= radio_button_tag 'weather_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_weather_note_post_id"
+      - if type == "dod"
+        - if @portada.dod_notes.last && !@portada.dod_notes.last.new_record?
+          - selected_id = post.id == @portada.dod_notes.last.post_id ? true : false
+        %td= radio_button_tag 'dod_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_dod_note_post_id"
+      - if type == "police-dod"
+        - if @portada.police_notes.last && !@portada.police_notes.last.new_record?
+          - selected_id = post.id == @portada.police_notes.last.post_id ? true : false
+        %td= radio_button_tag 'police_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_police_note_post_id"
+      - if type == "quote"
+        - if @portada.quote_notes.last && !@portada.quote_notes.last.new_record?
+          - selected_id = post.id == @portada.quote_notes.last.post_id ? true : false
+        %td= radio_button_tag 'quote_note_post_id', post.id, selected_id, class: 'radio-post-select',"data-id" => "portada_quote_note_post_id"
+    %td
+      - if post.category
+        = post.category.name
+    %td.title{ id: "post_n_#{post.id}"}= post.title
+    %td= post.published_at.to_s :long
