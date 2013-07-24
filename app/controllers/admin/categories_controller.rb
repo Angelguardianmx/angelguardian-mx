@@ -20,8 +20,9 @@ class Admin::CategoriesController < Crowdblog::Admin::BaseController
 
   def update
     @category = Crowdblog::Category.find params[:id]
+    attributes = params[:value] ? {name: params[:value]} : params[:category]
 
-    if @category.update_attribute(:name, params[:value])
+    if @category.update_attributes attributes
       sts = :ok
     else
       sts = :bad_request

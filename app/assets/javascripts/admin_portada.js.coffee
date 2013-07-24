@@ -38,7 +38,33 @@ $ ->
 
     $("input[type^='radio' id^='#{selector}']").each (i, item) ->
       console.log item
+  $('.is_header').live 'click', (e) ->
+    id = $(@).data('id')
+    if $(@).is(':checked')
+      value = true
+    else
+      value = false
+    data = {category: {header: value}}
+    $.ajax
+      url: "/admin/categories/#{id}"
+      type: "PUT"
+      data: data
+      success: (data) ->
+        console.log "Load was performed."
 
+  $('.is_footer').live 'click', (e) ->
+    id = $(@).data('id')
+    if $(@).is(':checked')
+      value = true
+    else
+      value = false
+    data = {category: {footer: value}}
+    $.ajax
+      url: "/admin/categories/#{id}"
+      type: "PUT"
+      data: data
+      success: (data) ->
+        console.log "Load was performed."
 
 
 

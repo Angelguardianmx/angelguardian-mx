@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def load_tag_header
     @portada = Crowdblog::Portada.todays_cover
     @esnoticia = Crowdblog::Esnoticia.all
-    @top_level_categories = Crowdblog::Category.top_level
+    @top_level_categories = Crowdblog::Category.only_header
   end
 
   def after_sign_in_path_for(resource)

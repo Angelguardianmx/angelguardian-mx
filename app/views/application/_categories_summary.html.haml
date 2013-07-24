@@ -3,7 +3,7 @@
   %hr
   = link_to '', class: 'go-top' do
     %span.lectura-rapida ir al inicio
-  - Crowdblog::Category.all.each do |category|
+  - Crowdblog::Category.only_footer.all.each do |category|
     .box
       %h4= category.name
       %ul
