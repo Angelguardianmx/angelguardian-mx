@@ -8,22 +8,21 @@ section.policiacas
         .header
           = image_tag('transparent.png', class: 'size-h lazy', "data-original" => post.image.size_h)
   
-          h2= post.title
+          h2= link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
           ul.related
-            li
-              = link_to '12:31 pm | Aumentara 1 peso el transporte publico en autobuses', "#"
-            li
-              = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
-            li
-              = link_to '12:31 pm | En julio tarjeta de descuento FEC', '#'
+            - post.related.each do |related|
+              - if related.title.empty?
+                li
+                  = link_to "#{related.hour} | #{related.title}", main_app.post_path(*related.url_params)
+
           .clearfix
     - if @policiacas.posts[1]
       - post = @policiacas.posts[1]
       article.policiaca-b
         .header
           = image_tag('transparent.png', class: 'size-i right lazy', "data-original" => post.image.size_i)
-          h2= post.title
+          h2= link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
           .clearfix
     - if @policiacas.posts[2]
@@ -31,13 +30,13 @@ section.policiacas
       article.policiaca-c
         .header
           = image_tag('transparent.png', class: 'size-i lazy', "data-original" => post.image.size_i)
-          h2= post.title
+          h2= link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
           .clearfix
   
-  - if @portada.police_notes.any?
-    - if @portada.police_notes.last.post
-      .dato-del-dia.policiaca
-        = link_to main_app.post_path(*@portada.police_notes.last.post.url_params)
-          = raw @portada.police_notes.last.title
+- if @portada.police_notes.any?
+  - if @portada.police_notes.last.post
+    .dato-del-dia.policiaca
+      = link_to main_app.post_path(*@portada.police_notes.last.post.url_params)
+        = raw @portada.police_notes.last.title
 
