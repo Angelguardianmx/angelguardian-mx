@@ -164,6 +164,9 @@ h1
           = f.fields_for :weather_notes, @weather_note do |weather_note|
             .control-group
               .control
+                = weather_note.label :balazo
+                = weather_note.text_field :balazo
+              .control
                 = weather_note.label :title
                 = weather_note.text_field :title
                 = hidden_field_tag 'portada_weather_note_post_id', @weather_note.new_record? ? '': @weather_note.post_id , name: "portada[weather_notes_attributes][0][post_id]"
