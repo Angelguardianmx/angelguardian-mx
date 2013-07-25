@@ -5,7 +5,10 @@
     %span.lectura-rapida ir al inicio
   - Crowdblog::Category.only_footer.all.each do |category|
     .box
-      %h4= category.name
+      - unless category.name.blank?
+        %h4= link_to category.name, main_app.seccion_path(category.name)
+      - else
+        %h4= category.name
       %ul
         - category.posts.last_published(3).each do |post|
           %li.element= link_to post.title, main_app.post_path(*post.url_params)
