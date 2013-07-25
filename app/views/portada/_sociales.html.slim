@@ -14,6 +14,11 @@ section.opinion
               .author= @vlogs[i].title
               .resuemn= @vlogs[i].cintillo
         .clearfix
+      - unless @portada.plumas_on_top
+        article.resumen.plumas
+          h4= @portada.plumas_title
+          p= @portada.plumas_author
+          = raw @portada.plumas
   .column
     h2.titulo-bloque Así lo dijo
     - if @portada.quote_notes.any?

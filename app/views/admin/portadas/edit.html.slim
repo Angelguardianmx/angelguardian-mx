@@ -292,15 +292,32 @@ h1
     .row
       .span12#dato-del-dia
         fieldset.fieldset
-          legend Resumen, las alas del angel
+          legend Resumen
           .contro-group
             = f.label :resumen_on_top, class: 'checkbox' do
               = f.check_box :resumen_on_top
               |
                 Resumen al inicio?
-
           = f.text_area :soundcloud_frame, :class => "span12", rows: '3'
-
+    .row
+      .span12#dato-del-dia
+        fieldset.fieldset
+          legend las plumas del angel
+          .control-group
+            .control
+              = f.label :plumas_on_top, class: 'checkbox' do
+                = f.check_box :plumas_on_top
+                |
+                  Plumas al inicio?
+            .control
+              = f.label :plumas_title, 'Titulo y #'
+              = f.text_field :plumas_title
+            .control
+              = f.label :plumas_author, 'Autor'
+              = f.text_field :plumas_author
+            .control
+              = f.label :plumas
+              = f.text_area :plumas, :class => "span12", rows: '3'
 
 
     .form-actions

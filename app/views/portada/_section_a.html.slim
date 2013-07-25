@@ -49,6 +49,11 @@ section.section_a
       article.resumen
         h2.titulo-bloque Resumen
         = raw @portada.soundcloud_frame
+    - if @portada.plumas_on_top
+      article.resumen.plumas
+        h4= @portada.plumas_title
+        p= @portada.plumas_author
+        = raw @portada.plumas
 
     - if @portada.special_note
       - unless @portada.special_note.title.blank?
