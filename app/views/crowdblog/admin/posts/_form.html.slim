@@ -115,9 +115,11 @@
     fieldset.fieldset
       ul.droppable.well
         - @post.related.each_with_index do |related,k|
-          li
+          li id="r_#{related.id}"
+            = link_to  "/admin/posts/#{@post.id}/related/#{related.id}", class: 'pull-left show-tooltip', "data-toggle"=>"tooltip", title: "borrar definitivamente", remote: true, method: :delete do
+              i.icon-trash
             = "- #{related.title}"
-          = hidden_field_tag "post[related_attributes][#{k}][id]", related.id, class: 'related'
+            = hidden_field_tag "post[related_attributes][#{k}][id]", related.id, class: 'related'
 
 coffee:
   $ ->

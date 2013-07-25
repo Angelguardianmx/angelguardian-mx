@@ -23,7 +23,10 @@ Crowdblog::Application.routes.draw do
       get :clone_portada, :on => :collection
       get :transition, :on => :collection
     end
+
   end
+  match 'admin/posts/:id/related/:related_id', to: 'crowdblog/admin/posts#delete_related', via: :delete,
+      as: 'delete_related_post'
 
   namespace :crowdblog do
     resources :posts do

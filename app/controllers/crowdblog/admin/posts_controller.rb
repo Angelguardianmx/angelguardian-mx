@@ -17,5 +17,12 @@ Crowdblog::Admin::PostsController.class_eval do
     @posts = Post.query('',false, 5).results
   end
 
+  def delete_related
+    post = Post.find(params[:id])
+    @related_id = params[:related_id]
+    related = post.related.find @related_id
+    related.destroy
+  end
+
 
 end

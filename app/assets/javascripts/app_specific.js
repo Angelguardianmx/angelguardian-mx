@@ -1,9 +1,11 @@
 //= require redactor-rails
 //= require bootstrap-datepicker
+//= require bootstrap
 //= require jquery-scrolltofixed
 //= require admin_portada
 //
 $(document).ready(function(){
+  $('.show-tooltip').tooltip()
 
   $( ".draggable" ).draggable({
     connectToSortable: ".droppable",
