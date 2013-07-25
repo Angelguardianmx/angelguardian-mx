@@ -45,6 +45,21 @@ namespace :release do
     puts "#{green} ✓ Run db setup #{black}"
   end
 
+
+  desc "Solr Reindex"
+  task :solr_reindex do
+    run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} sunspot:reindex"
+
+    puts "#{green} ✓ Run db setup #{black}"
+  end
+
+  desc "recreate img"
+  task :img_recreate do
+    run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} img:recreate"
+
+    puts "#{green} ✓ Run db setup #{black}"
+  end
+
   desc "Assets precompile"
   task :precompile do
     run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} assets:precompile"
