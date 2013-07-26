@@ -29,12 +29,14 @@ html
          js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
          fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+
     .wrapper
       = render 'header'
       = yield
       = render 'categories_summary'
       = render 'soundcloud_resume'
-      = render 'footer'
+      .push-bottom
+    = render 'footer'
 
 
 
