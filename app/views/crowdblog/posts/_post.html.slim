@@ -18,7 +18,7 @@
     .tweet= render 'crowdblog/posts/twitter'
     .facebook= render 'crowdblog/posts/facebook', url: main_app.post_url(*post.url_params)
 
-  .body
+  .body class="#{post.related.any? ? '' : 'wide'}"
     .inner
       = post.html_body
   = link_to 'Seguir Leyendo', main_app.post_path(*post.url_params), class: 'lectura-rapida big'

@@ -200,7 +200,7 @@ h1
             .control-group
               .control
                 = dod_note.label :title
-                = dod_note.text_field :title
+                = dod_note.text_field :title, class: 'span12'
                 = hidden_field_tag 'portada_dod_note_post_id', @dod_note.new_record? ? '': @dod_note.post_id, name: "portada[dod_notes_attributes][0][post_id]"
         br
         .search-news#dod
@@ -233,7 +233,7 @@ h1
             .control-group
               .control
                 = police_note.label :title
-                = police_note.text_field :title
+                = police_note.text_field :title, class: 'span12'
                 = hidden_field_tag 'portada_police_note_post_id', @police_note.new_record? ? '': @police_note.post_id, name: "portada[police_notes_attributes][0][post_id]"
         br
         .search-news#police-dod
