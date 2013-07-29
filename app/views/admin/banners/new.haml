@@ -1,0 +1,36 @@
+%h1 Banner nuevo
+.new.well
+  = form_for @banner, url: main_app.admin_banners_path(),  html: {class: 'form-horizontal'} do |f|
+    .contrul-group
+      = f.label :space, 'Lugar', class: 'control-label'
+      .controls
+        = f.select :space, %w(a b c d e f g h i j k l m n o p q), { :include_blank => true }, {class: 'span1'}
+
+    .controls-group
+      = f.label :start_date, 'Fecha de publicacion', class: 'control-label'
+      .controls
+        .input-append
+          = f.text_field :start_date, class: 'datepicker span2'
+          %span.add-on
+            %i.icon-calendar
+    .controls-group
+      = f.label :end_date, 'Valido hasta?', class: 'control-label'
+      .controls
+        .input-append
+          = f.text_field :end_date, class: 'datepicker span2'
+          %span.add-on
+            %i.icon-calendar
+    .control-group
+      = f.label :image, 'Escoge una imagen', clas: 'control-label'
+      .controls
+        = f.file_field :image
+    .control-group
+      = f.label :html_code, 'Codigo html', class: 'control-label'
+      .controls
+        = f.text_area :html_code, class: 'span5', rows: 3
+    .control-group
+      = f.label :url, 'Url para el banner', class: 'control-label'
+      .controls
+        = f.text_field :url, class: 'span5', placeholder: 'http://www.oxxo.com'
+    .form-actions
+      = f.submit 'Guardar', class: 'btn btn-primary'

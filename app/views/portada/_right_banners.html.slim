@@ -1,3 +1,8 @@
 - ['c','d','f','g','h','j','k'].each do |key|
-  = image_tag('transparent.png', class: 'lazy', "data-original" => "/assets/banners/banner_#{key}.gif")
+  - unless @banners[key].nil?
+    - if @banners[key].html_code.blank?
+      = image_tag('transparent.png', class: 'lazy', "data-original" => @banners[key].image.url)
+    - else
+      div class="banner_#{key}"
+        = raw @banners[key]
 

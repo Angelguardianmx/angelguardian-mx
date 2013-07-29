@@ -69,7 +69,11 @@
                 %li= link_to raw("&gt #{post.title}"), main_app.post_path(*post.url_params)
 
 
-      = link_to image_tag('transparent.png', class: 'lazy', 'data-original' => '/assets/banners/banner_b.gif'), '#'
+      - unless @banners['b'].nil?
+        - if @banners['b'].html_code.blank?
+          = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['b'].image.url), @banners['b'].url, class: 'banner-b'
+        - else
+          .banner-b= raw @banners['b'].html_code
       .section_b
         - if @posts[5]
           %article.noticia-secundaria-a

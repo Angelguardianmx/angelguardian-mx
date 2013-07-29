@@ -35,3 +35,5 @@ _cset :env, :production
 # Ruby
 set :rvm_ruby_string,   '1.9.3-p194@angelguardian'
 set :rvm_type,          :user
+        require './config/boot'
+        require 'honeybadger/capistrano'

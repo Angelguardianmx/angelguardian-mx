@@ -1,5 +1,10 @@
 header
-  = link_to image_tag('banners/banner_a.gif'), main_app.root_path, class: 'banner_a'
+  - unless @banners['a'].nil?
+    - if @banners['a'].html_code.blank?
+      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['a'].image.url), @banners['a'].url, class: 'banner_a'
+    - else
+      .banner_a= raw @banners['a'].html_code
+
   .top class="#{@category ? 'inner-pages' : '' }"
     h1
       |

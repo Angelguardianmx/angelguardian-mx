@@ -1,5 +1,9 @@
 section.policiacas
-  .banner-m= image_tag('banners/banner_m.gif')
+  - unless @banners['m'].nil?
+    - if @banners['m'].html_code.blank?
+      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['m'].image.url), @banners['m'].url, class: 'banner-m'
+    - else
+      .banner-m= raw @banners['m'].html_code
   #content
     h2.titulo-bloque Policiacas 
     - if @policiacas.posts[0]

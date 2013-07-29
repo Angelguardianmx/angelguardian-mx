@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/hecbuma/crowdblog.git
-  revision: 15273d8fe90d4542c92f0bdcce830b2f612e8419
+  revision: 56af16e1ffc55c7b273b718e66e41a3749409fac
   specs:
     crowdblog (0.3.0)
       acts-as-taggable-on (~> 2.1.0)
@@ -155,7 +155,7 @@ GEM
     honeybadger (1.7.0)
       json
     i18n (0.6.4)
-    jbuilder (1.4.2)
+    jbuilder (1.5.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     journey (1.0.4)

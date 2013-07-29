@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :load_tag_header
+  before_filter :load_elements
 
-  def load_tag_header
+  def load_elements
     @portada = Crowdblog::Portada.todays_cover
     @esnoticia = Crowdblog::Esnoticia.all
     @top_level_categories = Crowdblog::Category.only_header
+    @banners = Crowdblog::Banner.for_cover
   end
 
   def after_sign_in_path_for(resource)

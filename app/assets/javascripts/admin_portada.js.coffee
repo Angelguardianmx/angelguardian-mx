@@ -67,5 +67,10 @@ $ ->
         console.log "Load was performed."
 
 
+  $(".datepicker").datepicker(format: "dd/mm/yyyy").on "changeDate", (ev) ->
+    $(ev.target).attr "value", ev.date
+
+
+
 
 

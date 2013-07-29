@@ -15,6 +15,7 @@ Crowdblog::Application.routes.draw do
     resources :authors, :only => [:index, :update]
     resources :categories
     resources :esnoticia
+    resources :banners
     resources :portadas do
       member do
         delete '/:section_id/:post_id/', to: 'portadas#delete_post', as: 'delete_post'

@@ -69,7 +69,11 @@
 
     .column
       .es-noticia
-        = link_to image_tag('transparent.png', class: 'lazy', 'data-original' => '/assets/banners/banner_b_tags.png'), '#'
+        - unless @banners['b'].nil?
+          - if @banners['b'].html_code.blank?
+            = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['b'].image.url), @banners['b'].url, class: 'banner-b'
+          - else
+            .banner-b= raw @banners['b'].html_code
       %article.resumen
         %h2.titulo-bloque Resumen
         = raw @portada.soundcloud_frame

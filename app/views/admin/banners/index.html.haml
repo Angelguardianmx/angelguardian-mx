@@ -1,0 +1,42 @@
+%h1 Banners
+
+.row
+  .span2.new-link
+    = link_to 'New Banner', main_app.new_admin_banner_path(), :class => "btn btn-primary btn-small"
+  .span4.offset6
+    %ul.nav.nav-pills
+      %li{ class: "#{params[:scope] != 'today' ? 'active' : ''}"}
+        = link_to 'All', main_app.admin_banners_path()
+      %li{ class: "#{params[:scope] == 'today' ? 'active' : ''}"}
+        = link_to 'banners de hoy', main_app.admin_banners_path(scope: 'today')
+
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th HTML
+      %th URL
+      %th Posicion
+      %th Fecha de publicacion
+      %th Valido hasta?
+      %th
+  %tbody
+    - @banners.each do |banner|
+      %tr
+        %td= banner.id
+        %td
+          - if banner.image
+            = image_tag banner.image.thumb
+        %td= raw banner.html_code
+        %td
+          - unless banner.url.blank?
+            = link_to banner.url, banner.url, target: '_blank'
+        %td= banner.space
+        %td= l banner.start_date.in_time_zone, format: :special
+        %td= l banner.end_date.in_time_zone, format: :special
+        %td
+          = link_to 'Borrar', "/admin/banners/#{banner.id}", method: 'delete', confirm: 'Estas seguro que quieres borrar este banner?'
+
+

@@ -34,7 +34,7 @@ section.section_a
       - post = @principal.posts[2]
       article.noticia-c
         .header
-          p.cintillo== post.cintillo
+          p.cintillo= post.cintillo
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date 
@@ -73,7 +73,12 @@ section.section_a
             li
               = link_to 'Suspenden el aument a la taria de taxis en manzanillo', '#'
 
-          = link_to image_tag("transparent.png", class: 'lazy', "data-original" => '/assets/banners/banner_b.gif'), '#'
+          - unless @banners['b'].nil?
+            - if @banners['b'].html_code.blank?
+              = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['b'].image.url), @banners['b'].url, class: 'banner_b'
+            - else
+              .banner_b= raw @banners['b'].html_code
+
 
     - if @principal.posts[3]
       - post = @principal.posts[3]
