@@ -21,6 +21,14 @@ h1
             span.add-on
               i.icon-calendar
     .row
+      .span12
+        .controls-group
+          = f.label :jumbotron, class: 'control-label'
+          .controls
+            = f.text_area :jumbotron, class: 'span10', rows: 3
+          br
+          br
+    .row
       .span6
         .search-news#todas
           .control-group

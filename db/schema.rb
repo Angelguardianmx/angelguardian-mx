@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726051222) do
+ActiveRecord::Schema.define(:version => 20130729064410) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20130726051222) do
     t.string   "plumas_title"
     t.text     "plumas"
     t.boolean  "plumas_on_top"
+    t.text     "jumbotron"
   end
 
   create_table "crowdblog_posts", :force => true do |t|
