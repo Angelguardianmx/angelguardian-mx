@@ -19,11 +19,17 @@ $ ->
     if $(@).is(':checked')
       id = $(@).val()
       txt = $("#post_n_#{id}").text()
-      element = "<li>- #{txt}</li>"
+      element = "<li class='li_#{id}'>- #{txt} <a href='#' class='post-delete-releated pull-right' data-id='#{id}'><i class=' icon-trash'></i></a></li>"
       index = $('.related').length
       hidden = "<input type='hidden' class='related' id='h_#{id}' name='post[related_attributes][#{index}][id]' value='#{id}' />"
       $('ul.droppable').append(element)
       $('ul.droppable').append(hidden)
+
+  $('.post-delete-releated').live 'click', (e) ->
+    e.preventDefault()
+    id = $(this).data('id')
+    $("#h_#{id}").remove()
+    $(".li_#{id}").remove()
 
   $('.delete-note').live 'click', (e) ->
     e.preventDefault()
