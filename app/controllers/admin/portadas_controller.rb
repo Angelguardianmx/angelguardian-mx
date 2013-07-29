@@ -64,6 +64,7 @@ class Admin::PortadasController < Crowdblog::Admin::BaseController
     section = portada.home_sections.find params[:section_id]
     section_post = section.section_posts.where post_id: params[:post_id]
     unless section_post.empty?
+      @section_id = section_post.first.id
       @id = section_post.first.post.id
       section_post.first.destroy
     end

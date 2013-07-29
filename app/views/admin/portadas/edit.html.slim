@@ -45,17 +45,21 @@ h1
           = f.fields_for :home_sections, @principal do |principal|
             ul.droppable.well
               - count = 5
+              - down = nil
               - @principal.posts.each_with_index do |post, i|
                 li.readey data-index=("#{i}") data-position=("#{i}") data-section=("0") data-id=("#{post.id}")
                   span= post.title
                   = link_to main_app.delete_post_admin_portada_path(@portada.id, @principal.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
                     i.icon-trash
                 - count -= 1
+                - down = true
               
               - count.times do |index|
-                - pos_index = index + 1
-                li.placeholder data-index=("#{pos_index}") data-position=("#{pos_index}") data-section=("0")
-                  span Noticia #{pos_index + 1}
+                - n = index
+                - n_index = down.nil? ? index : ((5 - count) + index )
+                - show_index = down.nil? ? (n + 1) : ((5 - count) + n +1 )
+                li.placeholder data-index=("#{n_index}") data-position=("#{n_index}") data-section=("0")
+                  span Noticia #{show_index}
             .section-posts
               = principal.fields_for :section_posts do |sp|
                 .hidden
@@ -65,18 +69,21 @@ h1
           = f.fields_for :home_sections, @secundaria do |secundaria|
             ul.droppable.well
               - count = 5
+              - down = nil
               - @secundaria.posts.each_with_index do |post, i|
                 li.readey data-index=("#{i}") data-position=("#{i}") data-section=("1") data-id=("#{post.id}")
                   span= post.title
                   = link_to main_app.delete_post_admin_portada_path(@portada.id, @secundaria.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
                     i.icon-trash
                 - count -= 1
+                - down = true
 
               - count.times do |index|
-                - index = index + 1
-                - pos_index = index + 1
-                li.placeholder data-index=("#{5 - pos_index}") data-position=("#{pos_index}") data-section=("1")
-                  span Noticia #{pos_index + 1}
+                - n = index
+                - n_index = down.nil? ? index : ((5 - count) + index )
+                - show_index = down.nil? ? (n + 1) : ((5 - count) + n +1 )
+                li.placeholder data-index=("#{n_index}") data-position=("#{n_index}") data-section=("1")
+                  span Noticia #{show_index}
             .section-posts
               = secundaria.fields_for :section_posts do |sp_2|
                 .hidden
@@ -108,17 +115,21 @@ h1
           = f.fields_for :home_sections, @policiacas do |policiacas|
             ul.droppable.well
               - count = 3
+              - down = nil
               - @policiacas.posts.each_with_index do |post, i|
                 li.readey data-index=("#{i}") data-position=("#{i}") data-section=("2") data-id=("#{post.id}")
                   span= post.title
                   = link_to main_app.delete_post_admin_portada_path(@portada.id, @policiacas.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
                     i.icon-trash
                 - count -= 1
+                - down = true
+
               - count.times do |index|
-                - index = index + 1
-                - pos_index = index + 1
-                li.placeholder data-index=("#{pos_index}") data-position=("#{pos_index }") data-section=("2")
-                  span Noticia #{pos_index }
+                - n = index
+                - n_index = down.nil? ? index : ((5 - count) + index )
+                - show_index = down.nil? ? (n + 1) : ((5 - count) + n +1 )
+                li.placeholder data-index=("#{n_index}") data-position=("#{n_index }") data-section=("2")
+                  span Noticia #{show_index }
             .section-posts
               = policiacas.fields_for :section_posts do |sp_2|
                 .hidden
