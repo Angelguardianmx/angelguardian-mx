@@ -3,12 +3,31 @@
 .content.portada.pull-left
   = render 'portada/section_a'
   .clearfix
-  = link_to image_tag('banners/banner_e.gif'), '#', class: 'banners'
+  - unless @banners['e'].nil?
+    - if @banners['e'].html_code.blank?
+      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['e'].image.url), @banners['e'].url, class: 'banner-e'
+    - else
+      .banner-e= raw @banners['e'].html_code
   = render 'portada/dato_del_dia'
   = render 'portada/section_b'
-  = link_to image_tag('banners/banner_i.gif'), '#', class: 'banners'
+  - unless @banners['i'].nil?
+    - if @banners['i'].html_code.blank?
+      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['i'].image.url), @banners['i'].url, class: 'banner-i'
+    - else
+      .banners= raw @banners['i'].html_code
   = render 'portada/sociales'
-  = link_to image_tag('banners/banner_l.gif'), '#', class: 'banners'
+  - unless @banners['l'].nil?
+    - if @banners['l'].html_code.blank?
+      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['l'].image.url), @banners['l'].url, class: 'banner-l'
+    - else
+      .banners= raw @banners['l'].html_code
   = render 'portada/policiacas'
 
 = render 'portada/dod-policiaca'
+
+- content_for :meta do
+  %meta{property:'og:title',content:'Angelguardian mx'}
+  %meta{property:'og:url', content:'http://www.angelguardian.mx'}
+  %meta{property:'og:image', content:'http://angelguardian.mx/beta/wp-content/uploads/2012/03/logo3.png'}
+  %meta{property:'og:description', content:'Angelguardian Mx'}
+  %meta{property:'og:type', content:'website'}

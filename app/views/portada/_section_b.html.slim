@@ -13,6 +13,7 @@ section.section_b
   
           p.date=  post.date_and_hour
           = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: post.id), class: 'lectura-rapida', remote: true
+          .clearfix
 
       - if post.related.any?
         ul.related
@@ -27,7 +28,8 @@ section.section_b
           = image_tag('transparent.png', class: 'size-f lazy', "data-original" => post.image.size_f)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
-          p.date= post.date_and_hour  
+          p.date= post.date_and_hour
+          .clearfix
     - if  @secundaria.posts[2]
       - post = @secundaria.posts[2]
       article.noticia-secundaria-c
@@ -37,6 +39,7 @@ section.section_b
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
+          .clearfix
     - if @secundaria.posts[3]
       - post =  @secundaria.posts[3]     
       article.noticia-secundaria-d
@@ -45,6 +48,7 @@ section.section_b
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
+          .clearfix
     - if @secundaria.posts[4]
       - post =  @secundaria.posts[4]
       article.noticia-secundaria-f
@@ -52,10 +56,11 @@ section.section_b
           - if post.tags.any?
             h2.titulo-tag= post.tags.first.name
           p.cintillo= post.cintillo
-          = image_tag('transparent.png', class: 'size-d lazy', "data-original" => @secundaria.posts[2].image.size_d)
+          = image_tag('transparent.png', class: 'size-d lazy', "data-original" => @secundaria.posts[4].image.size_d)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
           p.date= post.date_and_hour
+          .clearfix
 
 
   .column
@@ -70,9 +75,8 @@ section.section_b
       h2.titulo-bloque Mas recientes
       ul.related
         - @latest_news.each do |post|
-          - if post.title.empty?
-            li
-              = link_to "#{post.hour} | #{post.title}", main_app.post_path(*post.url_params)
+          - unless post.title.empty?
+            li= link_to "#{post.hour} | #{post.title}", main_app.post_path(*post.url_params)
 
     - unless @portada.resumen_on_top
       article.resumen
