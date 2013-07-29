@@ -31,7 +31,8 @@
         %article.noticia-b
           .header
             %p.cintillo= post.cintillo
-            = image_tag(post.image.size_b, class: 'size-b')
+            - unless post.image.blank?
+              = image_tag(post.image.size_b, class: 'size-b')
             %h2
               = link_to post.title, main_app.post_path(*post.url_params)
             %p.date= post.date_and_hour
@@ -41,7 +42,8 @@
         %article.noticia-b
           .header
             %p.cintillo= post.cintillo
-            = image_tag('transparent.png', class: 'size-b lazy', 'data-original' => post.image.size_b)
+            - unless post.image.blank?
+              = image_tag('transparent.png', class: 'size-b lazy', 'data-original' => post.image.size_b)
             %h2
               = link_to post.title, main_app.post_path(*post.url_params)
             %p.date= post.date_and_hour
@@ -50,7 +52,8 @@
         %article.noticia-b
           .header
             %p.cintillo= post.cintillo
-            = image_tag('transparent.png', class: 'size-b lazy', 'data-original' => post.image.size_b)
+            - unless post.image.blank?
+              = image_tag('transparent.png', class: 'size-b lazy', 'data-original' => post.image.size_b)
             %h2
               = link_to post.title, main_app.post_path(*post.url_params)
             %p.date= post.date_and_hour
