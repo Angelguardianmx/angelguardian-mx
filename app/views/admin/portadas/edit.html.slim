@@ -51,14 +51,20 @@ h1
         fieldset.fieldset
           legend Seccion: Principal
           = f.fields_for :home_sections, @principal do |principal|
-            ul.droppable.well
+            ul#sortable.droppable.well
               - count = 5
               - down = nil
               - @principal.posts.each_with_index do |post, i|
-                li.readey data-index=("#{i}") data-position=("#{i}") data-section=("0") data-id=("#{post.id}")
-                  span= post.title
-                  = link_to main_app.delete_post_admin_portada_path(@portada.id, @principal.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
+                li.ready data-index=("#{i}") data-position=("#{i}") data-section=("0") data-id=("#{post.id}") data-create='true'
+                  = link_to main_app.delete_post_admin_portada_path(@portada.id, @principal.id, post.id), method: 'delete', remote: true,  class: 'pull-left' do
                     i.icon-trash
+                  span= post.title
+                  .move.pull-right
+                    = link_to '#', class: 'move-up' do
+                      i.icon-chevron-up
+                    = link_to '#', class: 'move-down' do
+                      i.icon-chevron-down
+                  .clearfix
                 - count -= 1
                 - down = true
               
@@ -68,6 +74,12 @@ h1
                 - show_index = down.nil? ? (n + 1) : ((5 - count) + n +1 )
                 li.placeholder data-index=("#{n_index}") data-position=("#{n_index}") data-section=("0")
                   span Noticia #{show_index}
+                  .move.pull-right
+                    = link_to '#', class: 'move-up' do
+                      i.icon-chevron-up
+                    = link_to '#', class: 'move-down' do
+                      i.icon-chevron-down
+                  .clearfix
             .section-posts
               = principal.fields_for :section_posts do |sp|
                 .hidden
@@ -79,10 +91,16 @@ h1
               - count = 5
               - down = nil
               - @secundaria.posts.each_with_index do |post, i|
-                li.readey data-index=("#{i}") data-position=("#{i}") data-section=("1") data-id=("#{post.id}")
-                  span= post.title
-                  = link_to main_app.delete_post_admin_portada_path(@portada.id, @secundaria.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
+                li.ready data-index=("#{i}") data-position=("#{i}") data-section=("1") data-id=("#{post.id}") data-create='true'
+                  = link_to main_app.delete_post_admin_portada_path(@portada.id, @secundaria.id, post.id), method: 'delete', remote: true, class: 'pull-left' do
                     i.icon-trash
+                  span= post.title
+                  .move.pull-right
+                    = link_to '#', class: 'move-up' do
+                      i.icon-chevron-up
+                    = link_to '#', class: 'move-down' do
+                      i.icon-chevron-down
+                  .clearfix
                 - count -= 1
                 - down = true
 
@@ -92,6 +110,12 @@ h1
                 - show_index = down.nil? ? (n + 1) : ((5 - count) + n +1 )
                 li.placeholder data-index=("#{n_index}") data-position=("#{n_index}") data-section=("1")
                   span Noticia #{show_index}
+                  .move.pull-right
+                    = link_to '#', class: 'move-up' do
+                      i.icon-chevron-up
+                    = link_to '#', class: 'move-down' do
+                      i.icon-chevron-down
+                  .clearfix
             .section-posts
               = secundaria.fields_for :section_posts do |sp_2|
                 .hidden
@@ -125,10 +149,16 @@ h1
               - count = 3
               - down = nil
               - @policiacas.posts.each_with_index do |post, i|
-                li.readey data-index=("#{i}") data-position=("#{i}") data-section=("2") data-id=("#{post.id}")
-                  span= post.title
-                  = link_to main_app.delete_post_admin_portada_path(@portada.id, @policiacas.id, post.id), method: 'delete', remote: true,  class: 'pull-right' do
+                li.ready data-index=("#{i}") data-position=("#{i}") data-section=("2") data-id=("#{post.id}") data-create='true'
+                  = link_to main_app.delete_post_admin_portada_path(@portada.id, @policiacas.id, post.id), method: 'delete', remote: true,  class: 'pull-left' do
                     i.icon-trash
+                  span= post.title
+                  .move.pull-right
+                    = link_to '#', class: 'move-up' do
+                      i.icon-chevron-up
+                    = link_to '#', class: 'move-down' do
+                      i.icon-chevron-down
+                  .clearfix
                 - count -= 1
                 - down = true
 
@@ -138,6 +168,12 @@ h1
                 - show_index = down.nil? ? (n + 1) : ((5 - count) + n +1 )
                 li.placeholder data-index=("#{n_index}") data-position=("#{n_index }") data-section=("2")
                   span Noticia #{show_index }
+                  .move.pull-right
+                    = link_to '#', class: 'move-up' do
+                      i.icon-chevron-up
+                    = link_to '#', class: 'move-down' do
+                      i.icon-chevron-down
+                  .clearfix
             .section-posts
               = policiacas.fields_for :section_posts do |sp_2|
                 .hidden

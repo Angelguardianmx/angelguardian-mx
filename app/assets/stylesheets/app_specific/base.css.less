@@ -17,13 +17,17 @@ img#filepick {
 .droppable{
   min-height: 270px;
   li {
+    .move {display: block;}
     &.placeholder {
       border: 2px dashed lightgray;
       -webkit-border-radius: 6px;
       -moz-border-radius: 6px;
       border-radius: 6px;
       color: lightgray;
+      span { float: left;}
+      .move {display: none;}
     }
+
     list-style: none;
     padding: 10px;
     margin-bottom: 15px;
