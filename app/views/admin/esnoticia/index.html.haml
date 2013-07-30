@@ -22,7 +22,8 @@
   - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
     %tr
       %td
-      %td= tag.name
+      %td
+        = link_to tag.name, '#',  class: "editable", 'data-pk'=>"#{tag.id}", 'data-title'=>"Edit tag", 'data-type'=>"text", 'data-url'=>"/admin/esnoticia/#{tag.id}"
       %td= link_to 'Agregar', main_app.admin_esnoticia_path(tag_id: tag.id), {remote: true, method: :post}
 
 

@@ -14,6 +14,19 @@ class Admin::EsnoticiaController < Crowdblog::Admin::BaseController
     end
   end
 
+  def update
+    @tag = ActsAsTaggableOn::Tag.find params[:id]
+    if @tag.update_attribute(:name, params[:value])
+      sts = :ok
+    else
+      sts = :bad_request
+    end
+    respond_to do |format|
+      format.js {render nothing: true, status: sts}
+      format.html
+    end
+  end
+
   def destroy
     @noticia = Crowdblog::Esnoticia.find params[:id]
     @noticia.destroy
