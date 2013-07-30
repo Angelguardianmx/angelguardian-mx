@@ -27,7 +27,7 @@
       %tr
         %td= banner.id
         %td
-          - if banner.image
+          - unless banner.image.blank?
             = image_tag banner.image.thumb
         %td= raw banner.html_code
         %td
