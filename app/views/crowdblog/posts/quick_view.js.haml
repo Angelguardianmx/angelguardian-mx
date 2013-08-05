@@ -1,2 +1,2 @@
-$('#modal-post .modal-body').html("#{escape_javascript(render :partial => 'crowdblog/posts/post', :object => @post, :locals => { index_view: false })}")
+$('#modal-post .modal-body').html("#{escape_javascript(render :partial => 'crowdblog/posts/post_modal', :object => @post, :locals => { index_view: false })}")
 $('#modal-post').modal('show')

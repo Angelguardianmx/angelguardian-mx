@@ -1,0 +1,33 @@
+.post
+  .pull-left.modal-container
+    .header
+      .row
+        .post-info.pull-left
+          .title
+            h1
+              = link_to @post.title, main_app.post_path(*@post.url_params)
+          .author-info
+            .author #{link_to @post.author_name, main_app.posts_by_author_path(@post.author.to_param)}
+            .email #{@post.author_email}
+            .date #{@post.formatted_published_date}
+
+        - unless @post.image.blank?
+          = image_tag(@post.image.size_j, class: 'size-j  pull-right')
+
+
+    .social
+      .tweet= render 'crowdblog/posts/twitter'
+      .facebook= render 'crowdblog/posts/facebook', url: main_app.post_url(*@post.url_params)
+
+    .body class="modal-body pull-right"
+      .inner
+        = @post.html_body
+    = link_to 'Seguir Leyendo', main_app.post_path(*@post.url_params), class: 'lectura-rapida big'
+  .pull-rigth.banner_o
+    - unless @banners['o'].nil?
+      - if @banners['o'].html_code.blank?
+        = link_to image_tag( @banners['o'].image.url), @banners['o'].url, class: 'banner_a'
+      - else
+        = raw @banners['o'].html_code
+
+

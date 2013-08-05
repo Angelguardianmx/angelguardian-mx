@@ -13,6 +13,9 @@
   .post {
     width: 750px;
     margin-bottom: 50px;
+    .modal-container{
+      width: 500px;
+    }
     .header {
       margin-bottom: 10px;
       h1 {
@@ -122,6 +125,9 @@
         width: 650px;
         border:  none;
       }
+      &.modal-body {
+        width: 400px;
+      }
     }
 
     .title {
@@ -167,17 +173,37 @@
   }
 }
 #modal-post {
-  width: 820px;
-  left: 38%;
+  width: 800px;
+  left: 43%;
+  .post {
+    padding: 5px;
+    .header {
+      margin-bottom: 0;
+      .post-info{
+        margin-right: 0px;
+        width: 254px;
+        margin-top: -13px;
+      }
+    }
+    .social {
+      padding: 0;
+    }
+  }
   .modal-body {
     max-height: 500px;
     .body {
-      width: 650px;
+      width: 400px;
       border: none;
       height: 160px;
       text-align: justify;
       overflow: hidden;
       text-overflow: ellipsis;
+      float: right;
+      margin-right: 0;
+      padding-right: 0;
+      .inner {
+        padding: 0;
+      }
     }
     .lectura-rapida {
       display: block;
@@ -207,4 +233,7 @@
     left: 114px;
     position: relative;
   }
+}
+.banner_o {
+  width: 340px;
 }
