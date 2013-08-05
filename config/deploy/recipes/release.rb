@@ -61,7 +61,7 @@ namespace :release do
   end
 
   desc "recreate shor urls"
-  task :shor_urls do
+  task :short_urls do
     run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} post:short_urls"
 
     puts "#{green} ✓ Run db setup #{black}"

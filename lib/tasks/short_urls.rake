@@ -1,8 +1,8 @@
 namespace :post do
-  desc 'generate shor urls'
-  task :shor_urls => :environment do
+  desc 'generate short urls'
+  task :short_urls => :environment do
     Crowdblog::Post.all.each do |post|
-      unless post.published_at.blank?
+      unless post.published_at.nil? || post.id.nil?
         post.generate_short_url
         post.save!
       end
