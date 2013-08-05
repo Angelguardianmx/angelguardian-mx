@@ -71,7 +71,8 @@ Crowdblog::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.cache_store = :memory_store
 
-  config.action_mailer.default_url_options = { :host => 'blog.crowdint.com' }
+  config.action_mailer.default_url_options = { :host => 'angelguardian.mx' }
+  Rails.application.routes.default_url_options[:host] = 'angelguardian.mx'
 
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.sendgrid.net',

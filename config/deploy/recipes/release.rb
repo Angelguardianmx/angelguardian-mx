@@ -60,6 +60,14 @@ namespace :release do
     puts "#{green} ✓ Run db setup #{black}"
   end
 
+  desc "recreate shor urls"
+  task :shor_urls do
+    run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} post:short_urls"
+
+    puts "#{green} ✓ Run db setup #{black}"
+  end
+
+
   desc "Assets precompile"
   task :precompile do
     run "cd #{deploy_to} && #{rake} RAILS_ENV=#{env} assets:precompile"

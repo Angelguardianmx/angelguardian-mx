@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730045635) do
+ActiveRecord::Schema.define(:version => 20130805013428) do
 
   create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20130730045635) do
     t.boolean  "picture_only"
     t.boolean  "vlog"
     t.boolean  "opinion"
+    t.string   "short_url"
   end
 
   create_table "crowdblog_quote_notes", :force => true do |t|
