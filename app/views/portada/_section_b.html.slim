@@ -1,7 +1,7 @@
 section.section_b
   .column
     - if  @secundaria.posts[0]
-      - post =  @secundaria.posts[0] 
+      - post =  @secundaria.posts[0]
       article.noticia-secundaria-a
         .header
           - if post.tags.any?
@@ -10,7 +10,7 @@ section.section_b
           = image_tag('transparent.png', class: 'size-d lazy', "data-original" => post.image.size_d)
           h2
             = link_to post.title, main_app.post_path(*post.url_params)
-  
+
           p.date=  post.date_and_hour
           = link_to 'lectura rapida', main_app.quick_view_crowdblog_posts_path(id: post.id), class: 'lectura-rapida', remote: true
           .clearfix
@@ -41,7 +41,7 @@ section.section_b
           p.date= post.date_and_hour
           .clearfix
     - if @secundaria.posts[3]
-      - post =  @secundaria.posts[3]     
+      - post =  @secundaria.posts[3]
       article.noticia-secundaria-d
         .header
           p.cintillo= post.cintillo
@@ -75,7 +75,7 @@ section.section_b
       h2.titulo-bloque Mas recientes
       ul.related
         - @latest_news.each do |post|
-          - unless post.title.empty?
+          - unless post.title.nil?
             li= link_to "#{post.hour} | #{post.title}", main_app.post_path(*post.url_params)
 
     - unless @portada.resumen_on_top
