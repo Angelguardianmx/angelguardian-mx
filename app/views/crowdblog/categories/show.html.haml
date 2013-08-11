@@ -100,5 +100,9 @@
                 = link_to @posts[7].title, main_app.post_path(*@posts[7].url_params)
               %p.date= @posts[7].date_and_hour
 
-= link_to image_tag('transparent.png', class: 'lazy', 'data-original' => '/assets/banners/banner_a.gif'), '#'
+- unless @banners['p'].nil?
+  - if @banners['p'].html_code.blank?
+    = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['p'].image.url), @banners['p'].url, class: 'banner-p'
+  - else
+    .banner-b= raw @banners['p'].html_code
 
