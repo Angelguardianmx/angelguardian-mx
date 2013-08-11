@@ -4,5 +4,5 @@
       = image_tag('transparent.png', class: 'lazy', "data-original" => @banners[key].image.url)
     - else
       div class="banner_#{key}"
-        = raw @banners[key]
+        = raw @banners[key].html_code
 
