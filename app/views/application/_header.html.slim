@@ -2,12 +2,7 @@ header
   - inner = @category || !params[:page].blank? ? 'inner-pages' : ''
   .top class="#{inner}"
     .wrapper
-      h1
-        |
-         Ángel
-        i
-          |
-            guardián.mx
+      h1= image_tag 'logo_agmx.svg'
       - if @category
         h3= @category.name
       - if params[:page]
@@ -19,7 +14,7 @@ header
           = link_to 'angelguardian twt', 'http://www.twitter.com/angelguardianmx', class: 'twt', target: '_blank'
           #twt-count.count
         .search-field
-          = image_tag('header/search-icon.gif', class: 'search-label')
+          = image_tag('header/search-icon.svg', class: 'search-label')
           = text_field_tag 'search'
   ul.nav
     li.elements
