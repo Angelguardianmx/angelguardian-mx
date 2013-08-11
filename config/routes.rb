@@ -44,6 +44,7 @@ Crowdblog::Application.routes.draw do
 
   match '/seccion/:name', to: 'crowdblog/categories#show', as: 'seccion'
   match '/esnoticia/:name', to: 'crowdblog/esnoticia#show', as: 'esnoticia'
+  match '/search', to: 'crowdblog/searches#show', as: 'searches'
 
   match '/archive', to: 'archive#show', as: 'archive'
 

@@ -14,3 +14,8 @@ $ ->
   $.getJSON "https://graph.facebook.com/angelguardianmx", (data) ->
     $('#fb-count').text data.likes
 
+  $('#search').keypress (e) ->
+    if e.which is 13
+      query = $(@).val()
+      if query.length > 0
+        $.get "/search/#{query}"

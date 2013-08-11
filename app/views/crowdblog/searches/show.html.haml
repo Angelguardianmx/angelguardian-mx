@@ -1,0 +1,28 @@
+.banners-right.pull-right
+  = render 'portada/right_banners_categories'
+
+.content.portada.esnoticia.pull-left
+  %h1= @query
+  %section.section_a
+    .column
+      - @posts.each do |post|
+        %article.noticia-b
+          .header
+            %p.cintillo= post.cintillo
+            - unless post.image.blank?
+              = image_tag('transparent.png', class: 'size-b lazy', 'data-original' => post.image.size_b)
+            %h2
+              = link_to post.title, main_app.post_path(*post.url_params)
+            %p.date= post.date_and_hour
+
+
+    .column
+      .es-noticia
+        - unless @banners['b'].nil?
+          - if @banners['b'].html_code.blank?
+            = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['b'].image.url), @banners['b'].url, class: 'banner-b'
+          - else
+            .banner-b= raw @banners['b'].html_code
+      %article.resumen
+        %h2.titulo-bloque Resumen
+        = raw @portada.soundcloud_frame

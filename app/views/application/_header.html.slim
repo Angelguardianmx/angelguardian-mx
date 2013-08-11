@@ -6,7 +6,7 @@ header
       - if @category
         h3= @category.name
       - if params[:page]
-        h3= params[:page].humanize
+        h3= t params[:page]
       .misc-top class="#{@category ? 'inner-pages' : '' }"
         .social-counts
           = link_to 'angelguardian fb', 'https://www.facebook.com/angelguardianmx', class: 'fb', target: '_blank'
@@ -15,7 +15,8 @@ header
           #twt-count.count
         .search-field
           = image_tag('header/search-icon.svg', class: 'search-label')
-          = text_field_tag 'search'
+          = form_tag("/search", method: "get")
+            = text_field_tag 'query'
   ul.nav
     li.elements
       = link_to 'inicio', '/'
