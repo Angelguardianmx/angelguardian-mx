@@ -3,8 +3,8 @@ footer.main_footer
     .span7
       ul.footer-links
         li= image_tag('/assets/radiolevy.jpg', width: '100', class: '')
-        li= link_to 'Quíenes somos','#'
-        li= link_to 'Ventas','#'
+        li= link_to 'Quíenes somos', main_app.statics_path('quienes_somos')
+        li= link_to 'Ventas', main_app.statics_path('ventas')
     .span5
       = image_tag("/assets/estaciones.jpg", class: '')
 

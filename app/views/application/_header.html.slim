@@ -1,5 +1,6 @@
 header
-  .top class="#{@category ? 'inner-pages' : '' }"
+  - inner = @category || !params[:page].blank? ? 'inner-pages' : ''
+  .top class="#{inner}"
     .wrapper
       h1
         |
@@ -9,6 +10,8 @@ header
             guardián.mx
       - if @category
         h3= @category.name
+      - if params[:page]
+        h3= params[:page].humanize
       .misc-top class="#{@category ? 'inner-pages' : '' }"
         .social-counts
           = link_to 'angelguardian fb', 'https://www.facebook.com/angelguardianmx', class: 'fb', target: '_blank'
