@@ -22,7 +22,15 @@ header
     li.elements
       = link_to 'inicio', '/'
     - @top_level_categories.each do |category|
-      li.elements= link_to category.name, main_app.seccion_path(category.name)
+      li.elements
+        |
+        = link_to category.name, main_app.seccion_path(category.name)
+        - if category.subcategories.any?
+          ul.subnav
+            - category.subcategories.each do |sub|
+              li= link_to sub.name, main_app.seccion_path(sub.name)
+
+
   ul.es-noticia
     li.es-noticia-links Es noticia
     - @esnoticia.each do |noticia|
