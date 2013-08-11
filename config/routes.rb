@@ -49,6 +49,7 @@ Crowdblog::Application.routes.draw do
 
   match '/atom.(:format)', to: 'feeds/atom_feeds#show', as: 'atom_feed'
 
+  match '/static/:page', to: 'statics#show', as: 'statics'
   root to: "portadas#show"
   mount Crowdblog::Engine => '/'
 
