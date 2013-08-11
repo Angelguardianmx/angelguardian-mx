@@ -1,24 +1,23 @@
 header
-  - unless @banners['a'].nil?
-    - if @banners['a'].html_code.blank?
-      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['a'].image.url), @banners['a'].url, class: 'banner_a'
-    - else
-      .banner_a= raw @banners['a'].html_code
-
   .top class="#{@category ? 'inner-pages' : '' }"
-    h1
-      |
-       Ángel
-      i
+    .wrapper
+      h1
         |
-          guardián.mx
-    - if @category
-      h3= @category.name
-    .search class="#{@category ? 'inner-pages' : '' }"
-      = image_tag('header/search-icon.gif', class: 'search-label')
-      = text_field_tag 'search'
-      .today
-        = "Colima | #{l Time.now, format: :cover}"
+         Ángel
+        i
+          |
+            guardián.mx
+      - if @category
+        h3= @category.name
+      .misc-top class="#{@category ? 'inner-pages' : '' }"
+        .social-counts
+          = link_to 'angelguardian fb', 'https://www.facebook.com/angelguardianmx', class: 'fb', target: '_blank'
+          #fb-count.count
+          = link_to 'angelguardian twt', 'http://www.twitter.com/angelguardianmx', class: 'twt', target: '_blank'
+          #twt-count.count
+        .search-field
+          = image_tag('header/search-icon.gif', class: 'search-label')
+          = text_field_tag 'search'
   ul.nav
     li.elements
       = link_to 'inicio', '/'
@@ -28,6 +27,12 @@ header
     li.es-noticia-links Es noticia
     - @esnoticia.each do |noticia|
       li.es-noticia-links= link_to noticia.tag.name, main_app.esnoticia_path(noticia.tag.name)
+  - unless @banners['a'].nil?
+    - if @banners['a'].html_code.blank?
+      = link_to image_tag("transparent.png", class: 'lazy', "data-original" => @banners['a'].image.url), @banners['a'].url, class: 'banner_a'
+    - else
+      .banner_a= raw @banners['a'].html_code
+
 
 
 

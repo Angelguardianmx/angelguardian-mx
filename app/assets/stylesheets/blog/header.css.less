@@ -11,28 +11,69 @@ header {
 
   .top {
     margin-bottom: 10px;
-    background-color: @main-gray;
+    background-color: black;
     color: white;
-    text-align: center;
-    height: 73px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 100;
     h1 {
-      font-size: 27px;
+      background-color: #FFEC00;
+      font-size: 25px;
       text-transform: uppercase;
       margin: 0;
       font-weight: normal;
       display: inline-block;
-      margin-top: 9px;
+      color: black;
+      line-height: 50px;
+      padding: 0 8px;
+      float: left;
       i {
         font-weight: bold;
         font-style: normal;
       }
 
     }
-    .search {
+    .misc-top {
+      float: right;
+      margin-top: 15px;
+      .social-counts {
+        display: inline-block;
+        margin-right: 10px;
+        position: relative;
+        top: -3px;
+        a {
+          background: url('/assets/header/social-sprite.png') no-repeat transparent;
+          display: inline-block;
+          height: 25px;
+          width: 25px;
+          text-indent: -9999px;
+          margin-left: 5px;
+          &:hover {
+            text-decoration: none;
+          }
+          &.fb {
+            background-position: 0 0;
+          }
+          &.twt {
+            background-position: -33px 0;
+          }
+        }
+        .count {
+          display: inline-block;
+          color: white;
+        }
+      }
+      .search-field {
+        display: inline-block;
+      }
       .search-label {
         display: inline-block;
-        margin-right: 5px;
-        margin-top: -5px;
+        margin-left: 6px;
+        margin-top: 3px;
+        position: absolute;
       }
       input {
         height: 10px;
@@ -77,6 +118,7 @@ header {
   }
   ul.nav {
     margin-bottom: 10px;
+    margin-top: 50px;
     li.elements {
       font-size: 14px;
       border: 1px solid #C3C1C0;
@@ -87,7 +129,7 @@ header {
         margin: 0;
       }
       a {
-        background: @main-gray;
+        background: black;
         color: #E5E4E4;
         &:hover {
           background: #E5E4E4;

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.lazyload.min
+//= require modernizr
 //= require highlight.pack
 //= require bootstrap
 //= require_directory ./public-side

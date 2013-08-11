@@ -7,3 +7,10 @@ $ ->
   $('.go-top').on 'click', (e) ->
     e.preventDefault()
     $('body').scrollTop(0)
+
+  $.getJSON "https://twitter.com/users/angelguardianmx.json?callback=?", (data) ->
+    $('#twt-count').text data.followers_count
+
+  $.getJSON "https://graph.facebook.com/angelguardianmx", (data) ->
+    $('#fb-count').text data.likes
+
