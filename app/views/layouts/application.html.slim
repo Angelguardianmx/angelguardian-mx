@@ -47,3 +47,7 @@ html
       .modal-header
         button.close aria-hidden="true" data-dismiss="modal" type="button"
       .modal-body.posts
+
+        = render 'google_analytics'
+        - if Rails.env.production?
+          = javascript_include_tag '//cdn.optimizely.com/js/296894802.js'
