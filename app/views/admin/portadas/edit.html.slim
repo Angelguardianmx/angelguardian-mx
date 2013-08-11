@@ -67,7 +67,7 @@ h1
                   .clearfix
                 - count -= 1
                 - down = true
-              
+
               - count.times do |index|
                 - n = index
                 - n_index = down.nil? ? index : ((5 - count) + index )
@@ -186,6 +186,8 @@ h1
               Section: Noticia Special
             /- if @portada.special_note
             /  = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_special_note'
+            - if @portada.special_note
+              = link_to 'Borrar Nota', '#', class: 'pull-right btn btn-danger delete-note', "data-type" => 'portada_special_note'
         .search-news#especial
           .control-group
             = label_tag 'Busca mas noticias', nil,class: 'control-label'
