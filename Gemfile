@@ -12,7 +12,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'newrelic_rpm'
 gem 'bitly'
 gem 'roo'
-
+gem 'will_paginate'
 
 gem 'crowdblog', '~> 0.3.0', git: 'git://github.com/hecbuma/crowdblog.git' # path: '/Users/hecbuma/projects/crowdblog'
 # gem 'crowdblog', :path => '../crowdblog'
