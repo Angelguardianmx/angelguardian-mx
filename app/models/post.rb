@@ -34,9 +34,13 @@ class Post < Crowdblog::Post
     CSV.foreach(file.path, headers: true) do |row|
       post = row.to_hash
       unless Crowdblog::Post.find_by_title post['post_title']
-        img = /\< *[img][^\>]*[src] *= *[\"\']{0,1}([^\"\'\ >]*)/.match(post['post_content'])[1]
+        img = /\< *[img][^\>]*[src] *= *[\"\']{0,1}([^\"\'\ >]*)/.match(post['post_content'])
+        unless img.nil?
+          img = img[1]
+          post['post_content'].slice!(/<img([^\s>]*)(\s[^<]*)>/)
+        end
         category = Crowdblog::Category.find_or_create_by_name post['name']
-        new_post = Crowdblog::Post.new title: post['post_title'], body: post['post_content'], remote_image_url: img, category_id: category.id
+        new_post = Crowdblog::Post.new title: post['post_title'], body: post['post_content'], category_id: category.id
         new_post.save
         new_post.regenerate_permalink
         new_post.author = User.find(3)
