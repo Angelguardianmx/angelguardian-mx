@@ -11,6 +11,7 @@ gem 'filepicker-rails'
 gem 'rails3-jquery-autocomplete'
 gem 'newrelic_rpm'
 gem 'bitly'
+gem 'roo'
 
 
 gem 'crowdblog', '~> 0.3.0', git: 'git://github.com/hecbuma/crowdblog.git' # path: '/Users/hecbuma/projects/crowdblog'

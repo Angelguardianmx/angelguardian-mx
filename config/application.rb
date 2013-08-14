@@ -2,6 +2,9 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'bitly'
+require 'csv'
+require 'iconv'
+require 'roo'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
