@@ -30,6 +30,21 @@ class Post < Crowdblog::Post
     end
   end
 
+  def self.query_for_admin(query, author, per_page=50, page=1, status='published', picture_only=false, vlog=false, opinion=false)
+    vlog = vlog || nil
+    opinion = opinion || nil
+    Crowdblog::Post.search do
+      fulltext query
+      with :state, status if status
+      with :picture_only, true if picture_only
+      with :vlog, vlog
+      with :opinion, opinion
+      order_by :published_at, :desc
+      paginate page: page, per_page: per_page
+      with :author_id, author if author
+    end
+  end
+
   def self.import_posts(file)
     CSV.foreach(file.path, headers: true) do |row|
       post = row.to_hash
